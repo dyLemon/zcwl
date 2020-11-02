@@ -1,0 +1,6 @@
+<view class="background">
+    <view class="content">
+        <textarea bindinput="input" class="desarea" value="{{inputv}}"></textarea>
+    </view>
+    <button bindtap="save" class="confirm" hoverClass="confirmh">保存</button>
+</view>

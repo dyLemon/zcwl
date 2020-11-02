@@ -1,0 +1,138 @@
+page {
+  font-family: MicrosoftYaHeiLight;
+  height: 100%;
+}
+.background{
+  height: 100%;
+  background-color: rgb(241, 242, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatarbox{
+  margin-top: 4rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 160rpx;
+}
+.namebox{
+  margin-top: 4rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 90rpx;
+}
+.avatar{
+  margin-left: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 5px;
+
+  background-size: 100% 100%;
+}
+.name{
+  position: fixed;
+  left: 30rpx;
+  color: rgb(47, 47, 48);
+  font-size: 28rpx;
+}
+.bind{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  right: 30rpx;
+}
+.username{
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  
+}
+.goodat{
+  text-align: right;
+  width: 500rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.bindbox{
+  margin-top: 8rpx;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 90rpx;
+}
+.icon{
+  width: 40rpx;
+  height:40rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/titile_next_icon_n.png);
+  background-size: 100% 100%;
+}
+.quit{
+  position: absolute;
+  bottom: 60rpx;
+  font-size: 28rpx;
+  color: rgb(47, 47, 48);
+  border: 1px solid rgb(188, 188, 188);
+  width: 700rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 4px;
+  background-color: white;
+}
+.qrback{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0,0.5);
+  z-index: 1000;
+}
+.qrbox{
+  background-color: white;
+  width: 550rpx;
+  height: 700rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+.qrtitle{
+  font-size: 34rpx;
+  color: rgb(96, 98, 102);
+  margin-top: 90rpx;
+  margin-bottom: 60rpx;
+}
+.qrbg{
+  background-color: rgb(248,248,248);
+  width: 350rpx;
+  height: 350rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.qrdes{
+  font-size: 24rpx;
+  color: rgb(193,193,193);
+  width: 431rpx;
+  margin-top: 50rpx;
+  line-height: 40rpx;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}

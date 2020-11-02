@@ -1,0 +1,80 @@
+page{
+  font-family: MicrosoftYahei;
+}
+.select_box {
+  /* background-image: url(https://wxprogram.zc5l.com/img/office_bg.png); */
+  background-color: rgb(217,217,217);
+  background-size: 100% 100%;
+  width: 750rpx;
+  height:100rpx;
+  display: flex;
+}
+
+.select {
+  position: relative;
+  right: 20rpx;
+  width: 210rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  display: flex;
+  padding: 0 20rpx;
+}
+.title{
+  font-size: 28rpx;
+  flex: 1;
+  color: rgb(34, 34, 34);
+  display: flex;
+  line-height: 100rpx;
+  width: 200rpx;
+  margin-left: 29rpx;
+}
+.st{
+  margin-left: 20rpx;
+}
+
+.select_img {
+  margin-top: 44rpx;
+  width: 40rpx;
+  height: 20rpx;
+  display: block;
+  /* transition: transform 0.3s; */
+}
+
+.select_img_rotate {
+  transform: rotate(180deg);
+}
+.dbox{
+  width: 100%;
+  display: flex;
+  position: relative;
+  top: -8rpx;
+  left: 0;
+  background: rgb(217,217,217);
+  z-index: 100;
+}
+.option_box {
+  margin-left: 30rpx;
+  width: 680rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  z-index: 1;
+  margin-bottom: 22rpx;
+}
+
+.option {
+  background-color: rgb(60, 76, 193);
+  height: 60rpx;
+  line-height: 60rpx;
+  display: block;
+  width: 220rpx;
+  font-size: 28rpx;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+  margin-bottom: 8rpx;
+}
+.optionh{
+  background-color: rgb(120, 134, 237);
+  color: white
+}

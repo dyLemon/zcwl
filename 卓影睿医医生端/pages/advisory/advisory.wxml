@@ -1,0 +1,39 @@
+<view class="done"></view>
+<view class="background">
+    <view class="title">
+        <button bindtap="search" class="b" hoverClass="hb" wx:if="{{false}}">
+            <image src="https://wxprogram.zc5l.com/img/logon_search_icon.png"></image>
+            <text>搜索患者姓名</text>
+        </button>
+    </view>
+    <view style="margin-top:12rpx; background-color: white;border-radius:5rpx; ">
+        <scroll-view bindscrolltolower="bottom" scrollY="{{true}}" style="height:{{height}}rpx;">
+            <view class="advisorylist" wx:if="{{0!=advisorylist.length}}">
+                <block wx:for="{{advisorylist}}" wx:key="key">
+                    <view bindlongtap="" bindtap="talk" bindtouchend="tend" bindtouchstart="tstart" class="table"
+                        id="{{index}}">
+                        <view class="avatarbox">
+                            <image src="{{weburl+item.avatar}}"></image>
+                            <view class="unread" wx:if="{{item.unread}}"></view>
+                        </view>
+                        <view class="textbox">
+                            <view class="nttext">
+                                <view class="name">{{item.name}}</view>
+                                <text class="time">{{item.msg.time}}</text>
+                            </view>
+                            <view class="talk">{{item.msg.t_type==0?item.msg.text:'新的订单'}}</view>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </block>
+                <view style="height:20rpx;"></view>
+            </view>
+            
+            <view class="empty" wx:else >
+                <image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+					<view class="emptytext">暂无聊天记录</view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- <view class="bottom"></view> -->
+</view>

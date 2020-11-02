@@ -1,0 +1,51 @@
+<view class="background">
+	<view class="department">
+		<scroll-view class="departmentsv" scrollX="{{true}}" throttle="{{true}}">
+			<radio-group bindchange="departmentchange" class="departmentrg">
+				<view class="label" style="width: {{svwidth}}rpx;">
+					<label class="plan-radio {{index==select.position.index?'active':''}}" wx:for="{{positionlist}}" wx:key="key">
+						<radio checked="{{index==select.position.index?true:false}}" value="{{index}}"></radio>
+						<text class="ptext">{{item.name}}</text>
+						<view class="line" wx:if="{{index!=positionlist.length-1}}"></view>
+					</label>
+				</view>
+			</radio-group>
+		</scroll-view>
+	</view>
+	<view class="subset">
+		<view class="part" wx:if="{{-1!=select.position.index&&0!=positionlist[select.position.index].partlist.length}}">
+			<scroll-view scrollY="{{true}}" style="height:{{partheight}}rpx;" throttle="{{true}}">
+				<radio-group bindchange="partchange" class="partrg">
+					<view class="partlabel">
+						<label class="part-radio {{index==select.part.index?'active':''}}" wx:for="{{positionlist[select.position.index].partlist}}" wx:key="key">
+							<radio checked="{{index==select.part.index?true:false}}" value="{{index}}"></radio>
+							<text class="text">{{item.name}}</text>
+						</label>
+					</view>
+				</radio-group>
+			</scroll-view>
+		</view>
+		<view class="{{templateheight==0?'tempempty':' template'}}" style="height:{{templateheight}}rpx;">
+			<scroll-view scrollY="{{true}}" style="height:{{templateheight}}rpx;" throttle="{{true}}">
+				<radio-group wx:if="{{0==command}}" bindchange="templatechange" class="templaterg">
+					<view class="templatelabel" wx:if="{{-1!=select.part.index&&0!=positionlist[select.position.index].partlist[select.part.index].templatelist.length}}">
+						<label class="template-radio {{index==select.template.index?'active':''}}" wx:for="{{positionlist[select.position.index].partlist[select.part.index].templatelist}}" wx:key="key">
+							<radio checked="{{index==select.template.index?true:false}}" value="{{index}}"></radio>
+							<text class="text">{{item.name}}</text>
+						</label>
+					</view>
+				</radio-group>
+				<checkbox-group wx:if="{{1==command}}" bindchange="videochange">
+					<view class="videobox" wx:if="{{0!=videolist.length}}">
+						<label wx:for="{{videolist}}" wx:key="key" class="{{videolist[index].checked?'videochecklabelh':'videochecklabel'}}">
+							<checkbox checked="{{videolist[index].checked}}" class="videocheckbox" value="{{index}}"></checkbox>
+							<view class="{{videolist[index].checked?'vcheckboxh':'vcheckbox'}}"></view>
+							<text class="videotext">{{item.name}}</text>
+						</label>
+					</view>
+				</checkbox-group>
+			</scroll-view>
+		</view>
+	</view>
+	<button bindtap="confirm" class="confirm" hoverClass="confirmh">确定{{1==command?"("+vcount+")":''}}</button>
+</view>

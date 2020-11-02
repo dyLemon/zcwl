@@ -1,0 +1,7 @@
+<view class="background">
+  <view class="content">
+  <textarea name="goodat" id="goodat" cols="30" rows="10" placeholder="请输入擅长描述" class="goodat"
+    placeholder-class="goodatempty" value="{{goodat}}" bindinput="input"></textarea>
+  </view>
+    <view class="confirm" hover-class="confirmh" bindtap="confirm">提交</view>
+</view>

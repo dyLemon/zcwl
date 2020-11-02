@@ -1,0 +1,8 @@
+{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "医生咨询",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {},
+    "disableScroll": true
+}

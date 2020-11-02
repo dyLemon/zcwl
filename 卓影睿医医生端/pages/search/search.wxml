@@ -1,0 +1,33 @@
+<view class="background">
+    <view class="title">
+        <form bindreset="formReset" bindsubmit="search" class="form">
+            <view class="box">
+                <image src="https://wxprogram.zc5l.com/img/logon_search_icon.png"></image>
+                <input bindconfirm="search" bindinput="inputing" class="key" confirmType="search" name="input" placeholder="{{entrance==1?'搜索患者姓名':'搜索患者姓名'}} " placeholderStyle="font-size: 24rpx;color: rgb(181, 181, 181);" type="text" value="{{searchkey}}"></input>
+                <view bindtap="reset" class="reset" formType="reset" wx:if="{{nonempty}}"></view>
+            </view>
+        </form>
+        <view bindtap="back" class="cancel">取消</view>
+    </view>
+    <view wx:if="{{0!=list.length}}">
+        <scroll-view bindscrolltolower="bottom">
+            <view class="tableh">
+                <view class="name">姓名</view>
+                <view class="time">诊断时间</view>
+                <view class="times">锻炼次数</view>
+            </view>
+            <view wx:for="{{list}}" wx:key="key">
+                <view bindtap="select" class="table" id="{{index}}">
+                    <view class="name">{{item.name}}</view>
+                    <view class="time">{{tools.data(item.treat_time)}}</view>
+                    <view class="times" wx:if="{{0!=item.total_count}}">{{item.total_num}}/{{item.total_count}}</view>
+                    <view class="times" wx:else>--</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="empty" wx:elif="{{false}}">
+        <image src="{{resource}}/img/empty_exercise_plan.png"></image>
+    </view>
+</view>
+<wxs module="tools" src="../../price.wxs" />

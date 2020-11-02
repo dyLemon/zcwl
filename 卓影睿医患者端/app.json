@@ -1,0 +1,60 @@
+{
+  "pages": [ 
+    "pages/doclist/doclist",
+    "pages/index/index","pages/doctor/doctor",
+    "pages/search/search","pages/attention/attention",
+    "pages/selectpatient/selectpatient",
+    "pages/mydoclist/mydoclist",
+   
+    "pages/plan/plan",
+    "pages/feedback/feedback",
+    "pages/entryinformation/entryinformation",
+    "pages/order/order",
+    "pages/sport/sport",
+    "pages/neterror/neterror",
+    "pages/talk/talk",
+    "pages/orderlist/orderlist",
+    "components/videolist/videolist",
+    "components/topic/topic",
+    "pages/questaire/questaire"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "卓影睿医",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#606266",
+    "selectedColor": "#31DCD1",
+    "backgroundColor": "#F1F2F3",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/doclist/doclist",
+        "text": "医生列表",
+        "iconPath": "img/list_data_icon_n.png",
+        "selectedIconPath": "img/list_data_icon_p.png"
+      }, 
+      {
+        "pagePath": "pages/mydoclist/mydoclist",
+        "text": "医生咨询",
+        "iconPath": "img/list_messag_icon_n.png",
+        "selectedIconPath": "img/list_messag_icon_p.png"
+      },
+      {
+        "pagePath": "pages/plan/plan",
+        "text": "康复训练",
+        "iconPath": "img/exerc_icon_n.png",
+        "selectedIconPath": "img/exerc_icon_p.png"
+      },
+      {
+        "pagePath": "pages/orderlist/orderlist",
+        "text": "我的订单",
+        "iconPath": "img/list_user_icon_n.png",
+        "selectedIconPath": "img/list_user_icon_p.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

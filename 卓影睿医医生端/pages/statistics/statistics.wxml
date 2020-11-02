@@ -1,0 +1,79 @@
+<view class="background">
+    <view class="title">
+        <view class="sbox">
+            <view class="dateselect">
+                <image src="{{resource}}/img/time_icon.png" style="margin-left: 30rpx;margin-right: 10rpx;margin-bottom: 15rpx;margin-top: 15rpx;;width: 30rpx; height: 30rpx;"></image>
+                <picker bindchange="startdateselect" mode="date" value="{{startdate}}">
+                    <view class="picker">
+						{{startdate}}
+					</view>
+                </picker>
+            </view>
+            <view style="line-height: 60rpx;margin-left: 10rpx;margin-right: 10rpx;font-size: 24rpx;color: rgb(96,98,102);">至</view>
+            <view class="dateselect">
+                <picker bindchange="enddateselect" mode="date" value="{{enddate}}">
+                    <view class="picker">
+						{{enddate}}
+					</view>
+                </picker>
+            </view>
+        </view>
+        <button bindtap="search" class="search">查询</button>
+    </view>
+    <view class="tbbg" wx:if="{{0<list.length}}">
+        <view class="leftsc" wx:if="{{2<left}}"></view>
+        <view class="rightsc" wx:if="{{307>left}}"></view>
+        <view style="height: 30rpx;"></view>
+        <view class="tabtitle">
+            <view class="taba">
+                <view class="tabaa">序号</view>
+                <view class="taban">患者姓名</view>
+            </view>
+            <view class="tline"></view>
+            <scroll-view bindscroll="scrollchangeleft" scrollX="true" style="width: 370rpx;height: 40rpx;white-space:nowrap;">
+                <view class="tab">
+                    <view class="tabbct">订单生成时间</view>
+                    <view class="tabb">方案原价</view>
+                    <view class="tabb">支付金额</view>
+                    <view class="tabb">优惠方式</view>
+                    <view class="tabb">支付时间</view>
+                    <view class="tabb">退款金额</view>
+                    <view class="tabb">退款时间</view>
+                    <view class="tabb">支付状态</view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="hline"></view>
+        <view class="lt">
+            <scroll-view bindscroll="scrollchangetop" scrollTop="{{topt}}" scrollY="{{true}}" style="height:{{height}}rpx;width:296rpx;white-space:nowrap;">
+                <view class="taba" wx:for="{{list}}" wx:key="key">
+                    <view class="tabaa">{{index}}</view>
+                    <view class="taban">{{item.patientname}}</view>
+                    <view class="vline"></view>
+                </view>
+            </scroll-view>
+            <scroll-view scrollLeft="{{left}}" scrollTop="{{topc}}" scrollX="{{contentx}}" scrollY="{{contenty}}" style="width:370rpx;height:{{height}}rpx;white-space:nowrap;">
+                <view class="tabc" wx:for="{{list}}" wx:key="key">
+                    <view class="tabbct">
+                        <view style=" text-align: center;">{{tools.data(item.createtime)}}</view>
+                        <view style=" text-align: center;">{{tools.datatime(item.createtime)}}</view>
+                    </view>
+                    <view class="tabb">{{item.totalprice}}</view>
+                    <view class="tabb">{{item.price}}</view>
+                    <view class="tabb"></view>
+                    <view class="tabbt">
+                        <view style=" text-align: center;">{{tools.data(item.sucesstime)}}</view>
+                        <view style=" text-align: center;">{{tools.datatime(item.sucesstime)}}</view>
+                    </view>
+                    <view class="tabb">{{item.refundprice}}</view>
+                    <view class="tabbt">
+                        <view style=" text-align: center;">{{tools.data(item.refundtime)}}</view>
+                        <view style=" text-align: center;">{{tools.datatime(item.refundtime)}}</view>
+                    </view>
+                    <view class="tabb">{{0==item.paystate?'未支付':1==item.paystate?'未支付':2==item.paystate?'已支付':3==item.paystate?'退款成功':'未支付'}}</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../price.wxs" />

@@ -1,0 +1,40 @@
+var price = ({
+    priced: (function(val, count) {
+        return (parseFloat(val).toFixed(count))
+    }),
+});
+module.exports = ({
+    priced: price.priced,
+});
+var data = (function(time) {
+    var s=''
+    if(''!=time&&(typeof time)=='string'){
+       s=time.substring(0, 10)
+    }
+    return s
+});
+module.exports.data = data;
+var showstr = (function(str, limet) {
+    var s=''
+    if(''!=str&&(typeof str)=='string'){
+        s=str.substring(0, limet)
+     }
+     return s
+});
+module.exports.showstr = showstr;
+var tstr = (function(ts) {
+    return (ts.replace(getRegExp('-', 'g'), '/'))
+});
+module.exports.tstr = tstr;
+var datagroup = (function(time0, time1, st) {
+    var data0 = getDate(time0).getTime();
+    var data1 = getDate(time1).getTime();
+    var b;
+    if (data0 <= data1) {
+        b = st >= data1 - data0
+    } else {
+        b = false
+    };
+    return (data1 - data0)
+});
+module.exports.datagroup = datagroup;

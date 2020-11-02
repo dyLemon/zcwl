@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#7CB5FB",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "创建方案",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "pvideolist":"/components/pvideolist/pvideolist"
+  },
+  "disableScroll": true
+}

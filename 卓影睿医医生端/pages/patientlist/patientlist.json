@@ -1,0 +1,9 @@
+{
+    "navigationBarBackgroundColor": "#7CB5FB",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "卓影睿医",
+    "backgroundTextStyle": "light",
+    "disableScroll": true,
+    "usingComponents": {},
+    "restartStrategy": "homePageAndLatestPage"
+}

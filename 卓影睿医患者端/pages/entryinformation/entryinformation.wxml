@@ -1,0 +1,72 @@
+<view class="background">
+	<form bindsubmit="confirm">
+		<view class="content" style="height:{{contenth}}rpx;">
+			<view class="{{1==inputing?'iboxh':'ibox'}}">
+				<view class="musticon"></view>
+				<view class="property">姓名</view>
+				<input class="{{'input'}}" value="{{name}}" bindinput="regInput" bindblur="blur" bindfocus="namefocus" 
+				name="name"placeholder="请输入姓名" placeholder-class="inputpc"></input>
+			</view>
+			<view class="ibox">
+				<view class="property">性别</view>
+				<view class='select_box'>
+					<view class='select' catchtap='selectTap'>
+						<text class='select_text'>{{selectData[index]}}</text>
+						<!-- <image class='words_img' src='https://wxprogram.zc5l.com/img/up_icon_n.png'></image> -->
+						<image class='select_img {{show&&"select_img_rotate"}}' src='https://wxprogram.zc5l.com/img/down_icon_n.png'></image>
+					</view>
+					<view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*62):0}}rpx;'>
+						<text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}'
+        wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="{{4==inputing?'iboxh':'ibox'}}">
+				<view class="musticon"></view>
+				<view class="property">年龄</view>
+				<input class="{{'input'}}" type="number" bindinput="ageInput" bindblur="blur" bindfocus="agefocus"
+				name="age"placeholder="请输入年龄" placeholder-class="inputpc" value="{{age}}"></input>
+			</view>
+			<view class="{{8==inputing?'iboxh':'ibox'}}">
+				<view class="musticon"></view>
+				<view class="property">疼痛部位</view>
+				<input class="{{'input'}}" value="{{painarea}}" bindinput="painareaInput" bindblur="blur" bindfocus="painareafocus"
+				name="painarea"placeholder="请输入疼痛部位" placeholder-class="inputpc"></input>
+			</view>
+			<view class="ibox">
+			  <view class="musticon"></view>
+				<view class="property">疼痛时长</view>
+				<view class='select_boxpd'>
+					<view class='select' catchtap='selectTappd'>
+						<text class='select_text'>{{painduration[paindurationidx].value}}</text>
+						<!-- <image class='words_img' src='https://wxprogram.zc5l.com/img/up_icon_n.png'></image> -->
+						<image class='select_img {{showpd&&"select_img_rotate"}}' src='https://wxprogram.zc5l.com/img/down_icon_n.png'></image>
+					</view>
+					<view class='option_box' style='height:{{showpd?(painduration.length>5?300:painduration.length*62):0}}rpx;'>
+						<text class='option' style='{{paindurationidx==painduration.length-1&&"border:0;"}}' wx:for='{{painduration}}'
+        wx:key='this' data-index='{{index}}' catchtap='optionTappd'>{{item.value}}</text>
+					</view>
+				</view>
+			</view>
+			
+			<view class="dbox">
+			<view class="iboxd">
+				<view class="property">临床诊断</view>
+				</view>
+				<textarea class="{{7==inputing?'diagnoseing':'diagnose'}}" bindinput="diagnoseInput" bindblur="diagnoseblur" 
+				bindfocus="diagnosefocus" name="diagnose" value="{{diagnose}}"placeholder="请输入诊断" placeholder-class="inputpc"></textarea>
+				</view>
+				
+			<view class="tipbox">
+			<view class="musticon"></view>
+			<view class="tips">为必填项</view>
+		</view>
+		</view>
+		<view class="fback">
+			<view class="footbtnbox">
+				<button bindtap="cancel" class="cancelbtn">取消</button>
+				<button disabled="{{!can}}" class="confirmbtn" hover-class="confirmbtnh" form-type="submit">确定</button>
+			</view>
+		</view>
+	</form>
+</view>

@@ -1,0 +1,136 @@
+<view class="background">
+	<view class="content">
+		<view class="title">
+			<view class="left">
+				<view class="name">{{patient.name}}</view>
+				<view class="name">{{patient.sex==0?'男':'女'}}</view>
+				<view class="name">{{patient.age}}</view>
+			</view>
+			<button bindtap="talk" class="talk" hoverClass="talkh">
+				<view style="font-size: 30rpx;text-align: center;line-height: 40rpx;color: rgb(96, 98, 102);">聊天</view>
+				<image></image>
+			</button>
+		</view>
+		<view style="height:{{bheight}}rpx;background-color: white;border-radius: 5rpx;">
+			<view class="plantype">
+				<radio-group bindchange="plantypechange" class="plantypeg">
+					<view class="tlabel">
+						<label class="plan-radio{{item.checked==true?'.active':''}}" wx:for="{{plantype}}" wx:key="key">
+							<view class="selectbox">
+								<radio checked="{{item.checked}}" value="{{item.value}}"></radio>
+								<text class="{{item.checked==true?'hstext':'stext'}}">{{item.name}}</text>
+								<view class="{{item.checked==true?'selectline':'spaceline'}}"></view>
+							</view>
+							<view class="{{index==2?'':'vline'}} "></view>
+						</label>
+					</view>
+				</radio-group>
+			</view>
+			<view bindtap="selectplan" class="kind">
+				<view class="skind">
+					<view class="kdbox">
+						<image class="splanimg"></image>
+						<view class="kindtext">选择方案</view>
+					</view>
+					<view class="bbar"></view>
+				</view>
+				<image src=""></image>
+			</view>
+			<view wx:if="{{createdata.actorlist.length}}">
+				<scroll-view bindscroll="scrollTopFun" scrollY="{{isScroll}}" style="height:{{height}}rpx;">
+					<view class="actorlist">
+						<view class="table" wx:for="{{createdata.actorlist}}" wx:key="key">
+							<view  class="order-item" >
+								<view data-index="{{index}}"bindtap="viewplan" class="tshow" id="{{index}}"
+								bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+									<image mode="scaleToFill" src="{{resource}}/{{item.imgpath2+'&token='+token}}"></image>
+									<view class="tdetails">
+										<view class="detail">
+											<view class="dtext">名称：{{item.name}}</view>
+											<view class="dtext">肌肉群：{{item.musle}}</view>
+											<view class="dtext">禁忌：{{item.remind}}</view>
+											<view class="dtext">设备：{{item.equipment}}</view>
+											<view class="dtext">描述：{{item.description}}</view>
+										</view>
+										<view class="remove" catchtap="delItem" id="{{index}}">删除 </view>
+									</view>
+								</view>
+							</view>
+							<view class="line"></view>
+						</view>
+					</view>
+				</scroll-view>
+				<view bindtap="selectvideo" class="kind">
+					<view class="skind">
+						<view class="kdbox">
+							<image class="svideoimg"></image>
+							<view class="kindtext">添加视频</view>
+						</view>
+						<view class="bbar"></view>
+					</view>
+					<image src=""></image>
+				</view>
+				<view class="details">
+					<view class="cycle">
+						<view class="head">方案周期</view>
+						<button bindtap="cyclesubstract" class="less" hoverClass="lessh">-</button>
+						<view class="count">{{null==createdata.cycle?0:createdata.cycle}}</view>
+						<button bindtap="cycleadd" class="add" hoverClass="addh">+</button>
+						<radio-group bindchange="cyclechange" class="cycletype">
+							<view class="label">
+								<label class="ui-radio {{item.checked==true?'active':''}}" wx:for="{{items}}" wx:key="key">
+									<radio checked="{{item.checked}}" value="{{item.value}}"></radio>
+									<text class="text">{{item.name}}</text>
+								</label>
+							</view>
+						</radio-group>
+					</view>
+					<view class="frequency">
+						<view class="frehead">训练频次</view>
+						<radio-group bindchange="frequencychange" class="frequencyg">
+							<view class="label">
+								<label class="fre-radio {{item.checked==true?'active':''}}" wx:for="{{itemsf}}" wx:key="key">
+									<radio checked="{{item.checked}}" value="{{item.value}}"></radio>
+									<text class="text">{{item.name}}</text>
+								</label>
+							</view>
+						</radio-group>
+					</view>
+					<view class="line"></view>
+					<view class="group">
+						<view class="head">锻炼组数</view>
+						<button bindtap="groupsubstract" class="less" hoverClass="lessh">-</button>
+						<view class="scount">{{null==createdata.groupNum?0:createdata.groupNum}}</view>
+						<button bindtap="groupadd" class="add" hoverClass="addh">+</button>
+						<view class="unit">组</view>
+					</view>
+					<view class="times">
+						<view class="head">锻炼次数</view>
+						<button bindtap="timessubstract" class="less" hoverClass="lessh">-</button>
+						<view class="scount">{{null==createdata.daynum?0:createdata.daynum}}</view>
+						<button bindtap="timesadd" class="add" hoverClass="addh">+</button>
+						<view class="unit">次</view>
+					</view>
+					<view class="gap">
+						<view class="head">每组间隔时间</view>
+						<button bindtap="gapsubstract" class="less" hoverClass="lessh">-</button>
+						<view class="scount">{{null==createdata.gaptime?0:createdata.gaptime}}</view>
+						<button bindtap="gapadd" class="add" hoverClass="addh">+</button>
+						<view class="unit">分</view>
+					</view>
+				</view>
+				<view class="footmark " wx:if="{{true}}">
+					<view bindtap="comfirm" class="comfirm" hoverClass="comfirmh">
+						<view class="total">提交方案</view>
+						<view class="tcount">({{null==createdata.actorlist?'':createdata.actorlist.length}})</view>
+					</view>
+				</view>
+			</view>
+			<view wx:else class="emptips">
+				<view class="emptipstext">目前还没有方案，请选择不同部位的方案!</view>
+			</view>
+		</view>
+	</view>
+
+
+</view>

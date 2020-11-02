@@ -1,0 +1,14 @@
+<view wx:if="{{0!=templatelist.length}}" class='background' style="height:{{hight}}rpx;">
+	<scroll-view scrollY='{{true}}' style="height:{{hight}}rpx;">
+		<view class="templatelabel" >
+			<label wx:for="{{templatelist}}" wx:key="key">
+				<view class="lbox" hover-class="lboxh" id="{{index}}"bindtap="ontap">
+					<view class="template-radio {{index==select?'active':''}}">
+						{{item.name}}
+					</view>
+					<view class="icon" hover-class="iconh" id="{{index}}" catchtap="onadd"></view>
+				</view>
+			</label>
+		</view>
+	</scroll-view>
+</view>

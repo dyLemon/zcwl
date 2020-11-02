@@ -1,0 +1,13 @@
+{
+    "navigationBarBackgroundColor": "#7CB5FB",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "患者方案",
+    "backgroundTextStyle": "light",
+    "usingComponents": {
+        "dropdbox": "/components/dropdbox/dropdbox",
+        "planvlist": "/components/planvlist/planvlist",
+        "pvideolist": "/components/pvideolist/pvideolist",
+        "partlist": "/components/partlist/partlist",
+        "departselectbox": "/components/departselectbox/departselectbox"
+    }
+}

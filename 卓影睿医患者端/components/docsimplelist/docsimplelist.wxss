@@ -1,0 +1,82 @@
+.background{
+  font-family: MicrosoftYaHeiLight;
+  width: 750rpx;
+}
+.tablebox{
+  height: 130rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  margin-left: 30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  background-size: 100% 100%;
+}
+.redpoint{
+  position: relative;
+  top: -138rpx;
+  left: 92rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background-color: red;
+  border-radius: 14rpx;
+}
+.ntbox{
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  width: 520rpx;
+}
+.nbox{
+  display: flex;
+  align-items: flex-end;
+}
+.name{
+  line-height: 30rpx;
+  font-size: 30rpx;
+  color: rgb(34, 34, 34);
+}
+.jobtitle{
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: rgb(119, 119, 119);
+}
+.talk{
+  width: 100%;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+  color: rgb(108, 108, 108);
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.time {
+  position: relative;
+  top: -100rpx;
+  left:460rpx;
+  font-size: 24rpx;
+  color: #909399;
+}
+
+.remove{  
+  width: 128rpx; 
+  height: 100%; 
+  background-color: rgb(241, 242, 243); 
+  color: rgb(96, 98, 102); 
+  position: absolute;  
+  top: 0;  
+  right: -128rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+} 
+.line{
+  margin-left: 130rpx;
+  width: 577rpx;
+  border-bottom: 1px solid rgb(243, 241, 241);
+}

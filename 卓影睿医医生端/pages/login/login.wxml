@@ -1,0 +1,30 @@
+<view class="background" wx:if="{{!wait}}">
+    <view class="logintable">
+        <form bindsubmit="login">
+            <view class="user">
+                <image class="userimg" src="{{input==1?'https://wxprogram.zc5l.com/img/logon_user_icon_p.png':'https://wxprogram.zc5l.com/img/logon_user_icon_n.png'}}"></image>
+                <input bindblur="userblur" bindfocus="uerfocus" class="{{input==1?'inputfocus':'inputblur'}}" name="user" placeholder="请输入账号" placeholderClass="placlass" type="text" value="{{user}}"></input>
+            </view>
+            <view class="password">
+                <image class="passwordimg" src="{{input==2?'https://wxprogram.zc5l.com/img/logon_pass_icon_p.png':'https://wxprogram.zc5l.com/img/logon_pass_icon_n.png'}}"></image>
+                <input bindblur="passwordblur" bindfocus="passwordfocus" class="{{input==2?'inputfocus':'inputblur'}}" name="password" password="true" placeholder="请输入密码" placeholderClass="placlass" value="{{password}}"></input>
+            </view>
+            <view class="tips">卓影睿医以指导患者康复运动训练为核心，通过人体模型运动训练视频，可以为患者提供康复全方位、全周期的指导。用我司创建的个人账号密码登录即可。</view>
+            <checkbox-group bindchange="agreechange" name="check">
+                <checkbox checked="{{agree}}" class="remember" value="agree">
+                    <view class="ag">我已知晓</view>
+                </checkbox>
+            </checkbox-group>
+            <button class="login" disabled="{{!agree}}" formType="submit" hoverClass="loginh">登录</button> 
+            <view class="help">
+                <checkbox-group bindchange="checkchange" name="check">
+                    <checkbox checked="{{remember}}" class="remember" value="remember">
+                        <view class="{{remember?'rm':'fg'}}">记住密码</view>
+                    </checkbox>
+                </checkbox-group>
+                <button class="forget" hoverClass="forgeth" wx:if="{{false}}">忘记密码</button>
+            </view>
+        </form>
+    </view>
+</view>
+<view class="wait" wx:else></view>

@@ -1,0 +1,90 @@
+<view class="background">
+	<video class="cvideo" customCache="{{false}}" src="{{resources}}/{{play}}&token={{tk}}"></video>
+	<view bindtap="turn" class="turn" wx:if="{{false}}">
+		<image src="{{resources}}{{realperson?'/img/video_person_btn_n.png':'/img/video_model_btn_n.png'}}"></image>
+	</view>
+	<view class="sv">
+		<scroll-view scrollY="{{true}}" style="height:{{height}}rpx" throttle="{{true}}">
+			<view class="aname">{{video[select].actor_name}}</view>
+			<view class="details">
+				<view class="detail">
+					<view class="dtext">肌肉群：{{video[select].muscle}}</view>
+					<view class="dtext">禁忌：{{video[select].remind}}</view>
+					<view class="dtext">设备：{{video[select].equipment}}</view>
+					<view class="dtext">描述：{{video[select].description}}</view>
+				</view>
+				<view class="line"></view>
+				<view class="key">
+					<view class="keye">动作重复次数</view>
+					<view class="vertical"></view>
+					<view class="keye">动作保持时间</view>
+					<view class="vertical"></view>
+					<view class="keye">视频重复次数</view>
+				</view>
+				<view class="value">
+					<view class="valuee">
+						<view class="vcount">{{video[select].repeat_count}}</view>
+						<view class="vunit">次</view>
+					</view>
+					<view class="valuee">
+						<view class="vcount">{{video[select].keep_time}}</view>
+						<view class="vunit">秒</view>
+					</view>
+					<view class="valuee">
+						<view class="vcount">{{video[select].play_count}}</view>
+						<view class="vunit">次</view>
+					</view>
+				</view>
+				<view class="video-select">
+					<view class="videobtn" wx:for="{{video}}" wx:key="key">
+						<image mode="scaleToFill" src="{{resources}}/{{item.actor_display_url2}}&token={{tk}}"></image>
+						<view bindtap="selectv" class="{{select==index?'idxsel':'idx'}}" id="{{index}}"></view>
+					</view>
+				</view>
+			</view>
+			<view class="tips">
+				<view class="title">医生提示</view>
+				<view class="content">{{video[select].actor_des}}</view>
+			</view>
+		</scroll-view>
+	</view>
+	<!-- -->
+	<button bindtap="complete" class="complete" hoverClass="completeh" wx:if="{{comshow}}">锻炼完成</button>
+	<!-- <button bindtap="complete" class="complete" hoverClass="completeh" wx:if="{{!completions}}">锻炼完成</button> -->
+
+
+	<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" catchtap='hideBaitiaoView'></view>
+	<!-- 弹出层 -->
+	<view class="modal-dialog" wx:if="{{showModal}}">
+	<view class="img" bindtap="hideBaitiaoView"> </view>
+		<view class="modal-content">
+			<view>今日训练完成了!<text  class="feedback"  bindtap="feedbackbtn">去反馈</text></view>
+       <view class="br"> </view>
+			<view class="total">进度{{total.total_num}}/{{total.total_count}}</view>
+		   
+		</view>
+	</view>
+	<view class="modal-mask" catchtouchmove="preventTouchMove"  wx:if="{{showsModal}}" catchtap='hideBaitiaoViews'></view>
+	<view class="modal-img" catchtouchmove="preventTouchMove" wx:if="{{showsModal}}"  catchtap='hideBaitiaoViews'></view>
+	<!-- 弹出层 -->
+	<view class="modals-dialog" wx:if="{{showsModal}}">
+		<view class="modals-content">
+			<view>恭喜你！</view>
+			<view>这个训练计划已经完成啦！</view>
+			<view class="model-bom">
+					<view class="left">
+						<view class="cfff">动作</view>
+						{{freelist.acts.length}} 个
+					</view>
+					<view class="hr"></view>
+					<view class="right">
+						<view class="cfff">时间</view>
+						<view>{{strat_time}}2019/01
+							<text class="cfff">至</text></view>
+						{{end_time}}
+						</view>
+			</view>
+		</view>
+	</view>
+	
+</view>

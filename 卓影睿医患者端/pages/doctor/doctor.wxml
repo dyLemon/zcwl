@@ -1,0 +1,25 @@
+<view class="background">
+  <view class="timgbc"></view>
+  <view class="titlebox">
+    <view wx:if="{{undefined!=doctor.img_url}}" class="avatar" style="background-image:url({{''==doctor.img_url?(0==doctor.sex?'https://wxprogram.zc5l.com/img/Doc_male_icon.png':'https://wxprogram.zc5l.com/img/Doc_female_icon.png'):resource+doctor.img_url}});"></view>
+    <view class="nbox">
+      <view class="name">{{doctor.username}}</view>
+      <view class="jobtitle">{{doctor.job_title}}</view>
+    </view>
+    <view class="hospital">{{doctor.hospital_name}}</view>
+  </view>
+  <view class="goodatbox">
+    <view class="goodaticon"></view>
+    <view class="goodattbox">
+      <view class="goodatt">专业擅长</view>
+      <view class="goodat">{{doctor.introduce}}</view>
+    </view>
+  </view>
+  <view class="tagbox">
+    <view class="tagicon"></view>
+    <label wx:for="{{doctor.tag}}" wx:key='key' wx:for-item="tag" class="tbox">
+      <view class="tag">{{tag}}</view>
+    </label>
+  </view>
+  <view class="confirmbtn" hover-class="confirmbtnh" bindtap="confirm">去咨询</view>
+</view>

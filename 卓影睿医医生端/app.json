@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/wxlogin/wxlogin",
+    "pages/tagselect/tagselect",
+    "pages/doctorattestbegin/doctorattestbegin",
+    "pages/attesting/attesting",
+    "pages/doctorattestting/doctorcerattestting",
+    "pages/mycard/mycard",
+    
+    "pages/screenshot/screenshot",
+    "pages/doctorattested/doctorcerattested",
+
+    "pages/goodat/goodat",
+    "pages/personalsettings/personalsettings",
+    "pages/createdit/createdit",
+    "pages/createddata/createddata",
+    "pages/create/create",
+    "pages/planvlpreview/planvlpreview",
+    "pages/bindaccount/bindaccount",
+
+    "pages/ocridcard/ocridcard",
+    "pages/patientlist/patientlist",
+    "pages/fullinpatient/fullinpatient",
+    "pages/myorderlist/myorderlist",
+    "pages/Identity/Identity",
+    "pages/Identityimg/Identityimg",
+    "pages/login/login",
+    "pages/statistics/statistics",
+
+    "pages/create1/create1",
+    "pages/advisory/advisory",
+    "pages/search/search",
+    "pages/video/video",
+    "pages/plandetails/plandetails",
+    "pages/patientplan/patientplan",
+    "pages/classify/classify",
+    "pages/actordes/actordes",
+    "pages/talk/talk",
+    "pages/feedback/feedback",
+    "components/videolist/videolist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "卓影睿医",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#606266",
+    "selectedColor": "#31DCD1",
+    "backgroundColor": "#F1F2F3",
+    "borderStyle": "white",
+    "list": [{
+        "pagePath": "pages/patientlist/patientlist",
+        "text": "患者列表",
+        "iconPath": "img/list_data_icon_n.png",
+        "selectedIconPath": "img/list_data_icon_p.png"
+      },
+      {
+        "pagePath": "pages/advisory/advisory",
+        "text": "患者咨询",
+        "iconPath": "img/list_messag_icon_n.png",
+        "selectedIconPath": "img/list_messag_icon_p.png"
+      },
+      {
+        "pagePath": "pages/myorderlist/myorderlist",
+        "text": "我的",
+        "iconPath": "img/list_user_icon_n.png",
+        "selectedIconPath": "img/list_user_icon_p.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+      "scope.userLocation": {
+          "desc": "你的位置信息将用于比对方案方式"
+      }
+  }
+}

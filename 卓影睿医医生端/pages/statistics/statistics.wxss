@@ -1,0 +1,181 @@
+page {
+    height: 100%;
+    font-family: MicrosoftYahei;
+}
+
+.background {
+    background-color: rgb(241,242,243);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 10rpx;
+    background-color: white;
+    height: 137rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sbox {
+    display: flex;
+    align-items: center;
+    border-left: 1rpx solid rgb(60,76,193);
+    border-top: 1rpx solid rgb(60,76,193);
+    border-bottom: 1rpx solid rgb(60,76,193);
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    height: 56rpx;
+    width: 506rpx;
+}
+
+.dateselect {
+    display: flex;
+    height: 60rpx;
+}
+
+.picker {
+    color: rgb(144,147,153);
+    font-size: 24rpx;
+    width: 190rpx;
+    line-height: 60rpx;
+    height: 60rpx;
+    text-align: center;
+}
+
+.search {
+    width: 183rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 32rpx;
+    background-color: rgb(60,76,193);
+    color: white;
+    border-top-right-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+    border-top-left-radius: 0rpx;
+    border-bottom-left-radius: 0rpx;
+    margin: 0;
+}
+
+.tbbg {
+    margin-top: 12rpx;
+    border-radius: 10rpx;
+    background-color: white;
+    width: 700rpx;
+}
+
+.tabtitle {
+    display: flex;
+    width: 690rpx;
+}
+
+.lt {
+    display: flex;
+    align-items: flex-start;
+    width: 690rpx;
+}
+
+.tab {
+    display: flex;
+    font-size: 24rpx;
+    color: rgb(96,98,102);
+    margin-left: 10rpx;
+    width: 1005rpx;
+}
+
+.taba {
+    margin-left: 20rpx;
+    display: flex;
+    font-size: 28rpx;
+    color: rgb(96,98,102);
+}
+
+.tabaa {
+    width: 60rpx;
+    margin-right: 30rpx;
+}
+
+.taban {
+    width: 120rpx;
+}
+
+.tabbct {
+    width: 145rpx;
+    margin-right: 20rpx;
+}
+
+.tabb {
+    width: 100rpx;
+    margin-right: 20rpx;
+    text-align: center;
+}
+
+.tline {
+    background: linear-gradient(to right,rgb(217,217,217),white);
+    width: 4rpx;
+    height: 40rpx;
+    margin-left: 33rpx;
+    margin-right: 30rpx;
+}
+
+.hline {
+    width: 670rpx;
+    margin: 15rpx;
+    background: rgb(217,217,217);
+    height: 1rpx;
+}
+
+.list {
+    height: 60rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vline {
+    background: linear-gradient(to right,rgb(217,217,217),white);
+    width: 4rpx;
+    height: 60rpx;
+    margin-left: 33rpx;
+}
+
+.tabc {
+    display: flex;
+    font-size: 24rpx;
+    color: rgb(96,98,102);
+    margin-left: 10rpx;
+    width: 1005rpx;
+    height: 60rpx;
+}
+
+.tabbt {
+    width: 100rpx;
+    margin-right: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.leftsc {
+    position: fixed;
+    left: 285rpx;
+    top: 186rpx;
+    width: 38rpx;
+    height: 38rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/titile_next_icon1_n.png);
+    background-size: 100%;
+}
+
+.rightsc {
+    position: fixed;
+    left: 684rpx;
+    top: 186rpx;
+    width: 38rpx;
+    height: 38rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/titile_next_icon_n.png);
+    background-size: 100%;
+}

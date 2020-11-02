@@ -1,0 +1,48 @@
+<view class="background">
+	<view class="titlebox">
+		<view class="name">{{patient.name}}</view>
+		<view class="dt">{{patient.sex==0?'男':'女'}}</view>
+		<view class="dt">{{patient.age}}岁</view>
+		<view class="dname">·</view>
+		<view class="bdname">{{patient.painfularea}}{{0==patient.painfulcycle?'三天':1==patient.painfulcycle?'一周':2==patient.painfulcycle?'两周':'三周'}}</view>
+	</view>
+	<view class="deploybox">
+		<view class="talebox">
+			<view class="property">方案周期</view>
+			<view class="value">{{plandetail.cycle}}</view>
+		</view>
+		<view class="dtline"></view>
+		<view class="talebox">
+			<view class="property">方案次数</view>
+			<view class="value">{{plandetail.groupNum}}次</view>
+		</view>
+		<view class="dtline"></view>
+		<view class="talebox">
+			<view class="property">训练频次</view>
+			<view class="value">{{0==plandetail.frequency?'每天':'隔天'}}</view>
+		</view>
+	</view>
+  <view class="doshadow"></view>
+	<view class="lb" style="hight:{{editlistsize.hight}}rpx;">
+	<simplevlist videolist="{{plandetail.actorlist}}" bgsize="{{editlistsize}}" deletable="{{false}}" 
+  resource="{{resource}}" token="{{token}}" bind:editselect="editselect" vshot="vshot" />
+	</view>
+  <view class="bshadow"></view>
+	<view class="footmark " wx:if="{{true}}">
+		<view class="fbox">
+			<view class="ftt">
+				<view class="scicon"></view>
+				<view class="tbox">
+					<view class="pricebox"> 
+						￥
+						<view wx:if="{{0<plandetail.actorlist.length}}" class="p">{{price.priced(tprice,2)}}</view>
+						<view wx:else class="p">{{price.priced(0,2)}}</view>
+					</view>
+					<view class="tcount">共{{plandetail.actorlist.length}}个动作</view>
+				</view>
+			</view>
+			<button bindtap="comfirm" class="comfirm" hoverClass="comfirmh">发送订单</button>
+		</view>
+	</view>
+</view>
+<wxs module="price" src="../../price.wxs" />

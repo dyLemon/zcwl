@@ -1,0 +1,74 @@
+.background{
+  position: relative;
+  background-color: white;
+  border-radius:10rpx;
+  box-shadow:0px 0px 2px 2px  rgb(238,238,238);
+}
+.tlabel{
+  width: 100%;
+  height: 180rpx;
+  border-radius: 6rpx;
+  box-shadow:0px 0px 2px 2px  rgb(238,238,238);
+  display: flex;
+  align-items:center;
+  margin-bottom: 8rpx;
+}
+.tlabelh{
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  background-color: rgb(241,247,255);
+  align-items:center;
+  border-radius: 6rpx;
+  box-shadow:0px 0px 2px 2px  rgb(238,238,238);
+  margin-bottom: 8rpx;
+}
+.vshot{
+  border-radius: 8rpx;
+  margin-left: 22rpx;
+  width: 140rpx;
+  height: 140rpx;
+}
+.pbox{
+  margin-left: 18rpx;
+  display: flex;
+  flex-direction: column;
+}
+.title{
+  width: 200rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: rgb(34,34,34);
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.property{
+  width: 240rpx;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: rgb(144,147,153);
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.img{
+  margin-right: 30rpx;
+  width: 36rpx;
+  height: 36rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/more_icon_n.png);
+  background-size: 100% 100%;
+}
+.imgh{
+  margin-right: 30rpx;
+  width: 36rpx;
+  height: 36rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/more_icon_p.png);
+  background-size: 100% 100%;
+}

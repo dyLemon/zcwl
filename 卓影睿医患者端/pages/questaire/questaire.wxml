@@ -1,0 +1,13 @@
+<view class="quesbox questbg" wx:if="{{showquest}}">
+	<view class="quetview">
+		<text class="title">欢迎关注</text>
+		<view class="title">卓影睿医数字化运动康复</view>
+		<text class="titlemsg">在您成为我们得用户之前,我们希望更多得了解您,以便提供更贴近您需要得想官服务</text>
+	</view>
+	<button bindtap="addquest">填写问卷</button>
+</view>
+<view class="questopic" wx:else>
+	<scroll-view scroll-y="{{true}}" style="height:{{height}}rpx;">
+		<topic userid="{{userid}}" listobj="{{listobj}}" bind:submitBtn="submitBtn"></topic>
+	</scroll-view>
+</view>

@@ -1,0 +1,47 @@
+page {
+  font-family: MicrosoftYahei;
+  height: 100%;
+  width: 100%;
+}
+.background{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content{
+  margin-top: 60rpx;
+  width: 640rpx;
+  height: 300rpx;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 4px;
+}
+.goodat{
+  width: 600rpx;
+  height: 260rpx;
+  margin: 20rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: rgb(34, 34, 34);
+}
+.confirm{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: unset;
+  background-color: rgb(60, 76, 193);
+  color: white;
+}
+.confirmh{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #7cb5fb;
+  color: white;
+}

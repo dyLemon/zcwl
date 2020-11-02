@@ -1,0 +1,51 @@
+<view class='background'>
+	<view class="avatarbox">
+		<view class="avatar" style="background-image: url({{avatar}});"></view>
+		<view class="bind" bindtap="changeavatar">
+			<view class="username">更换头像</view>
+			<view class="icon"></view>
+		</view>
+	</view>
+	<!-- <view class="namebox">
+		<view class="name">我的</view>
+		<view class="bind" bindtap="qrcode">
+			<view class="username">二维码</view>
+			<view class="icon"></view>
+		</view>
+	</view> -->
+	<view class="namebox">
+		<view class="name">用户名</view>
+		<view class="bind">
+			<view class="username">{{username}}</view>
+		</view>
+	</view>
+	<!-- <view class="bindbox">
+		<view class="name">绑定账号   </view>
+		<view class="bind" bindtap="bind">
+			<view class="username">{{2==bindstate?'已绑定':'去绑定'}}</view>
+			<view class="icon"></view>
+		</view>
+	</view> -->
+	<view class="namebox">
+		<view class="name">医师认证</view>
+		<view class="bind" bindtap="attest">
+			<view class="username">{{1==atteststate?'已认证':(0==atteststate?'去认证':(2==atteststate?'审核失败':'审核中'))}}</view>
+			<view class="icon"></view>
+		</view>
+	</view>
+	<view class="namebox">
+		<view class="name">标签</view>
+		<view class="bind" bindtap="tagselect">
+			<view class="goodat">{{tag}}</view>
+			<view class="icon"></view>
+		</view>
+	</view>
+	<view class="namebox">
+		<view class="name">擅长</view>
+		<view class="bind" bindtap="goodat">
+			<view class="goodat">{{''==goodat?'输入擅长方便患者查询':goodat}}</view>
+			<view class="icon"></view>
+		</view>
+	</view>
+	<view class="quit" bindtap="quit" hover-class="quith">退出</view>
+</view>

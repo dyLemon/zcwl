@@ -1,0 +1,26 @@
+<view class="background">
+	<view class="title">你个人及所属机构信息</view>
+	<view class="propety">机构名称</view>
+	<view class="sbox">
+		<view class="select">{{hospitallist[hospitalselectidx].name}}</view>
+	</view>
+	<view class="propety">职称</view>
+	<view class="sbox">
+		<view class="select">{{jobtitle}}</view>
+	</view>
+	<view class="phonebox">
+		<view class="phonepropety">联系电话</view>
+		<view class="additional">（用于审核身份）</view>
+	</view>
+	<view class="inputbox">
+		<view class="phoneta">{{phone}}</view>
+	</view>
+	<view class="propety">资格证上传</view>
+	<view class="imgbox">
+		<label wx:for="{{imglist}}" wx:key="index">
+			<view id="{{index}}">
+				<image class="img" src="{{item.url}}"></image>
+			</view>
+		</label>
+	</view>
+</view>

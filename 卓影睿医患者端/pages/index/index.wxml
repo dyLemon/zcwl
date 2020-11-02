@@ -1,0 +1,21 @@
+<view class="container">
+    <view class="tl"></view>
+    <official-account wx:if="{{showpublic}}" class="public" bindload='toattention' binderror='attentionerror'></official-account>
+    <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" mode="cover" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl!=null}}"></image>
+        <text class="userinfo-nickname" wx:if="{{userInfo.avatarUrl!=null}}">{{userInfo.nickName}}</text>
+        <image src="https://wxprogram.zc5l.com/img/logo.png" style="margin-top: 60rpx;width: 260rpx;height: 200rpx;" wx:if="{{userInfo.avatarUrl==null}}"></image>
+        <text class="xcxn" wx:if="{{userInfo.avatarUrl==null}}">数字化运动康复系统</text>
+        <view class="line"></view>
+        <view class="agreement">卓影睿医是一款针对患者康复训练指导、跟踪随访的
+软件工具系统。其通讯功能仅用于您与执业医师或康
+复治疗师进行健康方面的沟通，而非其他用途。登录
+时需要获取您微信昵称和头像，请知悉！</view>
+        <checkbox-group bindchange="checkchange" name="check">
+            <checkbox checked="{{agreed}}" class="remember" value="agreed">
+                <view class="{{agreed?'rm':'fg'}}">同意该协议</view>
+            </checkbox>
+        </checkbox-group>
+        <button bindgetuserinfo="getUserInfo" class="login" hover-class="loginh" disabled="{{!agreed}}" openType="getUserInfo">微信登录 </button>
+    </view>
+</view>

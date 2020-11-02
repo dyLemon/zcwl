@@ -1,0 +1,65 @@
+var price = ({
+    priced: (function(val, count) {
+        return (typeof(val)=='float'?toFixed(count):parseFloat(val).toFixed(count))
+    }),
+});
+module.exports = ({
+    priced: price.priced,
+});
+
+var data = (function(time) {
+    var s=''
+    if(''!=time&&(typeof time)=='string'){
+       s=time.substring(0, 10)
+    }
+    return s
+});
+module.exports.data = data;
+
+var datatime = (function(time) {
+    var s=''
+    if(''!=time&&(typeof time)=='string'){
+        s=time.substring(11)
+     }
+     return s
+});
+module.exports.datatime = datatime;
+
+var dataminute = (function(time) {
+    var s=''
+    if(''!=time&&(typeof time)=='string'){
+        s=time.substring(11,16)
+     }
+     return s
+});
+module.exports.dataminute = dataminute;
+
+var showstr = (function(str, limet) {
+    var s=''
+    if(''!=str&&(typeof str)=='string'){
+        s=str.substring(0, limet)
+     }
+     return s
+});
+module.exports.showstr = showstr;
+var tstr = (function(ts) {
+    return ('' == ts ? '' : ts.replace(getRegExp('-', 'g'), '/'))
+});
+module.exports.tstr = tstr;
+var timeto = (function(tt) {
+    var t = tt.substring(0, 10);
+    return (tstr(t))
+});
+module.exports.timeto = timeto;
+var datagroup = (function(time0, time1, st) {
+    var data0 = getDate(time0).getTime();
+    var data1 = getDate(time1).getTime();
+    var b;
+    if (data0 <= data1) {
+        b = st >= data1 - data0
+    } else {
+        b = false
+    };
+    return (data1 - data0)
+});
+module.exports.datagroup = datagroup;

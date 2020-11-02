@@ -1,0 +1,58 @@
+<view class='help'>
+<scroll-view scroll-y style="height:{{height}}rpx">
+<view class="help-box">
+		<view class='help_item' wx:for="{{freelist.query_list}}" wx:key="{{index}}">
+			<!-- 点击得哪一行 -->
+			<view>
+				<view class='title'>
+					<view class="left">
+						<image src="{{surl}}/{{item.actor_image}}&token={{stoken}}" data-item="{{item}}" bindtap="videolist">
+						</image>
+            <image src="{{surl}}/img/play_icon_n.png" class="iconplay"></image>
+					</view>
+					<view class="right">
+						<view>
+							第一个动作: {{item.actor_name}}
+						</view>
+						<view>
+							重复次数: {{item.repeat_count}}次
+						</view>
+						<view>
+							保持时间: {{item.keep_time}}秒
+						</view>
+						<view>
+							练习组数:{{freelist.day_num}}组
+						</view>
+						<view>
+							医生指示:{{item.equipment}}
+						</view>
+					</view>
+				</view>
+				<view class="br" data-index='{{index + 1}}' data-item="{{item}}" >
+				<!-- <view class="br" data-index='{{index + 1}}' data-item="{{item}}" catchtap='panel'> -->
+					<text></text>
+					<view class="comment">评论反馈</view>
+					<text></text>
+					<view class="{{showIndex ==index+1?'img':'imgopen'}}"></view>
+				</view>
+			</view>
+			<!-- 展开得内容 -->
+			<!-- <view class='detail' wx:if="{{showIndex == index+1}}" > -->
+			<view class='detail' >
+				<radio-group class="detailcheck" bindchange="checkchange" data-id="{{item}}">
+					<label wx:for='{{checklist}}' wx:for-item="nums">
+						<radio value="{{nums.value}}" checked="{{item.option == nums.value}}" class="cb" disabled></radio>{{nums.name}}
+					</label>
+				</radio-group>
+				<textarea placeholder-style="color:rgb(193,193,193)" value="{{item.text}}" bindinput="binditext" data-id="{{item}}"  minlength="{{min}}" maxlength="{{max}}" disabled>
+				</textarea>
+				</view>
+			</view>
+
+
+	</view>	
+
+</scroll-view>
+	
+
+</view>	

@@ -1,0 +1,10 @@
+<view class="part" style="height:{{hight}}rpx;">
+	<scroll-view scrollY="{{true}}" style="height:{{hight}}rpx;">
+	<view class="templatelabel" >
+		<label wx:for="{{partlist}}" wx:key="key">
+			<view class="part-radio {{index==select?'active':''}}" bindtap="ontap" id="{{index}}">{{item.name}}</view>
+		</label>
+		</view>
+	</scroll-view>
+</view>
+<view class="bottem"></view>

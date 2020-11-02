@@ -1,0 +1,81 @@
+<view class="background">
+    <view class="title">
+        <view class="left">
+            <view class="name">{{patient.patientname}}</view>
+            <view class="name">{{patient.patientsex==0?'男':'女'}}</view>
+            <view class="name">{{patient.patientage}}岁</view>
+        </view>
+        <view class="data">{{tools.tstr( tools.data(starttime) )}}</view>
+        <button wx:if="{{false}}" bindtap="talk" class="talk" hoverClass="talkh">
+            <view style="font-size: 30rpx;text-align: center;line-height: 40rpx;color: rgb(96, 98, 102);">聊天</view>
+            <image></image>
+        </button>
+    </view>
+    <view class="detail">
+        <view class="detaild">科室：康复科</view>
+        <view class="detailf">频次：{{0==plandetail.frequency?'1天/次':'2天/次'}}</view>
+        <view class="detailc" wx:if="{{''==starttime||''==endtime}}">周期：暂无</view>
+        <view class="detailc" wx:else>周期：{{tools.tstr( tools.data(starttime) )}}到{{tools.tstr( tools.data(endtime) )}}</view>
+        <view class="tips">
+            <image src="https://wxprogram.zc5l.com/img/tips_icon.png"></image>
+            <view class="content">方案内容</view>
+            <view class="contents">请在医生指导下使用,如有任何不适或疑问请及时就诊</view>
+        </view>
+    </view>
+    <view class="list">
+        <scroll-view scrollY="{{1}}" style="height:{{height}}rpx" throttle="{{true}}">
+            <view bindtap="video" class="table" id="{{index}}" wx:for="{{plandetail.actorlist}}" wx:key="key">
+                <view class="tshow">
+                    <image class="thumbnail" src="{{resource}}/{{item.imgpath2+'&token='}}{{stoken}}"></image>
+                    <view class="tdetails">
+                        <view class="ttext">第{{index+1}}个动作：{{item.name}}</view>
+                        <view class="ttext">重复次数：{{item.repeatcount}}</view>
+                        <view class="ttext">保持时间：{{item.keeptime}}</view>
+                        <view class="ttext">练习组数：{{item.playcount}}</view>
+                        <view class="ttext">医生指示：{{item.actor_des}}</view>
+                    </view>
+                    <view catchtap="plandelete" class="delete" hoverClass="deleteh" id="{{index}}" wx:if="{{1==planauthority}}">
+                        <image></image>
+          删除
+          </view>
+                </view>
+                <view class="{{index==orderdata.actors.length-1?'':'line'}}"></view>
+            </view>
+            <view class="block" wx:if="{{false}}">付款后查看</view>
+        </scroll-view>
+    </view>
+    <view class="footmark">
+        <view class="od">
+            <view class="orderd">订单创建时间:</view>
+            <view class="orderd">{{plandetail.createtime}}</view>
+        </view>
+        <view class="od">
+            <view class="orderd">方案金额:</view>
+            <view class="orderd">￥{{tools.priced(plandetail.totalprice,2)}}</view>
+        </view>
+        <view class="od">
+            <view class="orderd">下单优惠:</view>
+            <view class="orderd">-￥{{tools.priced(plandetail.totalprice-plandetail.price,2)}}</view>
+        </view>
+        <view class="od">
+            <view class="orderd">支付金额:</view>
+            <view class="orderd">￥{{tools.priced(plandetail.price,2)}}</view>
+        </view>
+        <view class="totaldt">
+            <view class="textt">
+                <view class="total">共计</view>
+                <view class="total">{{plandetail.actorlist.length}}</view>
+                <view class="total">个动作</view>
+                <view class="tt">共</view>
+                <view class="price">￥{{tools.priced(plandetail.price,2)}}</view>
+            </view>
+            <view class="state" wx:if="{{!plandetail.valid}}">已失效</view>
+            <view class="state" wx:elif="{{0==plandetail.price||2==plandetail.state||3==plandetail.state}}">{{0==plandetail.price?'已完成':(2==plandetail.state?'已完成':'已退款')}}</view>
+            <view wx:elif="{{0==plandetail.state||1==plandetail.state||4==plandetail.state}}">
+                <button bindtap="payorder" class="pay">付款</button>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="price" src="../../price.wxs" />
+<wxs module="tools" src="../../price.wxs" />

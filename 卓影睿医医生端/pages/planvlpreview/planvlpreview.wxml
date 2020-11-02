@@ -1,0 +1,8 @@
+<view class="background">
+	<view class="titlebox">
+		<view class="title">{{plandata.name}}</view>
+		<view class="count">共{{videolist.length}}条</view>
+	</view>
+	<pvideolist pvideolist="{{videolist}}" resource="{{resource}}" token="{{token}}" wight="720" 
+	hight="{{partlisthight}}" bind:videoselect="select"/>
+</view>

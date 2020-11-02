@@ -1,0 +1,12 @@
+<view class='select_box'>
+	<view class='select' catchtap='selectTap'>
+		<!-- <text class='select_text'>{{selectdata[index].name}}</text> -->
+		<!-- <image class='words_img' src='https://wxprogram.zc5l.com/img/up_icon_n.png'></image> -->
+		<image class='select_img {{show&&"select_img_rotate"}}' src='https://wxprogram.zc5l.com/img/down_icon_n.png'></image>
+	</view>
+	<view wx:if="{{show}}" class="dbox" style="left:{{boxleft}}rpx;">
+		<view class='option_box' style='height:{{show?(selectdata.length>5?300:selectdata.length*62):0}}rpx;'>
+			<view class='option' hover-class="optionh" style='{{index==selectdata.length-1&&"border:0;"}}' wx:for='{{selectdata}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item.name}}</view>
+		</view>
+	</view>
+</view>

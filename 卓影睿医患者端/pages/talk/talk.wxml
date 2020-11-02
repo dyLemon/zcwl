@@ -1,0 +1,54 @@
+<view class="background">
+    <view class="msgroom" style="height:{{scrollHeight}}rpx;">
+        <scroll-view scrollY scrollIntoView="{{toView}}" style="height:{{scrollHeight}}rpx;">
+            <block wx:for="{{msgList}}" wx:key="key">
+                <view class="time" wx:if="{{item.tshow}}">
+                    <view class="stime">{{item.time}}</view>
+                </view>
+                <view id="msg-{{index}}" style="display: flex; justify-content: flex-end; padding: 10rpx 10rpx 10rpx 120rpx;" wx:if="{{item.from==patient}}">
+                    <view class="rightMsg">{{item.text}}</view>
+                    <view style="width: 52rpx; height: 52rpx;margin-left: 15rpx;margin-right: 30rpx;">
+                        <image src="{{''==selfavatar?'https://wxprogram.zc5l.com/img/list_user_icon_n.png':wresource+selfavatar}}" style="width: 52rpx; height:52rpx;"></image>
+                    </view>
+                </view>
+                <view id="msg-{{index}}" style="display: flex; padding: 10rpx 120rpx 10rpx 10rpx;" wx:else>
+                    <view style="width: 52rpx; height: 52rpx;margin-left: 30rpx;margin-right: 15rpx;">
+                        <image src="{{''==avatar?(0==sex?'https://wxprogram.zc5l.com/img/Doc_male_icon.png':'https://wxprogram.zc5l.com/img/Doc_female_icon.png'):wresource+avatar}}" style="width: 52rpx; height: 52rpx;"></image>
+                    </view>
+                    <view class="talkt">
+                        <!-- <view class="tname">{{doctorname}}</view> -->
+                        <view bindtap="orderclick" class="leftMsg" id="{{index}}" wx:if="{{item.t_type==1}}">
+                            <view class="tshow">
+                            <view class="orderbox">
+                                <view class="ttitle">新的订单</view>
+                                 <view class="tstate" wx:if="{{!item.text.valid}}">已失效</view>
+                                <view class="tstate" wx:else>{{0==item.text.price?'已完成':(item.text.state!=2?'待支付':'已完成')}}</view>
+                                </view>
+                                <view class="tview">
+                                    <image wx:if="{{item.text.actorlist[0].imgpath2}}" src="{{resource}}/{{item.text.actorlist[0].imgpath2+'&token='+token}}"></image>
+                                     <image wx:else src="https://wxprogram.zc5l.com/img/Invalid_picture_icon.png"></image>
+                                    <view class="tdetails">
+                                        <view class="action">{{item.text.actorlist[0].name.length<10?item.text.actorlist[0].name:tools.showstr(item.text.actorlist[0].name,9)}}</view>
+                                        <view class="count">动作数量：{{item.text.actorlist.length}}</view>
+                                        <view class="price">￥{{price.priced(item.text.price,2)}}</view>
+                                    </view>
+                                </view>
+                               
+                            </view>
+                        </view>
+                        <view class="leftMsg" wx:else>{{item.text}}</view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="inputRoom" style="bottom: {{inputBottom}}">
+        <view class="inputb">
+            <input adjustPosition="{{true}}" bindblur="blur" style="height:100%;width:100%;" bindfocus="focus" bindinput="oninput" value="{{inputVal}}"></input>
+        </view>
+        <button bindtap="sendClick" class="send" hoverClass="sendh">发送</button>
+    </view>
+    <view class="bottom"></view>
+</view>
+<wxs module="price" src="../../price.wxs" />
+<wxs module="tools" src="../../price.wxs" />

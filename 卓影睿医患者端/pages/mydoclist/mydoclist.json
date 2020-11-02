@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "docsimplelist":"/components/docsimplelist/docsimplelist"
+  },
+  "disableScroll": true
+}

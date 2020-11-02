@@ -1,0 +1,94 @@
+page{
+  font-family: MicrosoftYahei;
+    height: 100%;
+}
+.background{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241,242,243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title{
+  margin-top: 30rpx;
+  width: 700rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: rgb(34, 34, 34);
+}
+.propety{
+  margin-top: 20rpx;
+  width: 700rpx;
+  font-size: 28rpx;
+  color: rgb(34, 34, 34);
+}
+.sbox{
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  width: 700rpx;
+  border-radius: 6rpx;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+.select{
+  width: 300rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+}
+.phonebox{
+  margin-top: 10rpx;
+  width: 700rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.phonepropety{
+  font-size: 28rpx;
+  color: rgb(34, 34, 34);
+}
+.additional{
+  font-size: 24rpx;
+  color: rgb(34, 34, 34);
+}
+.inputbox{
+  margin-top: 10rpx;
+  width: 700rpx;
+  background-color: white;
+  border-radius: 6rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+}
+.input{
+  width: 660rpx;
+  font-size: 28rpx;
+  height: 100%;
+  color: rgb(96, 98, 102);
+}
+.placlass{
+  color: rgb(144, 147, 153);
+  font-size: 24rpx;
+}
+.phoneta{
+  width: 660rpx;
+  height: 100%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+}
+.imgbox{
+  margin-top: 10rpx;
+  width: 700rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.img{
+  border-radius: 2px;
+  margin:5rpx;
+  width: 120rpx;
+  height: 100rpx;
+}

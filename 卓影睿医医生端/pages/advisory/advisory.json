@@ -1,0 +1,8 @@
+{
+    "navigationBarBackgroundColor": "#7CB5FB",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "患者咨询",
+    "backgroundTextStyle": "light",
+    "usingComponents": {},
+    "disableScroll": true
+}

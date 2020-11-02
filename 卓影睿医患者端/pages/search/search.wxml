@@ -1,0 +1,53 @@
+<view class="background">
+  <view class="title">
+    <form bindsubmit="onsearch" class="form">
+      <view class="box">
+        <image class="icon" src="https://wxprogram.zc5l.com/img/logon_search_icon.png"></image>
+        <input bindconfirm="onsearch" bindinput="inputing" class="key" confirm-type="search" name="input"
+          placeholder="搜索医生姓名、医院、病种等信息" placeholderStyle="font-size: 24rpx;color: rgb(181, 181, 181);" type="text"
+          value="{{searchkey}}"></input>
+        <view bindtap="reset" class="reset" wx:if="{{nonempty}}"></view>
+      </view>
+    </form>
+    <view bindtap="back" class="cancel">取消</view>
+  </view>
+  <view wx:if="{{0!=doclist.length}}" class="contentbg">
+    <!-- <scroll-view scroll-y="{{true}}" style="height: {{shownopublic?height-40:height}}px;"> -->
+    <scroll-view scroll-y="{{true}}" style="height:{{height}}px;">
+      <label wx:for="{{doclist}}" wx:key='key'>
+        <view class="tablebox" bindtap="select" id="{{index}}">
+          <view class="perinfobox">
+            <view class="avatar"
+              style="background-image: url({{''==item.icon_url?(0==item.sex?'https://wxprogram.zc5l.com/img/Doc_male_icon.png':'https://wxprogram.zc5l.com/img/Doc_female_icon.png'):resource+item.icon_url}});">
+            </view>
+            <view class="baseinfobox">
+              <view class="namebox">
+                <view class="name">{{item.name}}</view>
+                <view class="jobtitle">{{item.job_title}}</view>
+              </view>
+              <view class="hospital">{{item.hospital_name}}</view>
+            </view>
+          </view>
+          <view class="goodatbox">
+            <view class="goodaticon"></view>
+            <view class="propertybox">
+              <view class="property">专业擅长：</view>
+              <view class="goodat">{{item.introduce}}</view>
+              <!-- <view class="goodat">鼎折覆餗水电费水电费水电费所发生的水电费水电费水电费水电费水电费水电费水电费说的</view> -->
+            </view>
+          </view>
+          <view class="tagbox">
+            <view class="tagicon"></view>
+            <label wx:for="{{item.tag}}" wx:key='key' wx:for-item="tag" class="tbox">
+              <view class="tag">{{tag}}</view>
+            </label>
+          </view>
+        </view>
+      </label>
+    </scroll-view>
+  </view>
+  <view class="empty" wx:if="{{searched&&0==doclist.length}}">
+    <image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+  </view>
+</view>
+<wxs module="tools" src="../../price.wxs" />

@@ -1,0 +1,457 @@
+page {
+    font-family: MicrosoftYahei;
+    height: 100%;
+}
+
+.img{
+    margin-left: 22rpx;
+    width: 36rpx;
+    height: 36rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/more_icon_n.png);
+    background-size: 100% 100%;
+  }
+  .imgh{
+    margin-left: 22rpx;
+    width: 36rpx;
+    height: 36rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/more_icon_p.png);
+    background-size: 100% 100%;
+  }
+
+.background {
+    background-color: rgb(241,242,243);
+    font-family: MicrosoftYaHeiLight;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.titlebox{
+    display: flex;
+    height: 138rpx;
+    width: 100%;
+    background-color: white;
+}
+.titlebg{
+    position: absolute;
+    top: 100rpx;
+    height: 128rpx;
+    width: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/plan_bg.png);
+    background-size: 100% 100%;
+}
+.pb{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    left: 50rpx;
+    top: 22rpx;
+    align-items: center;
+    width: 300rpx;
+    height: 90rpx;
+    border-radius: 4px;
+    background-color:  rgb(241,242,243);
+}
+.pbh{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    left: 50rpx;
+    top: 22rpx;
+    width: 300rpx;
+    height: 90rpx;
+    border-radius: 4px;
+    background-color:  rgb(60,76,193);
+ 
+}
+.vb{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    right: 50rpx;
+    top: 22rpx;
+    width: 300rpx;
+    height: 90rpx;
+    border-radius: 4px;
+    background-color:  rgb(241,242,243);
+}
+.vbh{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    right: 50rpx;
+    top: 22rpx;
+    width: 300rpx;
+    height: 90rpx;
+    border-radius: 4px;
+    background-color:  rgb(60,76,193);
+}
+.planbtn{
+    align-items: center;
+    height: 86rpx;
+    display: flex;
+    font-size: 28rpx;
+    color: rgb(34,34,34);
+    line-height:  86rpx;
+}
+.planbtnh{
+    align-items: center;
+    display: flex;
+    font-size: 28rpx; 
+    color: white;
+    height: 86rpx;
+    line-height:  86rpx;
+}
+.planicon{
+    margin-right: 10rpx;
+    width: 36rpx;
+    height: 30rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/plan_icon_n.png);
+    background-size: 100% 100%;
+}
+.planiconh{
+    margin-right: 10rpx;
+    width: 36rpx;
+    height: 30rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/plan_icon_p.png);
+    background-size: 100% 100%;
+}
+.videoicon{
+    margin-right: 10rpx;
+    width: 36rpx;
+    height: 30rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/video_icon_n.png);
+    background-size: 100% 100%;
+}
+.videoiconh{
+    margin-right: 10rpx;
+    width: 36rpx;
+    height: 30rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/video_icon_p.png);
+    background-size: 100% 100%;
+}
+.content{
+    position: fixed;
+    top: 238rpx;
+    width: 100%;
+    display: flex;
+}
+
+.selectstay {
+    position: fixed;
+    top: 0;
+    background-color: rgb(255,255,255);
+    z-index: 1;
+}
+
+.select {
+    position: absolute;
+    height: 300rpx;
+    width: 690rpx;
+    background-color: rgb(255,255,255);
+    z-index: 1;
+}
+
+.waylabel {
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.splanl radio {
+    display: none;
+}
+
+.splanl {
+    width: 328rpx;
+    height: 80rpx;
+    margin-right: 14rpx;
+}
+
+.svideol radio {
+    display: none;
+}
+
+.svideol {
+    width: 328rpx;
+    height: 80rpx;
+}
+
+.splan {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/plan_btn_n.png);
+}
+
+.splan.active {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/plan_btn_p.png);
+}
+
+.svideo {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/video_btn_n.png);
+}
+
+.svideo.active {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/video_btn_p.png);
+}
+
+.kind {
+    margin-top: 20rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    display: flex;
+    border-radius: 10rpx;
+    background-color: rgb(241,242,243);
+}
+
+.kind image {
+    height: 40rpx;
+    width: 40rpx;
+}
+
+.skind {
+    display: flex;
+    margin: 20rpx;
+}
+
+.bar {
+    height: 40rpx;
+    width: 40rpx;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/titile_next_icon_n.png);
+}
+
+.bbar {
+    position: absolute;
+    right: 20rpx;
+    height: 40rpx;
+    width: 40rpx;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/titile_next_icon_n.png);
+}
+
+.kindtext {
+    font-size: 28rpx;
+    color: rgb(96,98,102);
+}
+
+.kindtexts {
+    font-size: 24rpx;
+    color: rgb(144,147,153);
+}
+
+.tlabel {
+    margin-left: 20rpx;
+    display: flex;
+}
+
+.plan-radio radio {
+    display: none;
+}
+
+.plan-radio {
+    height: 66rpx;
+    display: flex;
+    align-items: center;
+}
+
+.plan-radio.active {
+    height: 66rpx;
+    display: flex;
+    align-items: center;
+}
+
+.plantype {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selectbox {
+    width: 216rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stext {
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.selectline {
+    border-bottom: 6rpx solid rgb(60,76,193);
+    width: 100rpx;
+}
+
+.spaceline {
+    height: 6rpx;
+    width: 100rpx;
+}
+
+.vline {
+    border-left: 1rpx solid rgb(217,217,217);
+    height: 32rpx;
+    width: 1rpx;
+}
+
+.actorlist {
+    position: relative;
+    top: 300rpx;
+    background-color: white;
+    width: 690rpx;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tshow {
+    display: flex;
+    margin: 20rpx;
+}
+
+.tshow image {
+    width: 222rpx;
+    height: 126rpx;
+    margin-right: 18rpx;
+}
+
+.tadetails {
+    background-color: white;
+}
+
+.tdetails {
+    width: 394rpx;
+}
+
+.bdetails {
+    width: 304rpx;
+}
+
+.detail {
+    color: rgb(144,147,153);
+    font-size: 24rpx;
+}
+
+.dtext {
+    margin-bottom: 13rpx;
+}
+
+.selectv {
+    margin-left: 10rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    width: 80rpx;
+    border: 1rpx solid rgb(217,217,217);
+    color: rgb(96,98,102);
+    border-radius: 20rpx;
+    text-align: center;
+}
+
+.selectvh {
+    border: none;
+    background-color: rgb(60,76,193);
+    color: white;
+}
+
+.selectv::after {
+    display: none;
+}
+
+.bshadow{
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(rgba(241,242,243,0.2),rgba(124,157,243,0.1));
+    position: absolute;
+    bottom: 140rpx;
+  }
+.footmark {
+    background-color: white;
+    border-width: 0rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 140rpx;
+    position: absolute;
+    bottom: 0;
+}
+.fbox{
+    position: fixed;
+    left: 24rpx;
+    width: 696rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.ftt {
+    width: 300rpx;
+    height: 93rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.scicon{
+    width: 80rpx;
+    height: 80rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/shoppingcar_icon_n.png);
+    background-size: 100% 100%;
+}
+.sciconh{
+    width: 80rpx;
+    height: 80rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/shoppingcar_icon_p.png);
+    background-size: 100% 100%;
+}
+.tbox{
+    margin-left: 20rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: column;
+}
+.pricebox{
+    display: flex;
+    font-size: 30rpx;
+    color: rgb(209,72,73);
+}
+.p{
+    margin-left: 12rpx;
+}
+.tcount{
+    font-size: 24rpx;
+    color: rgb(96,98,102);
+}
+.comfirm {
+    margin: 0;
+    padding: 0;
+    width: 400rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+    background-color: rgb(60,76,193);
+    color: white;
+    line-height: 80rpx;
+}
+
+.comfirmh {
+    background-color: #7cb5fb;
+}
+

@@ -1,0 +1,16 @@
+<view class='select_box'>
+	<view class="title">当前:<view class="st">{{selectdata[index].name}}</view>
+	</view>
+	<view class='select' catchtap='selectTap'>
+		<view class="title">切换科室</view>
+		<!-- <text class='select_text'>{{selectdata[index].name}}</text> -->
+		<!-- <image class='words_img' src='https://wxprogram.zc5l.com/img/up_icon_n.png'></image> -->
+		<image class='select_img {{show&&"select_img_rotate"}}' src='https://wxprogram.zc5l.com/img/down_icon_n.png'></image>
+	</view>
+</view>
+<view wx:if="{{show}}" class="dbox">
+	<view class='option_box'>
+		<view class='option' hover-class="optionh" style='{{index==selectdata.length-1&&"border:0;"}}' 
+		wx:for='{{selectdata}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item.name}}</view>
+	</view>
+</view>

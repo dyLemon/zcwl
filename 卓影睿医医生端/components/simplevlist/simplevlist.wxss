@@ -1,0 +1,60 @@
+.listbg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.label{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.label{
+  position: relative;
+  height: 164rpx;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+.labelh{
+  position: relative;
+  height: 164rpx;
+  background-color: rgb(241, 247, 255);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+.vshot{
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 32rpx;
+}
+.property{
+  margin-left: 33rpx;
+  width: 400rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: rgb(34,34,34);
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.remove{  
+  width: 128rpx; 
+  height: 100%; 
+  background-color: rgb(241, 242, 243); 
+  color: rgb(96, 98, 102); 
+  position: absolute;  
+  top: 0;  
+  right: -128rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}  

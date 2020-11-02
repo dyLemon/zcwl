@@ -1,0 +1,79 @@
+<view class="background">
+	<view class="title">
+		<view class="left">
+			<view class="name">{{patient.name}}</view>
+			<view class="property">{{patient.sex==0?'男':'女'}}</view>
+			<view class="property">{{patient.age}}岁</view>
+		</view>
+		<!-- <button bindtap="talk" class="talk" hoverClass="talkh">
+            <view style="font-size: 24rpx;text-align: center;line-height: 40rpx;color: rgb(96, 98, 102);">聊天</view>
+            <image></image>
+        </button> -->
+		<view class="infobox">
+			<view class="ibox">
+				<view class="property">疼痛部位:</view>
+				<view class="info">{{painfularea}}</view>
+			</view>
+			<view class="ibox">
+				<view class="property">疼痛时长:</view>
+				<view class="info">{{0==painfulcycle?'三天':1==painfulcycle?'一周':2==painfulcycle?'两周':'三周'}}</view>
+			</view>
+			<view class="ibbox">
+				<view class="dproperty">临床诊断:</view>
+				<view class="dinfo">{{diagnosis}}</view>
+			</view>
+		</view>
+	</view>
+	<!-- <view class="tline"></view> -->
+	<!-- <button bindtap="createplan" class="create" hoverClass="createh">创建方案</button> -->
+	<scroll-view bindscrolltolower="bottom" style="width: 690rpx;">
+		<view wx:if="{{0!=list.length}}">
+			<view bindtap="select" class="table" id="{{index}}" wx:for="{{list}}" wx:key="key" data-index="{{index}}" bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx">
+				<view class="ttitle">
+					<!-- <view class="tname">{{patient.name}}</view> -->
+					<view class="ttime">{{tools.data(item.createtime)}}</view>
+					<view class="ttimem">{{tools.dataminute(item.createtime)}}</view>
+					<!-- <view wx:if="{{0==index&&qrbtn}}" class="codeb" catchtap="getqrcode" hover-class="codebh"></view> -->
+				</view>
+				<view class="tshow">
+					<image src="{{0==item.actorlist.length?'':resource+'/'+item.actorlist[0].imgpath2+'&token='+token}}"></image>
+					<view class="tdetails">
+						<view class="detail">
+							<view class="action">{{0==item.actorlist.length?'':item.actorlist[0].description}}</view>
+							<view class="count">
+								<text>动作数量：{{item.actorlist.length}}</text>
+							</view>
+							<view class="price">￥{{price.priced(item.price,2)}}</view>
+							<text class="seeTable"  catchtap="seeBtn">查看评估表</text>
+							<view class="statebox">
+								<view wx:if="{{0==item.paystate||4==item.paystate}}">
+									<button catchtap="sendoder" class="pay" hoverClass="payh" id="{{index}}">发送订单</button>
+								</view>
+								<view class="state">{{2==item.paystate?'已完成':3==item.paystate?'已退款':'待支付'}}</view>
+							</view>
+						</view>
+						<view class="remove" catchtap="plandelete" id="{{index}}">删除 </view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="empty" wx:else>
+				<image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+		</view>
+	</scroll-view>
+	<view class="footbox">
+		<view class="talkbtn" hover-class="talkbtnh" bindtap="talk"></view>
+		<view class="createbtn" hover-class="createbtnh" bindtap="createplan">创建方案</view>
+	</view>
+</view>
+<view class="qrback" wx:if="{{showqr}}" bindtap="closeqrcode">
+	<view class="qrbox">
+		<view class="qrtitle">患者扫描二维码</view>
+		<view class="qrbg">
+			<qrcomponent text="{{qrcodeurl}}"></qrcomponent>
+		</view>
+		<view class="qrdes">请患者打开微信，扫描上方二维码.</view>
+	</view>
+</view>
+<wxs module="price" src="../../price.wxs" />
+<wxs module="tools" src="../../price.wxs" />

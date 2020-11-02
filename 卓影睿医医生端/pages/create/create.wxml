@@ -1,0 +1,100 @@
+<view class="background">
+	<!-- <dropdbox selectdata="{{plantype}}"></dropdbox> -->
+	<!-- <planvlist templatelist="{{plantype}}" hight='500'/> -->
+	<!-- <partlist partlist="{{plantype}}" hight='500'/> -->
+	<!-- <departselectbox selectdata="{{plantype}}" /> -->
+	<!-- <view class="titlebg"></view> -->
+	<view class="titlebox">
+		<view class="{{0==way?'pbh':'pb'}}"bindtap="wayplan">
+			<view class="{{0==way?'planbtnh':'planbtn'}}" >
+				<!-- <view class="{{0==way?'planiconh':'planicon'}}"></view> -->{{plantype[plantypeselect].name}}
+			</view>
+		</view>
+		<!-- <dropdbox style="position: relative;top: 25rpx;left: 250rpx;" selectdata="{{plantype}}"  show="{{plantyboxshow}}" boxleft="-220" bind:select="plantypeselect" bind:dropboxshow="plantyboxshow"></dropdbox> -->
+		<view class="{{1==way?'vbh':'vb'}}"bindtap="wayvideo">
+			<view class="{{1==way?'planbtnh':'planbtn'}}" >
+				<!-- <view class="{{1==way?'videoiconh':'videoicon'}}"></view> -->视频
+			</view>
+		</view>
+	</view>
+	<departselectbox selectdata="{{selectstruct}}" style="z-index: 10;" show="{{dpsboxshow}}" bind:departselect="departselect" bind:dpsboxshow="dpsboxshow" />
+	<view class="content" style="height:{{partlisthight}}rpx;">
+		<partlist partlist="{{selectstruct[departindex].partlist}}" hight="{{partlisthight}}" style="z-index: 0;margin-left: 14rpx;margin-top: 8rpx;margin-right: 8rpx;" bind:partselect="partselect" />
+		<planvlist wx:if="{{0==way}}" style="z-index: 0;margin-top: 8rpx;" templatelist="{{selectstruct[departindex].partlist[partindex].templatelist}}" hight="{{partlisthight}}" bind:planselect="onplanselect" bind:planadd="onplanadd" />
+		<pvideolist wx:else style="margin-top: 8rpx;" pvideolist="{{videolist}}" resource="{{resource}}" token="{{token}}" wight="510" hight="{{partlisthight}}"  bind:videoadd="onvideoadd" bind:videoselect="onvideoselecttt" imgh='imgh' img='img' />
+	</view>
+	<!-- <simplevlist videolist="{{plantype}}" bgsize="{{editlistsize}}" deletable="{{true}}" /> -->
+	<!-- <view wx:if="{{planeditshow}}" class="editbackground" style="height:{{edithight}}rpx">
+		<view class="editcontent" style="height:{{edithight-71}}rpx">
+			<view class="details">
+				<view class="cycle">
+					<view class="head">方案周期</view>
+					<button bindtap="cyclesubstract" class="less" hoverClass="lessh">-</button>
+					<view class="count">{{null==createdata.cycle?0:createdata.cycle}}</view>
+					<button bindtap="cycleadd" class="add" hoverClass="addh">+</button>
+					<radio-group bindchange="cyclechange" class="cycletype">
+						<view class="label">
+							<label class="ui-radio {{item.checked==true?'active':''}}" wx:for="{{items}}" wx:key="key">
+								<radio checked="{{item.checked}}" value="{{item.value}}"></radio>
+								<text class="text">{{item.name}}</text>
+							</label>
+						</view>
+					</radio-group>
+				</view>
+				<view class="frequency">
+					<view class="frehead">训练频次</view>
+					<radio-group bindchange="frequencychange" class="frequencyg">
+						<view class="label">
+							<label class="fre-radio {{item.checked==true?'active':''}}" wx:for="{{itemsf}}" wx:key="key">
+								<radio checked="{{item.checked}}" value="{{item.value}}"></radio>
+								<text class="text">{{item.name}}</text>
+							</label>
+						</view>
+					</radio-group>
+				</view>
+				<view class="line"></view>
+				<view class="group">
+					<view class="head">锻炼组数</view>
+					<button bindtap="groupsubstract" class="less" hoverClass="lessh">-</button>
+					<view class="scount">{{null==createdata.groupNum?0:createdata.groupNum}}</view>
+					<button bindtap="groupadd" class="add" hoverClass="addh">+</button>
+					<view class="unit">组</view>
+				</view>
+				<view class="times">
+					<view class="head">锻炼次数</view>
+					<button bindtap="timessubstract" class="less" hoverClass="lessh">-</button>
+					<view class="scount">{{null==createdata.daynum?0:createdata.daynum}}</view>
+					<button bindtap="timesadd" class="add" hoverClass="addh">+</button>
+					<view class="unit">次</view>
+				</view>
+				<view class="gap">
+					<view class="head">每组间隔时间</view>
+					<button bindtap="gapsubstract" class="less" hoverClass="lessh">-</button>
+					<view class="scount">{{null==createdata.gaptime?0:createdata.gaptime}}</view>
+					<button bindtap="gapadd" class="add" hoverClass="addh">+</button>
+					<view class="unit">分</view>
+				</view>
+			</view>
+			<simplevlist style="margin-top: 8rpx;box-shadow: 0 0 2px 2px rgba(124,157,243,0.2);" videolist="{{createdata.actorlist}}" bgsize="{{editlistsize}}" deletable="{{true}}" vshot="vshot"
+			resource="{{resource}}" token="{{token}}" bind:editselect="editselect" bind:editdelete="editdelete"/>
+		</view>
+	</view> -->
+	<view class="bshadow"></view>
+	<view class="footmark " wx:if="{{true}}">
+		<view class="fbox">
+			<view class="ftt">
+				<view bindtap="cart" class="scicon" hover-class="sciconh"></view>
+				<view class="tbox">
+					<view class="pricebox">
+						￥
+						<view wx:if="{{0<createdata.actorlist.length}}" class="p">{{price.priced(tprice,2)}}</view>
+						<view wx:else class="p">{{price.priced(0,2)}}</view>
+					</view>
+					<view class="tcount">共{{createdata.actorlist.length}}个动作</view>
+				</view>
+			</view>
+			<button bindtap="comfirm" class="comfirm" hoverClass="comfirmh">提交</button>
+		</view>
+	</view>
+</view>
+<wxs module="price" src="../../price.wxs" />

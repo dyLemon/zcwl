@@ -1,0 +1,347 @@
+/* pages/fullinpatient/fullinpatient.wxss */
+page {
+  font-family: MicrosoftYahei;
+  height: 100%;
+  width: 100%;
+}
+.background{
+  background-color: rgb(241,242,243);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  margin-top: 8rpx;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ibox{
+  display: flex;
+  align-items: center;
+  border-bottom:1px solid rgb(243,241,241);
+}
+.iboxh{
+  display: flex;
+  align-items: center;
+  border-bottom:1px solid #7ce8e2;
+}
+.property{
+  margin-left: 60rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.propertyplus{
+  margin-left: 60rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  height: 130rpx;
+  line-height: 88rpx;
+}
+.inputpc{
+  color: rgb(193,193,193);
+  font-size: 24rpx;
+}
+.input{
+  text-align: right;
+  width: 450rpx;
+  position: absolute;
+  height: 88rpx;
+  right: 60rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+}
+.inputing{
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  text-align: right;
+  width: 450rpx;
+  position: absolute;
+  right: 60rpx;
+  height: 88rpx;
+  border-bottom: 1rpx solid #7ce8e2;
+}
+.iboxd{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.dbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.areapc{
+  color: rgb(193,193,193);
+  font-size: 24rpx;
+}
+.diagnose{
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  line-height: 40rpx;
+  width: 600rpx;
+  border: 1px solid rgb(243,241,241);
+  border-radius: 8rpx;
+  height: 210rpx;
+  z-index: 0;
+}
+.diagnosef{
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  width: 600rpx;
+  border: 1px solid rgb(243,241,241);
+  border-radius: 8rpx;
+  height: 210rpx;
+  z-index: 0;
+}
+.diagnoseing{
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  font-size: 28rpx;
+  color: rgb(96, 98, 102);
+  line-height: 40rpx;
+  width: 600rpx;
+  border: 1px solid #7ce8e2;
+  border-radius: 8rpx;
+  height: 210rpx;
+  z-index: 0;
+}
+
+
+
+
+.select_box {
+  background: #fff;
+  width: 130rpx;
+  margin-left: 430rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: left;
+  position: relative;
+}
+
+.select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 86rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.select_text {
+  font-size: 28rpx;
+  flex: 1;
+  color: rgb(144, 147, 153);
+  line-height: 86rpx;
+  height: 86rpx;
+}
+
+.select_img {
+  width: 40rpx;
+  height: 20rpx;
+  display: block;
+  /* transition: transform 0.3s; */
+}
+
+.select_img_rotate {
+  transform: rotate(180deg);
+}
+.select_boxpd {
+  background: #fff;
+  width: 150rpx;
+  margin-left: 350rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: left;
+  position: relative;
+}
+
+.option_box {
+  position: absolute;
+  top: 86rpx;
+  width: 100%;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
+  height: 0;
+  overflow-y: auto;
+  border-top: 0;
+  background: #fff;
+  transition: height 0.3s;
+  z-index: 3;
+}
+
+.option {
+  display: block;
+  line-height: 40rpx;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx;
+  color: rgb(102, 102, 102);
+  font-size: 28rpx;
+}
+
+
+.selectimg{
+  position: absolute;
+  color: rgb(60, 76, 193);
+  font-size: 24rpx;
+  right: 60rpx;
+}
+.selectedimg{
+  width: 80rpx;
+  height: 70rpx;
+  position: absolute;
+  right: 60rpx;
+}
+.musticon{
+  position: absolute;
+  left: 40rpx;
+  background-image: url('https://wxprogram.zc5l.com/img/must_icon.png');
+  background-size: 100% 100%;
+  width: 14rpx;
+  height: 14rpx;
+}
+.tipbox{
+  display: flex;
+  width: 690rpx;
+  align-items: center;
+  height:60rpx;
+}
+.tips{
+  margin-left: 60rpx;
+  font-size: 24rpx;
+  color: rgb(96, 98, 102);
+}
+.qrtips{
+  position: absolute;
+  background-image: url('https://wxprogram.zc5l.com/img/inform_code_bg.png');
+  background-size: 100% 100%;
+  width: 284rpx;
+  height: 105rpx;
+  bottom: 300rpx;
+  right: 60rpx;
+}
+.qrbtn{
+  position: absolute;
+  background-image: url('https://wxprogram.zc5l.com/img/inform_code.png');
+  background-size: 100% 100%;
+  width: 220rpx;
+  height: 200rpx;
+  bottom: 98rpx;
+  right: 0;
+}
+.qrtipstext{
+  font-size: 24rpx;
+  color:rgb(96, 98, 102);
+  position: absolute;
+  text-align: center;
+  right: 22px;
+  bottom: 0;
+}
+.fback{
+  background-color: white;
+  margin-top: 8rpx;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footbtnbox{
+  display: flex;
+  width: 478rpx;
+  align-items: center;
+}
+.cancelbtn{
+  width: 200rpx;
+  height: 60rpx;
+  border: 1rpx solid rgb(181, 181, 181);
+  font-size: 30rpx;
+  color: rgb(96, 98, 102);
+  border-radius: 60rpx;
+  line-height: 60rpx;
+  padding: 0;
+}
+.cancelbtn::after{
+  display: none;
+}
+.confirmbtn{
+  width: 200rpx;
+  height: 60rpx;
+  font-size: 30rpx;
+  background-color: rgb(60, 76, 193);
+  color: white;
+  border-radius: 60rpx;
+  line-height: 60rpx;
+  padding: 0;
+}
+.confirmbtn::after{
+  display: none;
+}
+.confirmbtn[disabled]{
+  border: 1rpx solid rgb(181,181,181);
+}
+.confirmbtnh{
+  background-color: #7cb5fb;
+}
+.qrback{
+  position:fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0,0.5);
+  z-index: 1000;
+}
+.qrbox{
+  background-color: white;
+  width: 550rpx;
+  height: 700rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+.qrtitle{
+  font-size: 34rpx;
+  color: rgb(96, 98, 102);
+  margin-top: 90rpx;
+  margin-bottom: 60rpx;
+}
+.qrbg{
+  background-color: rgb(248,248,248);
+  width: 350rpx;
+  height: 350rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.qrdes{
+  font-size: 24rpx;
+  color: rgb(193,193,193);
+  width: 431rpx;
+  margin-top: 50rpx;
+  line-height: 40rpx;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}

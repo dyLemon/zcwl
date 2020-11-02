@@ -1,0 +1,10 @@
+{
+    "navigationBarBackgroundColor": "#7CB5FB",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "个人中心",
+    "backgroundTextStyle": "light",
+    "usingComponents": {
+        "qrcomponent": "/components/qrcomponent/qrcomponent"
+    },
+    "disableScroll": true
+}

@@ -1,0 +1,14 @@
+<view class="wrapper" style="height:{{vheight}}rpx;">
+  <image src="{{showImage.url}}" bindload="onImageLoad" style="width:{{showImage.width}}px;height:{{showImage.height}}px"></image>
+  <view class="canvas-wrapper" style="height:{{vheight}}rpx;">
+    <canvas canvas-id="canvasOne" class="canvas-one" style="width:{{showImage.width}}px;height:{{cheight}}px"></canvas>
+  </view>
+  <movable-area class="move-area" style="height:{{vheight}}rpx;">
+    <movable-view class='move-view' x="{{x}}" y="{{y}}" direction="all" bindchange="onChange" bindscale="onScale" style="width:{{moveViewWidth-2}}px;height:{{moveViewHeight}}px;"></movable-view>
+  </movable-area>
+  <view class="bottom-w">
+    <view style="width:{{bwidth}}px;" bindtap='cancelImg'>取消</view>
+    <view style="width:{{bwidth}}px;border-left:1px dotted rgb(59, 59, 59);" bindtap='jieDone'>完成</view>
+  </view>
+</view>
+

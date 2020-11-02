@@ -1,0 +1,16 @@
+<view class="done"></view>
+<view class="background">
+  <view wx:if="{{false}}" class="titlebg">
+    <view class="searchbox">
+      <view class="searchicon"></view>
+      <view class="searchtip"></view>
+    </view>
+  </view>
+  <view class="contentbg">
+    <docsimplelist wx:if="{{0!=doclist.length}}" resource="{{resource}}" doclist="{{doclist}}" hight="{{hight}}" bind:docsselect="talk"/>
+    <view wx:else class="emptybox">
+      <view class="empty"></view>
+      <view class="notalk">暂无聊天信息</view>
+    </view>
+  </view>
+</view>

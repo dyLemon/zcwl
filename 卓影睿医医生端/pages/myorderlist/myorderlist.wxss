@@ -1,0 +1,490 @@
+page {
+    height: 100%;
+    width: 100%;
+    font-family: MicrosoftYahei;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(rgb(255,255,255),rgb(233,233,233));
+  }
+
+.empty {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.epimg {
+    position: relative;
+    left: 35rpx;
+    width: 209rpx;
+    height: 137rpx;
+}
+.emptytext{
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    color: rgb(193,193,193);
+}
+
+.hb{
+    height: 10rpx;
+    width: 100%;
+    background-color: rgb(241,242,243);
+}
+.head {
+    height: 164rpx;
+    align-items: center;
+    background-image: url(https://wxprogram.zc5l.com/img/uesrset_top_bg.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+}
+
+.self {
+    display: flex;
+    margin-left: 25rpx;
+}
+.atteststatebox{
+    width: 440rpx;
+    margin-left: 22rpx;
+    display: flex;
+    flex-direction: column;
+}
+.namebox{
+    display: flex;
+    align-items: center;
+}
+.name {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: white;
+    line-height: 80rpx;
+}
+.codeb{
+    margin-left: 40rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/doc_code_icon_n.png);
+    background-size: 100% 100%;
+    width: 30rpx;
+    height: 30rpx;
+}
+.codebh{
+    background-image: url(https://wxprogram.zc5l.com/img/doc_code_icon_p.png);
+}
+.attestdes{
+    display: flex;
+    align-items: center;
+}
+.toattestbtn{
+    height: 40rpx;
+    width:120rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/identification_btn_n.png);
+    background-size: 100% 100%;
+}
+.toattestbtnh{
+    background-image: url(https://wxprogram.zc5l.com/img/identification_btn_p.png);
+}
+.attestingbtn{
+    height: 40rpx;
+    width:120rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/Approval_btn_n.png);
+    background-size: 100% 100%;
+}
+.attestingbtnh{
+    background-image: url(https://wxprogram.zc5l.com/img/Approval_btn_p.png);
+}
+.attestfailbtn{
+    height: 40rpx;
+    width:120rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/bad_btn_n.png);
+    background-size: 100% 100%;
+}
+.attestfailbtnh{
+    background-image: url(https://wxprogram.zc5l.com/img/bad_btn_p.png);
+}
+.attestedbtn{
+    height: 40rpx;
+    width:120rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/Certified_btn_n.png);
+    background-size: 100% 100%;
+}
+.attestedbtnh{
+    background-image: url(https://wxprogram.zc5l.com/img/Certified_btn_p.png);
+}
+.des{
+    margin-left: 20rpx;
+    font-size: 24rpx;
+    color: rgb(144,147,153);
+    line-height: 40rpx;
+}
+.qsbox{
+    display: flex;
+    flex-direction: column;
+}
+.quit {
+    width: 120rpx;
+    height: 40rpx;
+    font-size: 20rpx;
+    padding: 0;
+    line-height: 40rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    background-image: url(https://wxprogram.zc5l.com/img/quit_icon_n.png);
+    background-size: 100% 100%;
+}
+
+.quith {
+    background-image: url(https://wxprogram.zc5l.com/img/quit_icon_p.png);
+    background-size: 100% 100%;
+}
+
+.quit::after {
+    display: none;
+}
+
+.statistics {
+    width: 114rpx;
+    height: 44rpx;
+    background-size: 100% 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/Count_btn_n.png);
+}
+.statistics::after{
+    display: none;
+}
+.statisticsh {
+    background-size: 100% 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/Count_btn_p.png);
+}
+.psettings{
+   margin-top: 60rpx;
+    width: 184rpx;
+    height: 60rpx;
+    background-size: 100% 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/userset_btn_n.png);
+}
+.psettings::after{
+    display: none;
+}
+.psettingsh{
+    background-size: 100% 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/userset_btn_p.png);
+}
+.content {
+    border-radius: 10rpx;
+    background-color: white;
+    position: absolute;
+    margin-left: 25rpx;
+    margin-bottom: 10rpx;
+    margin-right: 25rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blank {
+    width: 700rpx;
+    height: 30rpx;
+}
+
+.title {
+    width: 700rpx;
+    height: 70rpx;
+    margin-bottom: 20rpx;
+}
+
+.titlebarstay {
+    width: 700rpx;
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgb(217,217,217);
+    font-size: 28rpx;
+}
+
+.line {
+    height: 40rpx;
+    border-left: 1px solid rgb(217,217,217);
+}
+
+.press {
+    width: 30%;
+    height: 70rpx;
+    color: rgb(73,71,228);
+    border-bottom: 4rpx solid rgb(70,76,193);
+    margin-left: 38rpx;
+    margin-right: 38rpx;
+    display: flex;
+    justify-content: center;
+    line-height: 70rpx;
+}
+
+.put {
+    width: 30%;
+    height: 70rpx;
+    display: flex;
+    margin-left: 38rpx;
+    margin-right: 38rpx;
+    justify-content: center;
+    line-height: 70rpx;
+    color: black;
+}
+
+.oderlist {
+    width: 700rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table {
+    width: 680rpx;
+    border-bottom: 1rpx solid rgb(243,241,241);
+    margin-top: 30rpx;
+    /* height: 280rpx; */
+    box-sizing: border-box;
+    padding-bottom: 20rpx;
+}
+.stateboxs {
+    /* margin-right: 30rpx; */
+    width: 512rpx;
+    height: 110rpx;
+    background: white;
+    position: fixed;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.ttitle {
+    display: flex;
+    padding-left: 30rpx;
+    /* padding-right: 30rpx; */
+    align-items: center;
+}
+
+.tname {
+    font-size: 28rpx;
+}
+
+.ttime {
+    margin-left: 20rpx;
+    color: rgb(144,147,153);
+    font-size: 24rpx;
+    line-height: 30rpx;
+}
+
+.delete {
+    position: absolute;
+    right: 10rpx;
+    display: flex;
+    width: 120rpx;
+    height: 40rpx;
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/delet_icon_n.png);
+}
+
+.deleteh {
+    background-size: 100%;
+    background-image: url(https://wxprogram.zc5l.com/img/delet_icon_p.png);
+}
+
+.tshow {
+    display: flex;
+    margin: 26rpx;
+}
+
+.tshow image {
+    width: 222rpx;
+    height: 126rpx;
+}
+
+.tdetails {
+    margin-left: 20rpx;
+    width: 428rpx;
+}
+
+.action {
+    font-size: 24rpx;
+    color: rgb(96,98,102);
+    margin-bottom: 13rpx;
+}
+
+.count {
+    display: flex;
+    align-items: center;
+    color: rgb(144,147,153);
+    border-radius: 10rpx;
+    font-size: 20rpx;
+}
+
+.count text {
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    padding-bottom: 5rpx;
+    padding-top: 5rpx;
+    background-color: rgb(246,246,246);
+}
+
+.price {
+    margin-top: 20rpx;
+    font-size: 20rpx;
+    color: rgb(209,72,73);
+}
+
+.statebox {
+    margin-right: 30rpx;
+    width: 428rpx;
+    position: absolute;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.state {
+    margin-left: 15rpx;
+    width: 80rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 20rpx;
+    color: rgb(144,147,153);
+}
+
+.pay {
+    border-radius: 20rpx;
+    /* margin-bottom: 10rpx; */
+    padding: 0;
+    box-sizing: border-box;
+    width: 130rpx;
+    height: 40rpx;
+    line-height: 36rpx;
+    font-size: 20rpx;
+    color: rgb(209,72,73);
+    background-color: white;
+    border: 1rpx solid rgb(209,72,73);
+}
+
+.pay::after {
+    display: none;
+}
+
+.payh {
+    color: #ff8a8b;
+    border: 1rpx solid #ff8a8b;
+}
+.mask{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(217,217,217,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.maskhide{
+    left: 10000rpx; 
+}
+.qrback{
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0,0.5);
+    z-index: 1000;
+  }
+  .qrbox{
+    background-color: white;
+    width: 550rpx;
+    height: 700rpx;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+  }
+  .qrtitle{
+    font-size: 34rpx;
+    color: rgb(96, 98, 102);
+    margin-top: 90rpx;
+    margin-bottom: 60rpx;
+  }
+  .qrbg{
+    background-color: rgb(248,248,248);
+    width: 350rpx;
+    height: 350rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  .qrimg{
+    width: 350rpx;
+    height: 350rpx;
+  }
+  .qrdes{
+    font-size: 24rpx;
+    color: rgb(193,193,193);
+    width: 431rpx;
+    margin-top: 32rpx;
+    line-height: 40rpx;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+  }
+  .notcertified{
+      position: absolute;
+      background-color: rgba(0, 0, 0,0.5);
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+  }
+  .statebox{
+      /* width: 600rpx; */
+      /* height: 80rpx; */
+      /* background-color: white; */
+      border-radius: 3px;
+      display: flex;
+      /* justify-content: space-between; */
+      /* justify-content: right; */
+      align-items: center;
+  }
+  .statedes{
+      margin-left: 20rpx;
+      font-size: 26rpx;
+      color: rgb(34, 34, 34);
+  }
+  .stateoperate{
+    font-size: 26rpx;
+    color: #2edbd0;
+    margin-right: 20rpx;
+  }
+  .description{
+      margin-top: 230rpx;
+      font-size: 28rpx;
+      text-align: center;
+      color: white;
+     
+  }

@@ -1,0 +1,96 @@
+<view wx:if="{{true}}" class="background">
+	<!-- <view class="hb"></view> -->
+	<view class="head">
+		<view class="self">
+			<image src="{{avatar}}" style="width: 115rpx;height: 115rpx;border-radius: 10rpx;"></image>
+		</view>
+		<view class="atteststatebox">
+			<view class="namebox">
+				<view class="name">{{name}}</view>
+				<view class="codeb" bindtap="docqrcode" hover-class="codebh"></view> 
+			</view>
+			<view bindtap="statistics" class="statistics" hoverClass="statisticsh"></view>
+			<!-- <view class="attestdes">
+				<view class="{{-1==atteststate?'toattestbtn':'attestedbtn'}}" hover-class="{{-1==atteststate?'toattestbtnh':'attestedbtnh'}}" bindtap="atteststatebtn">
+				</view>
+				<view class="des">{{-1==atteststate?'未认证用户不可开单':''}}</view>
+			</view> -->
+		</view>
+		<view class="qsbox">
+			<!-- <button bindtap="quit" class="quit" hoverClass="quith"></button> -->
+			<view bindtap="psettings" class="psettings" hover-class="psettingsh"></view>
+		</view>
+	</view>
+	<view class="content">
+		<view class="blank"></view>
+		<view class="title">
+			<view class="titlebarstay">
+				<view bindtap="all" class="{{select==0?'press':'put'}}">全部</view>
+				<view class="line"></view>
+				<view bindtap="paying" class="{{select==1?'press':'put'}}">待支付</view>
+				<view class="line"></view>
+				<view bindtap="payed" class="{{select==2?'press':'put'}}">已完成</view>
+			</view>
+		</view>
+		<scroll-view bindscroll="scrollTopFun" scrollY="true" style="height:{{height}}rpx" throttle="{{true}}">
+			<view wx:if="{{0!=list.length}}">
+				<view class="oderlist" wx:for="{{list}}" wx:key="key">
+					<view bindtap="select" class="table" id="{{index}}">
+						<view class="ttitle">
+							<view class="tname">{{item.patientname}}</view>
+							<view class="ttime">{{item.createtime}}</view>
+							<view catchtap="plandelete" class="delete" hoverClass="deleteh" id="{{index}}"
+								wx:if="{{2!=item.paystate}}"></view>
+						</view>
+						<view class="tshow">
+							<image src="{{resource}}/{{item.actor_display_url2}}{{token}}"></image>
+							<view class="tdetails">
+								<view class="action">{{item.description}}</view>
+								<view class="count">
+									<text>动作数量：{{item.acotorcount}}</text>
+								</view>
+								<view class="price">￥{{price.priced(item.price,2)}}</view>
+								<view class="statebox">
+									<view wx:if="{{2!=item.paystate}}">
+										<button catchtap="sendoder" class="pay" id="{{index}}" hoverClass="payh">发送订单</button>
+									</view>
+									<view class="state">{{2==item.paystate?'已完成':'待支付'}}</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="empty" wx:else>
+				<!-- <view class="epimg"> -->
+					<image class="epimg"  src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+					<view class="emptytext">暂无订单记录</view>
+				<!-- </view> -->
+			</view>
+		</scroll-view>
+	</view>
+	<!-- <view class="bottom"></view> -->
+</view>
+<!-- <view class="{{showqrcode?'mask':'maskhide'}}" bindtap="closeqrcode">
+	<qrcomponent wx:if="{{showqrcode}}" text="{{qrcodeurl}}"></qrcomponent>
+</view> -->
+<view wx:if="{{showqr}}" class="qrback" catchtap="closeqr">
+	<view class="qrbox">
+		<view class="qrtitle">患者扫描二维码</view>
+		<view class="qrbg">
+			<qrcomponent text="{{qrcodeurl}}"></qrcomponent>
+			<!-- <image src="{{appletsqr}}" class="qrimg"></image> -->
+		</view>
+		<view class="qrdes">请患者打开微信，扫描上方二维码，登录小程序。</view>
+	</view>
+</view>     
+<!-- //账号认证状态  审核状态:默认0 3：待审核 1：已通过 2：未通过 -->
+<view wx:if="{{1!=atteststate}}" class="notcertified">
+	<view class="stateboxs">
+		<view class="statedes">身份认证</view>
+		<view class="stateoperate" bindtap="toattest">{{1==atteststate?'已认证':(0==atteststate?'去认证':(2==atteststate?'审核失败':'审核中'))}}</view>
+	</view>
+	<view class="description">
+	{{atteststate==0?'请先按照步骤完成身份认证!':(atteststate==3?'认证审核需要1-2个工作日，请耐心等待！':'')}}</view>
+</view>
+<wxs module="price" src="../../price.wxs" />

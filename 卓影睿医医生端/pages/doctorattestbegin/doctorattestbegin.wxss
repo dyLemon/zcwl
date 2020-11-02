@@ -1,0 +1,35 @@
+page {
+  font-family: MicrosoftYahei;
+  height: 100%;
+  width: 100%;
+}
+.background{
+  border-top:2px solid rgb(241, 242, 243) ;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.bgimg{
+  width: 100%;
+  height: 642rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/Accreditation_bg.png);
+  background-size: 100% 100%;
+}
+.confirm{
+  position: absolute;
+  bottom: 0;
+  font-size: 30rpx;
+  width:100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: white;
+  background-color: rgb(60,76,193);
+  border-radius: 0;
+}
+
+.confirmh{
+  background-color: #7cb5fb;
+}

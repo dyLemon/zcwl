@@ -1,0 +1,40 @@
+<wxs module="tools" src="../../price.wxs" />
+<view class="background">
+	<view class="title">
+		<button bindtap="search" class="b" hoverClass="hb">
+			<image src="https://wxprogram.zc5l.com/img/logon_search_icon.png"></image>
+			<text>搜索患者姓名</text>
+		</button>
+		<view wx:if="{{false}}" class="createbtn" hover-class="createbtnh" bindtap="oncreatepatient"></view>
+	</view>
+	<view class="content">
+		<scroll-view bindscrolltolower="bottom" scrollY="{{true}}" style="height:{{height}}rpx;">
+			<view class="tablehead">
+				<view class="tabletitle">患者姓名</view>
+				<view class="tabletitle">诊断时间</view>
+				<view class="tabletitle">锻炼次数</view>
+			</view>
+			<view wx:for="{{list}}" wx:key="key">
+				<view bindtap="select" class="table" hover-class="tableh" id="{{index}}">
+					<view class="tbcontent">
+						<view class="patientbox">
+							<view class="avatar" style="background-image: url({{weburl+item.avatar}});"></view>
+							<view wx:if="{{''!=item.name}}" class="namebox">
+								<view class="name">{{item.name}}</view>
+								<view class="sexage">{{0==item.sex?'男':'女'}} {{item.age}}</view>
+							</view>
+						</view>
+						<view class="time">{{tools.data(item.treat_time)}}</view>
+						<view class="times" wx:if="{{0!=item.total_count}}">{{item.total_num}}/{{item.total_count}}</view>
+						<view class="times" wx:else>--</view>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{0==list.length}}" class="empty">
+				<image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+				<view class="emptytext">暂无患者添加</view>
+			</view>
+		</scroll-view>
+	</view>
+	<!-- <view class="bline"></view> -->
+</view>

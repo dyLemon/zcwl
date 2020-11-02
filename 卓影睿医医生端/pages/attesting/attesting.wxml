@@ -1,0 +1,53 @@
+<view class="background">
+  <view class="titleimgbox" style="background-image: url({{success?'https://wxprogram.zc5l.com/img/technological_process_3.png':'https://wxprogram.zc5l.com/img/technological_process_2.png'}});"></view>
+  <view class="idbox">
+    <view class="idtbox">
+      <view class="idicon"></view>
+      <view class="iddes">身份信息</view>
+      <view wx:if="{{!success}}" class="modify" hover-class="modifyh" bindtap="idmodify">修改</view>
+    </view>
+    <view class="infobox">
+      <view class="name">· {{name}}</view>
+      <view class="id">{{id}}</view>
+    </view>
+  </view>
+  <view class="idtbox">
+      <view class="agencyicon"></view>
+      <view class="iddes">机构信息</view>
+      <view wx:if="{{!success}}" class="modify" hover-class="modifyh" bindtap="jobmodify">修改</view>
+    </view>
+  <view class="propety">· 医院/机构</view>
+  <view class="sbox">
+    <view class="select">{{hospitallist[hospitalselectidx].name}}</view>
+    <dropdbox disabled="{{true}}" style="position: relative;top: 0rpx;left: 0rpx;width: 60rpx;"
+      selectdata="{{hospitallist}}" show="{{hospitalboxshow}}" bind:select="hospitalselect"
+      bind:dropboxshow="hospitalboxshow" boxleft="-260">
+    </dropdbox>
+  </view>
+  <view class="propety">· 职称</view>
+  <view class="sbox">
+    <view class="select">{{jobtitlelist[jobtitleselectidx].name}}</view>
+    <dropdbox disabled="{{true}}" style="position: relative;top: 0rpx;left:0rpx;width: 60rpx;"
+      selectdata="{{jobtitlelist}}" show="{{jobtitleboxshow}}" bind:select="jobtitleselect"
+      bind:dropboxshow="jobtitleboxshow" boxleft="-260">
+    </dropdbox>
+  </view>
+  <view class="propety">· 联系电话</view>
+  <view class="inputbox">
+    <input wx:if="{{!failshow}}" disabled="{{true}}" name="phone" value="{{phone}}" bindinput="inputphone" class="input"
+      placeholder="座机或电话" placeholderClass="placlass"></input>
+    <view wx:else class="{{0==phone.length?'phonet':'phoneta'}}">{{0==phone.length?'座机或电话':phone}}</view>
+  </view>
+  <view class="propety">· 资格证上传</view>
+  <view class="imgbox">
+    <!-- <view wx:if="{{2>imglist.length}}" class="addimg" hover-class="addimgh" bindtap="addimg"></view> -->
+    <label wx:for="{{imglist}}" wx:key="index">
+      <view id="{{index}}" bindtap="changeimg" class="{{0==index?'imgt':'imge'}}">
+        <image style="width: 54rpx;height: 54rpx;" src="{{item.url}}"></image>
+      </view>
+    </label>
+  </view>
+  <view class="errormsg">{{failuremsg}}</view>
+  <!-- <view>{{auditfailercause}}</view> -->
+  <!-- <view class="confirm" hover-class="confirmh" bindtap="confirm">重新提交</view> -->
+</view>

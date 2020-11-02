@@ -1,0 +1,20 @@
+<view class='background' style="width: {{wight}}rpx;">
+	<scroll-view scrollY='{{true}}' style="height:{{hight}}rpx;">
+		<label wx:for="{{pvideolist}}" wx:key="key">
+			<view class="tlabel" hover-class="tlabelh" id="{{index}}" value="{{index}}" bindtouchstart="start" 
+			bindtouchend="end" bindtouchmove="move" bindtouchcancel="cancel" bindtap="select">
+			<!-- 将label暴露出去供外部自由实现 -->
+				<image class="vshot" mode="aspectFill" src="{{resource}}/{{item.imgpath2+'&token='+token}}"></image>
+				<!-- <view class="vshot" mode="aspectFill" style="background-image: url({{resource}}/{{item.imgpath2+'&token='+token}});"></view> -->
+				<view class="pbox">
+					<view class="title">{{item.name}}</view>
+					<view class="property">肌肉群：{{item.muscle}}</view>
+					<view class="property">设备：{{item.equipment}}</view>
+					<view class="property">描述：{{item.description}}</view>
+				</view>
+				<!-- <image class="img"></image> -->
+				<view class="img" hover-class="imgh" id="{{index}}" catchtap="add"></view>
+			</view>
+		</label>
+	</scroll-view>
+</view>

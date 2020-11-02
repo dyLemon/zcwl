@@ -1,0 +1,33 @@
+<view class="topicbox">
+<!-- <scroll-view scroll-y="{{false}}" style="height:{{height}}rpx"> -->
+	<!-- <image src="https://wxprogram.zc5l.com/img/titile_back_icon_p.png" bindtap="backBtn" wx:if="{{indexs}}"></image> -->
+	<view class="titlenum">
+		{{indexs+1}}/{{listobj.total}} </view>
+	<!-- {{indexs+1}}、 -->
+	<text class="title">{{listobj.listarr[indexs].topic}}</text>
+	<radio-group class="radiolist" wx:if="{{listobj.listarr[indexs].type == 1}}" data-obj="{{listobj.listarr[indexs]}}" bindchange="radiochange">
+		<label wx:for="{{listobj.listarr[indexs].contents}}" wx:for-index="num">
+			<view>
+				<radio value="{{num}}" checked="{{item.check}}" />{{item.title}}
+			</view>
+		</label>
+		<textarea bindinput="bindTextAreaBlur"  data-obj="{{listobj.listarr[indexs]}}" value="{{item.text}}" maxlength="50" wx:if="{{textshow}}" />
+	</radio-group>
+
+	<checkbox-group  bindchange="checkboxChange" data-obj="{{listobj.listarr[indexs]}}" class="radiolist" wx:if="{{listobj.listarr[indexs].type == 2}}" >
+		<label class="weui-cell weui-check__label"  wx:for="{{listobj.listarr[indexs].contents}}" wx:for-index="num">
+				<view >
+					<checkbox value="{{num}}" checked="{{item.checked}}"/>{{item.title}}
+				</view>
+			</label>
+		<textarea bindinput="bindTextAreaBlur"   data-obj="{{listobj.listarr[indexs]}}" value="{{item.text}}" maxlength="50" wx:if="{{textshow}}" />
+	</checkbox-group>
+
+	<view wx:if="{{indexs+1!=listobj.total}}">
+	<button  bindtap="nextBtn"  wx:if="{{nextshow}}" >下一题</button>
+	</view>
+	<button  bindtap="submitBtn"  wx:if="{{indexs+1==listobj.total}}" >提交</button>
+	
+
+<!-- </scroll-view> -->
+</view>

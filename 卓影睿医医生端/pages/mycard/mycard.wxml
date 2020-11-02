@@ -1,0 +1,74 @@
+<view class="corbox">
+	<!-- <view class="title">上传本人身份证照片</view>
+	<view class="mintitle">1.请上传卓影睿医医生账号本人的身份证照片</view>
+	<view class="mintitle">2.拍照时请确保身份证边框完整、图像清晰、光线均匀</view>
+	<view class="mintitle">3.请核对您的身份信息，若有误请重新上传</view> -->
+
+	<view class="titleimgbox"></view>
+	<view class="titledes">请上传本人身份证照片</view>
+	<view class="titletip">信息保密</view>
+	<!-- 正面 -->
+	<view wx:if="{{0==fontstate}}" class="bgface" bindtap="fontbtn">
+		<view class="bgtext">人像面照片</view>
+	</view>
+	<camera wx:if="{{1==fontstate}}" class="camera"  style="margin-top: 20rpx;" binderror='fontcameraerror'></camera>
+	<view wx:if="{{2==fontstate}}" class="imgbox" >
+		<canvas canvas-id='front' bindtap="fontbtn" style="margin-top: 20rpx;width:556rpx;height: 360rpx;background-size: 100% 100%;border: 1px dashed rgb(183, 189, 197);"></canvas>
+		<!-- <view bindtap="fontattest" class="attest">开始识别</view> -->
+	</view>
+	<!-- <view wx:if="{{3==fontstate}}" class="identifybg">
+		<view class="contentbox">
+			<view class="rowbox">
+				<view class="property">正面识别</view>
+				<view class="icon"></view>
+			</view>
+			<view class="rowbox">
+				<view class="property">身份证号</view>
+				<view class="rtext">{{frontdata.id}}</view>
+			</view>
+			<view class="rowbox">
+				<text class="property" space="ensp">姓    名</text>
+				<view class="rtext">{{frontdata.name}}</view>
+			</view>
+			<view class="rowbox">
+				<view class="property">出身日期</view>
+				<view class="rtext">{{frontdata.birth}}</view>
+			</view>
+		</view>
+		<view bindtap="fontbtn" class="attest">重新上传</view>
+	</view> -->
+	<view wx:if="{{0==backstate}}" class="bgsetface" bindtap="backbtn">
+		<view class="bgtext">国徽面照片</view>
+	</view>
+	<camera wx:if="{{1==backstate}}" class="camera" style="position: absolute;top:701rpx;" binderror='backcameraerror'></camera>
+	<view wx:if="{{2==backstate}}" class="bimgbox">
+		<canvas canvas-id='back' bindtap="backbtn" style="margin-top: 20rpx;width:556rpx;height: 360rpx;background-size: 100% 100%;border: 1px dashed rgb(183, 189, 197);"></canvas>
+		<!-- <view bindtap="backattest" class="attest">开始识别</view> -->
+	</view>
+	<!-- <view wx:if="{{3==backstate}}" class="bidentifybg">
+		<view class="contentbox">
+			<view class="rowbox">
+				<view class="property">背面识别</view>
+				<view class="icon"></view>
+			</view>
+			<view class="rowbox">
+				<view class="property">签证机关</view>
+				<view class="rtext">{{backdata.authority}}</view>
+			</view>
+			<view class="rowbox">
+				<view class="property">有效日期</view>
+				<view class="rtext">{{backdata.valid_date}}</view>
+			</view>
+		</view>
+		<view bindtap="fontbtn" class="attest">重新上传</view>
+	</view> -->
+	<view wx:if="{{showshutter}}" class="shutter" hover-class="shutterh" bindtap="shutter">拍照</view>
+	<view wx:else class="confirm" hover-class="confirmh" bindtap="confirm">{{modify?'提交':'下一步'}}</view>
+</view>
+<view wx:if="{{showtool}}" class="selecttoolbackground" catchtap="cancelbtn">
+	<view class="footbox">
+		<view class="camerabtn" bindtap="camarabtn">拍摄照片</view>
+		<view class="selectbtn" bindtap="selectimgbtn">从相册上传</view>
+		<view class="cancelbtn" bindtap="cancelbtn">取消</view>
+	</view>
+</view>

@@ -1,0 +1,27 @@
+<view class="background">
+	<view class="content">
+		<view class="titleicon"></view>
+		<view class="titlebox">
+			<view class="title">绑定成功后，pc端所创建的患者信息,</view>
+			<view class="title">可同步在手机端显示！</view>
+		</view>
+		<form bindsubmit="bind">
+			<view class="inputbox">
+				<view class="property">输入pc端账号</view>
+				<input class="account" type="text" maxlength="20" name="id" value="{{id}}"></input>
+			</view>
+			<view class="inputbox">
+				<view class="property">输入密码</view>
+				<input class="account" type="text" maxlength="20" password="{{true}}" name="password" value="{{password}}"></input>
+			</view>
+			<button class="bind" form-type="submit" hover-class="bindh">验证</button>
+		</form>
+	</view>
+</view>
+<view wx:if="{{success}}" class="successbg" bindtap="ok">
+	<view class="box">
+		<view class="btitle">账号绑定成功！</view>
+		<view class="line"></view>
+		<view class="des">请重新登录，你可以在手机端为PC端患者创建订单</view>
+	</view>
+</view>

@@ -1,0 +1,10 @@
+{
+    "navigationBarBackgroundColor": "#7CB5FB",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "患者方案",
+    "backgroundTextStyle": "light",
+    "usingComponents": {
+        "qrcomponent": "/components/qrcomponent/qrcomponent"
+    },
+    "disableScroll": true
+}

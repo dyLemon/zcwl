@@ -1,0 +1,14 @@
+<view class="listbg" style="width: {{bgsize.width}}rpx;height:{{bgsize.hight}}rpx;">
+<scroll-view scrollY='{{true}}' style="height:{{bgsize.hight}}rpx;">
+	<label wx:for="{{videolist}}" wx:key="key">
+			<view data-index="{{index}}" class="label" hover-class="labelh" value="{{index}}"bindtouchstart="drawStart" 
+      bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx" bindtap="select">
+				<image class="vshot" mode="aspectFill" src="{{resource}}/{{item.imgpath2+'&token='+token}}"></image>
+				<view class="pbox">
+					<view class="property">{{item.name}}</view>
+				</view>
+        <view class="remove" catchtap="delItem" id="{{index}}">删除 </view>
+			</view>
+		</label>
+</scroll-view>
+</view>

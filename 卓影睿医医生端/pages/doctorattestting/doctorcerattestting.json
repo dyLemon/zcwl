@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "个人设置",
+    "backgroundTextStyle": "light",
+    "disableScroll": true,
+  "usingComponents": {
+    "dropdbox":"/components/dropdbox/dropdbox"
+  }
+}

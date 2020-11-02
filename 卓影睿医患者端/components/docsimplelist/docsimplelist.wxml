@@ -1,0 +1,25 @@
+<view class="background" style="height:{{height}}px;">
+  <scroll-view scroll-y="{{true}}" style="height:{{height}}px;">
+    <label wx:for="{{doclist}}" wx:key="key">
+      <view style="height: 132rpx;">
+      <view class="tablebox" data-index="{{index}}" value="{{index}}" bindtouchstart="drawStart"
+        bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx" bindtap="select">
+        <view class="avatar"
+          style="background-image: url({{''==item.avatar?(0==item.sex?'https://wxprogram.zc5l.com/img/Doc_male_icon.png':'https://wxprogram.zc5l.com/img/Doc_female_icon.png'):resource+item.avatar}});">
+        </view>
+        <view class="ntbox">
+          <view class="nbox">
+            <view class="name">{{item.name}}</view>
+            <view class="jobtitle">{{item.jobtitle}}</view>
+          </view>
+          <view class="talk">{{item.text}}</view>
+        </view>
+        <view class="remove" catchtap="delItem" id="{{index}}">删除 </view>
+      </view>
+      <view class="time">{{item.time}}</view>
+      <view wx:if="{{item.unread}}" class="redpoint"></view>
+    </view>
+      <view class="line"></view>
+    </label>
+  </scroll-view>
+</view>

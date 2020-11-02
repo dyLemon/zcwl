@@ -1,0 +1,70 @@
+<view class="background">
+    <video controls class="cvideo" src="{{resources}}/{{play+'&token='+token}}"></video>
+    <view bindtap="turn" class="turn" wx:if="{{false}}">
+        <image src="{{resources}}{{realperson?'/img/video_person_btn_n.png':'/img/video_model_btn_n.png'}}"></image>
+    </view>
+    <view class="sv">
+        <scroll-view scrollY="{{true}}" style="height:{{height}}rpx" throttle="{{true}}">
+            <view class="aname">{{video.name}}</view>
+            <view class="details">
+                <view class="detail">
+                    <view class="dtext">肌肉群：{{video.musle}}</view>
+                    <view class="dtext">禁忌：{{video.remind}}</view>
+                    <view class="dtext">设备：{{video.equipment}}</view>
+                    <view class="dtext">描述：{{video.description}}</view>
+                </view>
+                <view class="line"></view>
+                <view wx:if="{{!changeable}}">
+                    <view class="key">
+                        <view class="keye">动作重复次数</view>
+                        <view class="vertical"></view>
+                        <view class="keye">动作保持时间</view>
+                        <view class="vertical"></view>
+                        <view class="keye">视频重复次数</view>
+                    </view>
+                    <view class="value">
+                        <view class="valuee">
+                            <view class="vcount">{{video.repeatcount}}</view>
+                            <view class="vunit">次</view>
+                        </view>
+                        <view class="valuee">
+                            <view class="vcount">{{video.keeptime}}</view>
+                            <view class="vunit">秒</view>
+                        </view>
+                        <view class="valuee">
+                            <view class="vcount">{{video.playcount}}</view>
+                            <view class="vunit">次</view>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else>
+                    <view class="group">
+                        <view class="head">动作重复次数</view>
+                        <button bindtap="groupsubstract" class="less" hoverClass="lessh">-</button>
+                        <view class="count">{{video.repeatcount}}</view>
+                        <button bindtap="groupadd" class="add" hoverClass="addh">+</button>
+                        <view class="unit">次</view>
+                    </view>
+                    <view class="times">
+                        <view class="head">动作保持时间</view>
+                        <button bindtap="timessubstract" class="less" hoverClass="lessh">-</button>
+                        <view class="count">{{video.keeptime}}</view>
+                        <button bindtap="timesadd" class="add" hoverClass="addh">+</button>
+                        <view class="unit">秒</view>
+                    </view>
+                    <view class="gap">
+                        <view class="head">视频重复次数</view>
+                        <button bindtap="gapsubstract" class="less" hoverClass="lessh">-</button>
+                        <view class="count">{{video.playcount}}</view>
+                        <button bindtap="gapadd" class="add" hoverClass="addh">+</button>
+                        <view class="unit">次</view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="tips" class="{{changeable?'tipsc':'tips'}}">
+                <view class="title">医生提示</view>
+                <view class="content">{{video.actordes}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,53 @@
+<view class='background'>
+<image src="https://wxprogram.zc5l.com/img/identification_bg.png" class="bgimg"></image>
+<view class="tbox">
+	<view class="title">医生身份认证</view>
+	<view class="titledes">适用于持续使用医生端进行开单咨询等工作内容的用户，如果没有进行认证，就无法持续使用此小程序</view>
+	</view>
+	<view class="content">
+		<form bindsubmit="{{0==state||2==state?'confirm':'modify'}}" bindreset='reset'>
+			<view class="box">
+				<view class="property">输入姓名</view>
+				<input type="text" value="{{name}}" name="name" bindfocus="namefocus" 
+				class="{{input==1?'inputfocus':'inputblur'}}" bindblur="nameblur" placeholder="请输入真实姓名" 
+				bindinput="regInput"
+				placeholderClass="placlass"></input>
+			</view>
+			<view class="box">
+				<view class="property">身份证号</view>
+				<input type="idcard" name="idcard" value="{{idcard}}" bindinput="inputidcard" bindfocus="idfocus" class="{{input==2?'inputfocus':'inputblur'}}" bindblur="idblur" placeholder="请输入正确的身份证好嘛" placeholderClass="placlass"></input>
+			</view>
+			<view class="box">
+				<view class="property">工作证明</view>
+				<view>
+					<view bindtap="showimg">
+						<image src="{{img}}" class="img"></image>
+					</view>
+					<view class="select" bindtap="select">添加图片</view>
+				</view>
+			</view>
+			<view wx:if="{{3==state}}">
+				<view style="margin-top: 60rpx;margin-bottom: 60rpx;">
+					<view class="des">认证审核中...</view>
+					<view class="des">审核通过后，您就可以正常开单了！</view>
+				</view>
+			</view>
+				<view wx:if="{{1==state}}">
+				<view style="margin-top: 60rpx;margin-bottom: 60rpx;">
+					<view class="des">感谢您，认证成功！</view>
+					<view class="des">稍后您将可以持续使用认证用户的一切权益</view>
+				</view>
+				<image src="https://wxprogram.zc5l.com/img/success_icon.png" class="attestedimg"></image>
+			</view>
+				<view wx:if="{{2==state}}">
+				<view style="margin-top: 60rpx;margin-bottom: 60rpx;">
+					<view class="des">认证失败</view>
+					<view class="des">失败原因:{{causefailure}}</view>
+				</view>
+			</view>
+			<button disabled="{{attestedunmodified}}" class="confirm" hover-class="confirmh" 
+			formType="{{2==state&&!clear?'reset':'submit'}}">
+			{{2==state&&!clear?'确认':'申请认证'}}</button>
+		</form>
+	</view>
+</view>

@@ -1,0 +1,49 @@
+<view class="background">
+	<view class="titleimgbox"></view>
+	<view class="titledes">请上传本人身份证照片</view>
+	<view class="tipbox">
+		<view class="line"></view>
+		<view class="titletip">信息保密</view>
+		<view class="line"></view>
+	</view>
+	<view class="propety">· 医院/机构</view>
+	<view class="sbox">
+		<view class="select">{{hospitallist[hospitalselectidx].name}}</view>
+		<dropdbox style="position: relative;top: 0rpx;left: 0rpx;width: 60rpx;" selectdata="{{hospitallist}}"
+			show="{{hospitalboxshow}}" bind:select="hospitalselect" bind:dropboxshow="hospitalboxshow" boxleft="-260">
+		</dropdbox>
+	</view>
+	<view class="propety">· 职称</view>
+	<view class="sbox">
+		<view class="select">{{jobtitlelist[jobtitleselectidx].name}}</view>
+		<dropdbox style="position: relative;top: 0rpx;left:0rpx;width: 60rpx;" selectdata="{{jobtitlelist}}"
+			show="{{jobtitleboxshow}}" bind:select="jobtitleselect" bind:dropboxshow="jobtitleboxshow" boxleft="-260">
+		</dropdbox>
+	</view>
+	<view class="propety">· 联系电话</view>
+	<view class="inputbox">
+		<input wx:if="{{!failshow}}" name="phone" value="{{phone}}" bindinput="inputphone" class="input" placeholder="座机或电话"
+			placeholderClass="placlass"></input>
+		<view wx:else class="{{0==phone.length?'phonet':'phoneta'}}">{{0==phone.length?'座机或电话':phone}}</view>
+	</view>
+	<view class="propety">· 资格证上传</view>
+	<view class="imgbox">
+		<view wx:if="{{2>imglist.length}}" class="addimg" hover-class="addimgh" bindtap="addimg"></view>
+		<label wx:for="{{imglist}}" wx:key="index">
+			<view id="{{index}}" bindtap="changeimg"
+				class="{{index==imglist.length-1?'imge':(2==imglist.length?'imgt':'imge')}}">
+				<image style="width: 54rpx;height: 54rpx;" src="{{item.url}}"></image>
+			</view>
+		</label>
+	</view>
+	<!-- <view>{{auditfailercause}}</view> -->
+	<view class="confirm" hover-class="confirmh" bindtap="confirm">提交</view>
+</view>
+<!-- <view wx:if="{{imgshow}}" class="imgshow">
+	<view class="add">更换图片</view>
+</view>
+<view wx:if="{{failshow}}" class="failbackground" bindtap="closefail">
+	<view class="failbox">
+		<view class="failshow">{{failtip}}</view>
+	</view>
+</view> -->

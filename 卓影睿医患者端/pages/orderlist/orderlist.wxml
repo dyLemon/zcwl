@@ -1,0 +1,57 @@
+<view class="done"></view>
+<view class="background">
+    <view class="content">
+        <view class="blank"></view>
+        <view class="title">
+            <view class="titlebarstay">
+                <view bindtap="all" class="{{select==0?'press':'put'}}">全部</view>
+                <view class="line"></view>
+                <view bindtap="paying" class="{{select==1?'press':'put'}}">待支付</view>
+                <view class="line"></view>
+                <view bindtap="payed" class="{{select==2?'press':'put'}}">已完成</view>
+            </view>
+        </view>
+        <scroll-view bindscroll="scrollTopFun" scrollY="true" style="height:{{height}}rpx" throttle="{{true}}">
+            <view wx:if="{{0!=list.length}}">
+                <view class="oderlist" wx:for="{{list}}" wx:key="key">
+                    <view bindtap="select" class="{{0==item.paystate||4==item.paystate||3==item.paystate||1==item.paystate?'table':'tablet'}}" id="{{index}}">
+                        <view class="ttitle">
+                            <view class="tname">{{item.patientname}}</view>
+                            <view class="ttime">{{item.createtime}}</view>
+                        </view>
+                        <view class="tshow">
+                            <image src="{{resource}}/{{item.actor_display_url2}}&token={{tk}}"></image>
+                            <view class="tdetails">
+                                <view class="action">{{item.description}}</view>
+                                <view class="count">
+                                    <text>动作数量：{{item.acotorcount}}</text>
+                                </view>
+                                <view class="price">￥{{price.priced(item.price,2)}}</view>
+                                <view class="statebox">
+                                    <view wx:if="{{0!=item.price&&(0==item.paystate||4==item.paystate||3==item.paystate||1==item.paystate)}}">
+                                        <button catchtap="pay" class="pay" hoverClass="payh" id="{{index}}">支付</button>
+                                    </view>
+                                    <view wx:elif="{{0==item.isallowrefund&&2==item.paystate}}">
+                                    <!-- <view wx:elif="{{true}}"> -->
+                                        <button catchtap="refund" class="pay" hoverClass="payh" id="{{index}}">退款</button>
+                                    </view>
+                                    <view class="state">{{0==item.price?'已完成':(2==item.paystate?'已完成':3==item.paystate?'已退款':'待支付')}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="tips" wx:if="{{0==item.paystate||4==item.paystate||3==item.paystate||1==item.paystate}}">
+                            <view class="img"></view>
+                            <view class="tc">付款须知</view>
+                            <view class="tcs">购买并观看后本方案将不可退款，未观看的可正常退款。</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="empty" wx:else>
+                <image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- <view class="bottom"></view> -->
+</view>
+<wxs module="price" src="../../price.wxs" />

@@ -1,0 +1,2 @@
+<canvas canvas-id='canvas' bind:showqr="showqr"
+style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;"></canvas>

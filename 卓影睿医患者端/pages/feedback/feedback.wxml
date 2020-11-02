@@ -1,0 +1,102 @@
+<view class='help'>
+<scroll-view scroll-y style="height:{{height}}rpx">
+
+	<view class="help-box">
+		<view class='help_item' wx:for="{{freelist.acts}}" wx:key="{{index}}">
+			<!-- 点击得哪一行 -->
+			<view>
+				<view class='title'>
+					<view class="left">
+						<image src="{{surl}}/{{item.actor_display_url2}}&token={{stoken}}" data-item="{{item}}" bindtap="videolist">
+						</image>
+            <image src="{{surl}}/img/play_icon_n.png" class="iconplay"></image>
+					</view>
+					<view class="right">
+						<view>
+							第一个动作: {{item.actor_name}}
+						</view>
+						<view>
+							重复次数: {{item.repeat_count}}次
+						</view>
+						<view>
+							保持时间: {{item.keep_time}}秒
+						</view>
+						<view>
+							练习组数:{{freelist.day_num}}组
+						</view>
+						<view>
+							医生指示:{{item.equipment}}
+						</view>
+					</view>
+				</view>
+				<!-- <view class="br" data-index='{{index + 1}}' data-item="{{item}}" catchtap='panel'  > -->
+				<view class="br" data-index='{{index + 1}}' data-item="{{item}}"  >
+					<text></text>
+					<view class="comment">评论反馈</view>
+					<text></text>
+					<!-- <view class="{{showIndex ==index+1?'img':'imgopen'}}"></view> -->
+					<view class="img"></view>
+				</view>
+			</view>
+
+			<!-- 展开得内容 -->
+			<!-- <view class='detail' wx:if="{{showIndex == index+1}}"> -->
+			<view class='detail'>
+				<radio-group class="detailcheck" bindchange="checkchange" data-id="{{item}}">
+					<label wx:for='{{item.checklist}}' wx:key="{{item.id}}">
+						<radio value="{{item.id}}" checked="{{item.check}}" class="cb">{{item.name}}</radio>
+					</label>
+				</radio-group>
+				<textarea wx:if="{{textshow}}" placeholder="请您在此处输入您的个人反馈" placeholder-style="color:rgb(193,193,193)" placeholder-style="font-size:30rpx;color:rgb(193,193,193)" value="{{item.text}}" bindinput="binditext" data-id="{{item}}"  minlength="{{min}}" maxlength="{{max}}"
+				style="{{item.text? 'border: 1px solid rgb(46, 219,208)' : ' border: 1px solid rgba(177, 177, 179, 0.856)' }}"
+				>
+				
+					<text class="currentWordNumber">{{item.text.length}}/{{max}}个字</text>
+				</textarea>
+				<view class="text" wx:else>{{item.text?item.text:'请您在此处输入您的个人反馈'}}</view>
+				</view>
+			</view>
+	</view>	
+</scroll-view>
+	<button bindtap="submit" hoverClass="confirmh">提交</button>
+
+
+	<!-- <view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" catchtap='hideBaitiaoView'></view> -->
+	<!-- 弹出层 -->
+	<!-- <view class="modal-dialog" wx:if="{{showModal}}">
+	<view class="img" bindtap="hideBaitiaoView"> </view>
+
+		<view class="modal-content">
+			<view>恭喜！</view>
+			<view>这个训练计划已经完成啦！</view>
+			<view>共完成{{freelist.acts.length}}个动作</view>
+			<view>周期：{{strat_time}}到{{end_time}}</view>
+		  
+		</view>
+	</view> -->
+
+	<view class="modal-mask" catchtouchmove="preventTouchMove"  wx:if="{{showModal}}" catchtap='hideBaitiaoView'></view>
+	<view class="modal-img" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"  catchtap='hideBaitiaoView'></view>
+	<!-- 弹出层 -->
+	<view class="modals-dialog" wx:if="{{showModal}}">
+		<view class="modals-content">
+			<view>恭喜你！</view>
+			<view>这个训练计划已经完成啦！</view>
+			<view class="model-bom">
+					<view class="left">
+						<view class="cfff">动作</view>
+						{{freelist.acts.length}} 个
+					</view>
+					<view class="hr"></view>
+					<view class="right">
+						<view class="cfff">时间</view>
+						<view>{{strat_time}}
+							<text class="cfff">至</text></view>
+						{{end_time}}
+						</view>
+			</view>
+		  
+		</view>
+	</view>
+	
+</view>	

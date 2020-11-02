@@ -1,0 +1,18 @@
+<view class="background">
+	<view class="titlebg"></view>
+	<view class="contentbg" style="height:{{height}}rpx;">
+		<view class="rowboxt">
+			<view class="property">身份证号</view>
+			<view class="content">{{idcard}}</view>
+		</view>
+		<view class="rowboxt">
+			<text class="property" space="ensp">姓    名</text>
+			<view class="content">{{name}}</view>
+		</view>
+		<view class="rowboxt">
+			<view class="property">出身日期</view>
+			<view class="content">{{birth}}</view>
+		</view>
+    <view class="icon"></view>
+	</view>
+</view>

@@ -1,0 +1,48 @@
+
+<view class="background">
+	<video class="cvideo" custom-cache="{{false}}"  src="{{url}}"  ></video>
+	<view class="sv">
+		<scroll-view scrollY style="height:{{height}}rpx" >
+			<view class="aname">{{list.actor_name}}</view>
+			<view class="details">
+				<view class="detail">
+					<view class="dtext">肌肉群：{{list.actor_musle}}</view>
+					<view class="dtext">禁忌：{{list.actor_remind}}</view>
+					<view class="dtext">设备：{{list.actor_equipment}}</view>
+					<view class="dtext">描述：{{list.Doc_des}}</view>
+				</view>
+				<view class="line"></view>
+				<view class="key">
+					<view class="keye">动作重复次数</view>
+					<view class="vertical"></view>
+					<view class="keye">动作保持时间</view>
+					<view class="vertical"></view>
+					<view class="keye">视频重复次数</view>
+				</view>
+				<view class="value">
+					<view class="valuee">
+						<view class="vcount">{{list.repeat_count}}</view>
+						<view class="vunit">次</view>
+					</view>
+					<view class="valuee">
+						<view class="vcount">{{list.keep_time}}</view>
+						<view class="vunit">秒</view>
+					</view>
+					<view class="valuee">
+						<view class="vcount">{{list.play_count}}</view>
+						<view class="vunit">次</view>
+					</view>
+				</view>
+			
+			</view>
+			<view class="tips">
+				<view class="title">医生提示</view>
+				<view class="content">{{list.actor_des}}</view>
+			</view>
+		</scroll-view>
+	</view>
+
+
+
+
+</view>

@@ -1,0 +1,12 @@
+<view class="line"></view>
+<view class="background">
+  <view class="tipbox">
+      <view class="tips">选择擅长标签,让患者更了解你</view>
+  </view>
+  <view class="content">
+    <label wx:for="{{taglist}}" wx:key="key">
+      <view class="{{item.select?'tagh':'tag'}}" id='{{index}}' bindtap="select">{{item.name}}</view>
+    </label>
+  </view>
+  <button class="confirm" bindtap="confirm">提交</button>
+</view>

@@ -1,0 +1,3 @@
+<text>pages/neterror/neterror.wxml</text>
+<button bindtap="close">asd</button>
+<navigator openType="exit" target="miniProgram">取消</navigator>

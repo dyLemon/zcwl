@@ -1,0 +1,106 @@
+page,.quesbox,.questopic{
+  height: 100%;
+
+}
+.quesbox{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  position: relative;
+}
+.quesbox,.questbg{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url(https://wxprogram.zc5l.com/img/research_bg.png) no-repeat center/cover;
+}
+
+.quesbox .quetview{
+  padding: 90rpx 120rpx 0 120rpx;
+  box-sizing: border-box;
+}
+
+.quesbox .quetview .title{
+  color:#fff;
+  font-size:38rpx;
+}
+.quesbox .quetview .titlemsg{
+  display: inline-block;
+  font-size: 24rpx;
+  color: rgb(160, 169, 238);
+  margin-top:24rpx;
+  line-height: 36rpx;
+}
+
+.quesbox .quetview .title:nth-of-type(1){
+  margin-top:8rpx;
+}
+
+.quesbox button{
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: rgb(34, 34, 34);
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  position: absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: -600rpx;
+  background: #fff;
+  margin: auto;
+  border: 1px solid rgb(181, 181, 181);
+}
+
+.quesbox button:active{
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  position: absolute;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: -600rpx;
+  margin: auto;
+  background: #3c4cc1;
+  border: 1px solid #fff;
+
+}
+
+radio .wx-radio-input {
+  height: 40rpx;
+  width: 40rpx;
+  margin-top: -4rpx;
+  border-radius: 50%;
+  border:none;
+  background:  url("https://wxprogram.zc5l.com/img/select_single_icon_n.png") no-repeat center/cover;
+}
+
+/* 选中 */
+ radio .wx-radio-input.wx-radio-input-checked {
+  background: url("https://wxprogram.zc5l.com/img/select_single_icon_p.png") no-repeat center/cover;
+}
+
+ radio .wx-radio-input.wx-radio-input-checked::before {
+  text-align: center;
+  color: transparent; /* 对勾颜色 白色 */
+  background: none;
+}
+
+
+ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  border-radius: 50%;/* 圆角 */
+  width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size:30rpx; /* 对勾大小 30rpx */
+  color:rgb(74, 221, 231); /* 对勾颜色 白色 */
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}

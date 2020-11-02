@@ -1,0 +1,103 @@
+page {
+    height: 100%;
+}
+
+.background {
+    background-color: rgb(241,242,243);
+    height: 100%;
+}
+
+.title {
+    height: 117rpx;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box {
+    margin-left: 40rpx;
+    width: 600rpx;
+    height: 60rpx;
+    background-color: rgb(241,242,243);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 30rpx;
+}
+
+.box image {
+    margin-left: 20rpx;
+    margin-right: 10rpx;
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.key {
+    width: 480rpx;
+    height: 80rpx;
+    font-size: 24rpx;
+}
+
+.reset {
+    width: 27rpx;
+    height: 27rpx;
+    background-image: url(https://wxprogram.zc5l.com/img/deleat_icon.png);
+    background-size: 100% 100%;
+}
+
+.cancel {
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    border: none;
+    width: 80rpx;
+    margin-left: 16rpx;
+}
+
+.tableh {
+    display: flex;
+    height: 90rpx;
+    border-bottom: 1rpx solid rgb(181,181,181);
+    font-size: 28rpx;
+    color: rgb(96,98,102);
+}
+
+.table {
+    display: flex;
+    border-bottom: 1rpx solid rgb(243,241,241);
+    font-size: 26rpx;
+    color: rgb(144,147,153);
+}
+
+.name {
+    width: 250rpx;
+    text-align: center;
+    line-height: 90rpx;
+    padding-right: 50rpx;
+}
+
+.time {
+    width: 250rpx;
+    text-align: center;
+    line-height: 90rpx;
+    padding-right: 10rpx;
+}
+
+.times {
+    width: 250rpx;
+    line-height: 90rpx;
+    text-align: center;
+}
+
+.empty {
+    height: 934rpx;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.empty image {
+    height: 200rpx;
+    width: 260rpx;
+}

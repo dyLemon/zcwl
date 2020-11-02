@@ -1,0 +1,4 @@
+<view class="background">
+	<view class="bgimg"></view>
+	<button class="confirm" hover-class="confirmh" bindtap="confirm">开始认证</button>
+</view>

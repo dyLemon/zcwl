@@ -1,0 +1,16 @@
+<view class="background">
+  <view class="title">医生基于患者的基本信息便于提供更加专业的指导！</view>
+  <view wx:if="{{''==name}}" class="create" bindtap="change">
+    <view class="icone"></view>
+    <view class="name">新建患者信息</view>
+  </view>
+  <view wx:else class="patient">
+    <view class="icone"></view>
+    <view class="name">{{name}}</view>
+    <view class="age">{{age}}岁</view>
+    <view class="info">{{painfularea}}</view>
+    <view class="change" bindtap="change">修改</view>
+    <view class="sicon"></view>
+  </view>
+  <view class="confirm" hover-class="confirmh" bindtap="confirm">下一步</view>
+</view>

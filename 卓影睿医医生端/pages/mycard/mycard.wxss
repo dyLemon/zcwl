@@ -1,0 +1,219 @@
+page{
+  height: 100%;
+}
+.corbox{
+  height: 100%;
+  border-top: 4rpx solid rgb(241, 242, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titleimgbox{
+  width: 100%;
+  height: 172rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/technological_process_1.png);
+  background-size: 100% 100%;
+  border-top: 2px solid rgb(241, 242, 243);
+  border-bottom: 4px solid rgb(241, 242, 243);
+}
+.titledes{
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  height: 30rpx;
+  color: rgb(20, 20, 20);
+}
+.titletip{
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  height: 24rpx;
+  margin-top: 24rpx;
+}
+.corbox .title{
+  font-size: 36rpx;
+  line-height: 36rpx;
+  color: rgb(20, 20, 20);
+  width: 680rpx;
+  margin-top:34rpx;
+  margin-bottom: 10rpx;
+}
+.corbox .mintitle{
+  width: 680rpx;
+  font-size: 24rpx;
+  color: rgb(96, 98, 102);
+  line-height: 44rpx;
+}
+
+.corbox .bgface{
+  width: 556rpx;
+  height: 360rpx;
+  margin-top: 20rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/user_id_icon_n_front.png);
+  background-size: 100% 100%;
+}
+.corbox .bgface:active{
+  background: url(https://wxprogram.zc5l.com/img/user_id_icon_p_front.png) no-repeat center/contain;
+  background-size: 100% 100%;
+}
+.corbox .bgsetface{
+  width: 556rpx;
+  height: 360rpx;
+  position: absolute;
+  top:701rpx;
+  background: url(https://wxprogram.zc5l.com/img/user_id_icon_n_back.png) no-repeat center/contain;
+  background-size: 100% 100%;
+}
+.corbox .bgsetface:active{
+  background: url(https://wxprogram.zc5l.com/img/user_id_icon_p_back.png) no-repeat center/contain;
+  background-size: 100% 100%;
+}
+.bgtext{
+  font-size: 28rpx;
+  color:rgb(20, 20, 20);
+  text-align: center;
+  width: 100%;
+  position: relative;
+  top: 174rpx;
+}
+.camera{
+  width:556rpx;
+  height: 360rpx;
+}
+.imgbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bimgbox{
+  position:absolute;
+  top:701rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.attest{
+  margin-top: 18rpx;
+  color: rgb(60,76,193);
+  font-size: 24rpx;
+}
+.identifybg{
+  margin-top: 34rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.bidentifybg{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:645rpx;
+  text-align: center;
+}
+.contentbox{
+  background-color: rgb(248, 248, 248);
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  width: 750rpx;
+  height: 286rpx;
+  padding-top: 20rpx;
+}
+.rowbox{
+  display: flex;
+  align-items: center;
+}
+.property{
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+  line-height: 70rpx;
+  margin-left: 97rpx;
+  width: 120rpx;
+}
+.icon{
+  width: 102rpx;
+  height: 64rpx;
+  margin-left: 50rpx;
+  background-image: url(https://wxprogram.zc5l.com/img/ocr_pic_icon.png);
+  background-size: 100% 100%;
+}
+.rtext{
+  font-size: 28rpx;
+  color: rgb(34, 34, 34);
+  margin-left: 50rpx;
+}
+.selecttoolbackground{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  background-color: rgba(0, 0, 0,0.5);
+}
+.footbox{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  background-color:rgb(241, 242, 243);
+  display: flex;
+  flex-direction: column;
+}
+.camerabtn{
+  width: 100%;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: rgb(34, 34, 34);
+  font-size: 30rpx;
+  height: 110rpx;
+  text-align: center;
+  line-height: 110rpx;
+  background-color: white;
+  border-bottom: 1px solid rgb(241, 242, 243);
+}
+.selectbtn{
+  width: 100%;
+  height: 110rpx;
+  color: rgb(34, 34, 34);
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 110rpx;
+  background-color: white;
+}
+.cancelbtn{
+  margin-top: 14rpx;
+  width: 100%;
+  color: rgb(34, 34, 34);
+  font-size: 30rpx;
+  height: 110rpx;
+  text-align: center;
+  line-height: 110rpx;
+  background-color: white;
+}
+.shutter{
+  position: absolute;
+  bottom: 76rpx;
+  width: 690rpx;
+  height: 80rpx;
+  color: white;
+  line-height: 80rpx;
+  text-align: center;border-radius: 8rpx;
+  background-color: rgb(60,76,193);
+}
+.shutterh{
+  background-color: #7cb5fb;
+}
+
+.confirm{
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  height: 80rpx;
+  color: white;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 0;
+  background-color: rgb(60,76,193);
+}
+.confirmh{
+  background-color: #7cb5fb;
+}

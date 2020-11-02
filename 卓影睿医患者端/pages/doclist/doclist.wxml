@@ -1,0 +1,59 @@
+<view class="background">
+  <view class="titlebox">
+    <view class="searchbox" bindtap="tosearch">
+      <view class="searchicon"></view>
+      <input class="searchinput" disabled="true" type="text" value="{{searchkey}}" placeholder="搜索医生姓名、医院、病种等信息" confirm-type='search' 
+      bindconfirm="onsearch"/>
+      <!-- <view class="clear" hover-class="clearh" bindtap="clear"></view> -->
+    </view>
+    <!-- <view class="scanqr" hover-class="scanqrh" bindtap="scanqr"></view> -->
+  </view>
+  <!-- <view wx:if="{{shownopublic}}" class="nopublicbox">
+    <view class="nopicon"></view>
+    <view class="infobox">
+      <view class="pname">卓影睿医</view>
+      <view class="pdes">关注公众号后获取更多信息</view>
+    </view>
+    <button open-type="contact" class="attention" hover-class="attentionh" bindtap="attention" bindcontact="attentionreturn">关注</button>
+    <view class="closep" bindtap="closepno"></view>
+  </view>  -->
+  <!-- <view class="{{shownopublic?'spcontentbg':'contentbg'}}"> -->
+    <!-- <scroll-view scroll-y="{{true}}" style="height: {{shownopublic?height-40:height}}px;"> -->
+  <view class="contentbg">
+    <scroll-view wx:if="{{0!=doclist.length}}" scroll-y="{{true}}" style="height:{{height}}px;">
+      <label wx:for="{{doclist}}" wx:key='key'>
+        <view class="tablebox" bindtap="select" id="{{index}}">
+          <view class="perinfobox">
+            <view class="avatar"
+              style="background-image: url({{''==item.icon_url?(0==item.sex?'https://wxprogram.zc5l.com/img/Doc_male_icon.png':'https://wxprogram.zc5l.com/img/Doc_female_icon.png'):resource+item.icon_url}});">
+            </view>
+            <view class="baseinfobox">
+              <view class="namebox">
+                <view class="name">{{item.name}}</view>
+                <view class="jobtitle">{{item.job_title}}</view>
+              </view>
+              <view class="hospital">{{item.hospital_name}}</view>
+            </view>
+          </view>
+          <view class="goodatbox">
+            <view class="goodaticon"></view>
+            <view class="propertybox">
+              <view class="property">专业擅长：</view>
+              <view class="goodat">{{item.introduce}}</view>
+              <!-- <view class="goodat">鼎折覆餗水电费水电费水电费所发生的水电费水电费水电费水电费水电费水电费水电费说的</view> -->
+            </view>
+          </view>
+          <view class="tagbox">
+            <view class="tagicon"></view>
+            <label wx:for="{{item.tag}}" wx:key='key' wx:for-item="tag" class="tbox">
+              <view class="tag">{{tag}}</view>
+            </label>
+          </view>
+        </view>
+      </label>
+    </scroll-view>
+    <view wx:else class="empty">
+      <image class="epimg" src="https://wxprogram.zc5l.com/img/empty_exercise_plan1.png"></image>
+    </view>
+  </view>
+</view>
