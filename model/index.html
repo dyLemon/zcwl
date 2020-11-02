@@ -1,0 +1,1067 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多模态三维医学影像手术计划系统-模型查看</title>
+    <link rel="shortcut icon" href="http://static.zc5l.com/img/main_logo_3d_32.ico">
+    <meta name="viewport"
+        content="user-scalable=no, width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport"
+        name="viewport">
+
+    <style>
+        .sliderbar {
+            position: relative;
+            width: 200px;
+        }
+
+        /* 滑动条样式 */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 252px;
+            border-radius: 10px;
+            /*这个属性设置使填充进度条时的图形为圆角*/
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
+
+        /* 设置轨道样式 */
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 3px;
+            border-radius: 5px;
+            /*将轨道设为圆角的*/
+            /* box-shadow: 0 1px 1px #def3f8, inset 0 0.125em 0.125em #0d1112; 轨道内置阴影效果 */
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        /* 设置滑块样式 */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 8px;
+            width: 8px;
+            margin-top: -2.5px;
+            /*使滑块超出轨道部分的偏移量相等*/
+            background: #ffffff;
+            border-radius: 50%;
+            /*外观设置为圆形*/
+            border: solid 0.125em rgba(205, 224, 230, 0.5);
+            /*设置边框*/
+            box-shadow: 0 0.125em 0.125em #3b4547;
+            /*添加底部阴影*/
+        }
+
+        .div1 {
+            height: 8px;
+            border-radius: 30px;
+            /* background: rgb(96, 133, 253); */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #input1 {
+            position: absolute;
+            margin: 0;
+            left: 0;
+            top: 0;
+            height: 8px;
+            background: linear-gradient(to right, rgba(72, 194, 169, 0.2), rgba(72, 194, 169, 1));
+        }
+
+        .input2 {
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            opacity: 0;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            /*去除默认样式*/
+            /*border-radius: 15px;*/
+            padding: 0;
+            border: none;
+
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px !important;
+            /*去除默认样式*/
+            cursor: e-resize;
+            margin-top: -4px;
+            width: 20px;
+            border: none;
+            height: 10px;
+            /*background: none repeat scroll 0 0 #5891f5;*/
+            background: url("/static/MedProViewCloud/img/3d_roll_icon.png");
+            /*-webkit-box-shadow: 0 -1px 1px #fc7701 inset;*/
+        }
+
+
+
+
+
+        .img_icon {
+            display: none;
+        }
+
+        .phoneshowimg {
+            display: none;
+        }
+
+        /* 多模态三维手术计划系统 */
+        .phoneshow {
+            display: none;
+        }
+
+        .showmore {
+            margin: auto;
+            line-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            color: #1ab394;
+            margin-left: 20px;
+        }
+
+        .pcshowmore {
+            margin: auto;
+            line-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .title img {
+
+            margin-right: 10px;
+        }
+
+        .pcshowimg,
+        .showimg {
+            width: 24px !important;
+            height: 18px !important;
+        }
+
+        @media screen and (max-width: 550px) {
+            .img_icon {
+                display: block;
+                width: 20px;
+                float: left;
+                top: 3vw;
+                position: absolute;
+                left: 24px;
+            }
+
+            .pcshowmore {
+                display: none;
+            }
+
+            .titleshow {
+                margin: auto;
+            }
+
+            .phoneshowimg {
+                display: block;
+                width: 30px !important;
+                height: 22px !important;
+
+            }
+
+            /* 多模态三维手术计划系统 */
+            .phoneshow {
+                display: block;
+                width: 30px !important;
+                height: 22px !important;
+
+            }
+
+            .showmore {
+                display: none;
+            }
+        }
+
+        @media screen and (orientation: landscape) {
+            #main {
+                width: 100%;
+                height: 100%;
+            }
+
+            #canvas {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background: radial-gradient(circle, #3c4048, #1a1d21 90%);
+            }
+        }
+
+        @media screen and (max-width: 1366px) {
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+            }
+
+            #main {
+                width: 100%;
+                height: 100%;
+            }
+
+            #canvas {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background: radial-gradient(circle, #3c4048, #1a1d21 90%);
+            }
+        }
+
+        /* 横屏效果 */
+
+        @media screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : landscape) {
+            #header {
+                height: 2rem;
+            }
+
+            .title {
+                height: 2rem !important;
+                line-height: 2rem !important;
+                font-size: 1rem !important;
+            }
+
+            .controls-footer2 {
+                height: 2rem !important;
+            }
+
+            .controls-item-lower2 {
+                max-height: 20vw !important;
+            }
+
+            .controls-footer-item2 {
+                width: 1rem !important;
+                margin: 0 3rem;
+            }
+
+            .controls-footer-center {
+                font-size: 1rem !important;
+            }
+
+            .controls2 {
+                position: absolute;
+                bottom: 3.667vw !important;
+            }
+
+            .controls-item2 {
+                height: 2rem !important;
+                line-height: 2rem !important;
+            }
+
+            .controls-name2 {
+                font-size: 1rem;
+            }
+
+            .header-menu {
+                top: 10vw !important;
+            }
+
+            .eye-btn {
+                background-size: 100% !important;
+                margin-top: -0.7rem !important;
+            }
+
+            .color-picker2 {
+                width: 3vw !important;
+                height: 3vw !important;
+                margin-top: -1.5rem !important;
+            }
+
+            .study_info {
+                top: 6vw !important;
+                font-size: 1rem !important;
+            }
+
+            .color-pan2 {
+                height: 18vw !important;
+            }
+
+            .operation-img {
+                width: 60vw !important;
+                height: 40vw !important;
+                top: 50% !important;
+                margin-left: 10%;
+            }
+        }
+
+        #color {
+            border: 0;
+        }
+
+        ::-webkit-color-swatch-wrapper {
+            background-color: #ffffff;
+        }
+
+        ::-webkit-color-swatch {
+            position: relative;
+        }
+
+
+        .color-pan {
+            position: relative;
+        }
+
+        .colorCan {
+            width: 20px;
+            height: 20px;
+            background: #1ab394;
+
+        }
+
+        .colorBox {
+            width: 220px;
+            height: 248px;
+            background: #ffffff;
+            position: fixed;
+            right: 276px;
+            top: 178px;
+            display: none;
+        }
+
+        .colorTitle {
+            height: 28px;
+            background: #2f4050;
+            color: #1ab394;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .colorX {
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .colorBox .colorShow {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: red;
+            margin: 10px 0 0 10px;
+        }
+
+        #MyCanvas {
+            width: 220px;
+            height: 170px;
+        }
+
+        .loading-bars {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            height: 3px;
+            background-color: #48C2A9;
+        }
+
+        .loading-proess {
+            color: #48c2a9;
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, {
+            passive: false
+        });
+    </script>
+    <script src="https://cdn.bootcss.com/pako/1.0.10/pako.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+    <script src="http://static.zc5l.com/lib/vue.min.js"></script>
+    <script src="http://static.zc5l.com/model_lib/three.min.js"></script>
+
+    <!-- 手机 -->
+    <script type="text/x-template" id="mobile-controls">
+        <div>
+            <div class="controls-footer2">
+                <div class="controls-footer-item2" @click="viewReset" title="视角重置">
+                    <img src="/static/MedProViewCloud/img/3d_back_btn_2.png">
+                </div>
+                <div class="controls-footer-center">器官列表</div>
+                <div class="controls-footer-item2" @click="controlsExpand">
+                    <div class="upbtn2" :class="{rotate180deg:controlsShow}"></div>
+                </div>
+            </div>
+            <section class="controls-container2" :class="{visible:modalShow}" @touchstart="modalClick" @mousedown="modalClick">
+                <div class="controls2" :class="{show:controlsShow}" @transitionend="controlsTransitionEnd">
+                    <div class="controls-item-upper2" v-if="colorPanShow">
+                        <div class="opacity-bar2" ref="bar" v-if="!verticesLimit">
+                            <img
+                                src="/static/MedProViewCloud/img/slider_mobile.png"
+                                class="my-slider2"
+                                :style="{left:88.06*selectedPart.opacity+'%'}"
+                                draggable="false"
+                                ref="slider"
+                                @touchstart="sliderMouseDown"
+                                @mousedown="sliderMouseDown"
+                            >
+                        </div>
+                        <div class="color-pan2">
+                            <div
+                                class="color-picker-item2"
+                                :class="{selected:color===selectedPart.color}"
+                                v-for="(color,index) in colors"
+                                :style="{'background-color':color}"
+                                @click="colorSelecting(color)"
+                            ></div>
+                            
+                        </div>
+                    </div>
+                    <div class="controls-item-lower2" @touchmove.stop="">
+                        <div class="controls-item2" :class="{selected:part===selectedPart}" v-for="(part,index) in parts" :key="part.id">
+                            <div class="controls-displaybtn2" :class="{hide:!part.show}" @click="partShowChange(part)">
+                                <div class="eye-btn" :class="{hide:!part.show}"></div>
+                            </div>
+                            <div class="controls-name2">
+                                <span>{{part.name}}</span>
+                            </div>
+                            <div class="color-picker-container2">
+                                <div class="color-picker2" :style="{'background-color':part.color}" @click="colorPanbtnClick(part)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <!-- pc -->
+    <script type="text/x-template" id="pc-controls">
+
+        <div class="controls-container">
+            <div class="updownbtn-container">
+                <div
+                    class="upbtn" 
+                    :class="{'visible':isUpbtnShow}"
+                    @click="upbtnClick(-1)"
+                ></div>
+            </div>
+            <div class="controls" ref="controls">
+                <div class="controls-item" v-for="part in parts" :key="part.id">
+                    <div class="controls-item-upper">
+                        <div class="controls-displaybtn" @click="partShowChange(part)">
+                            <img v-show="part.show" src="/static/MedProViewCloud/img/3d_eye_btn_n.png" class="absolute" draggable="false">
+                            <img v-show="!part.show" src="/static/MedProViewCloud/img/3d_eye_btn_p.png" class="absolute" draggable="false">
+                        </div>
+                        <div class="controls-name">
+                            <span>{{part.name}}</span>
+                            <div class="color-picker" :style="{'background-color':part.color}" @click="colorPanbtnClick(part)"></div>
+                        </div>
+                    </div>
+                    <div class="controls-item-lower">
+                        <div class="opacity-bar" ref="pcbar">
+                            <img
+                                src="/static/MedProViewCloud/img/3d_roll_icon.png"
+                                class="my-slider"
+                                id="ww"
+                                :style="{left:228*part.opacity+'px'}"
+                                draggable="false"
+                                :ref="part.id+'slider'"
+                                @touchstart="sliderMouseDown(part.id+'slider',part)"
+                                @mousedown="sliderMouseDown(part.id+'slider',part)"
+                            >
+                        </div>
+
+                           
+                  
+                        <!-- 颜色盘 -->
+                        <div class="color-pan" v-if="part.colorPanShow">
+                            <div
+                                v-for="(color,index) in colors"
+                                :class="[color===part.color?'color-picker-item-selected':'color-picker-item']"
+                                :style="{'background-color':color}"
+                                @click="colorSelecting(color,part)"
+                            ></div>
+                            自定义颜色：<div class="colorCan"   :style="{'background-color':part.color}" @click="onchange(part)"></div>
+                            <div class="colorBox"> 
+                                    <div class="colorTitle">
+                                        <p>自定义颜色</p>
+                                        <p class="colorX" @click="showX(part)">X</p>
+                                    </div>
+                                    <p class="colorShow"  :style="{'background-color':part.color}" ></p>
+                                    <canvas id="MyCanvas"></canvas>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            <div class="updownbtn-container">
+                <div
+                    class="upbtn"
+                    :class="{'visible':isUpbtnShow}"
+                    style="transform:rotate(180deg)"
+                    @click="upbtnClick(1)"
+                ></div>
+            </div>
+            <div class="controls-footer">
+                <div class="controls-footer-item" @click="viewReset" title="视角重置">
+                    <img src="/static/MedProViewCloud/img/3d_back_btn_n.png" class="absolute">
+                    <img src="/static/MedProViewCloud/img/3d_back_btn_p.png" class="hover-show absolute">
+                </div>
+            </div>
+        </div>
+    </script>
+</head>
+
+<body>
+    <div class="board" id="loading" v-if="!done">
+        <div class="loading">
+            <p class="loading-text"> {{size}} % </p>
+            <div class="loading-bar-bg"></div>
+            <div class="loading-bars" id="loading-bar" :style="{width:size+'%'}"></div>
+            <p class="loading-proess"> {{proessString}} </p>
+
+        </div>
+    </div>
+    <header id="header">
+        <img src="./static/MedProViewCloud/img/fanhui.png" class="img_icon" onclick="backTomodel()">
+        <div class="title">
+            <p class="titleshow">3D查看</p>
+            <p class="pcshowmore"><img src="./static/MedProViewCloud/img/logo-1.png" class="pcshowimg"> 三维多模态影像服务平台</p>
+            <img src="./static/MedProViewCloud/img/Logo.png" class="phoneshowimg">
+            <p class="showmore"><img src="./static/MedProViewCloud/img/logo-1.png" class="showimg"> 多模态三维医学影像手术计划系统</p>
+            <img src="./static/MedProViewCloud/img/Logo.png" class="phoneshow">
+        </div>
+        <div class="header-menu" @click="operationbtnClick"></div>
+        <img role="preload" src="/static/MedProViewCloud/img/phone_guid_btn_p.svg" style="display: none">
+        <div class="operation-img" :class="operationShow?'fadein-down':'fadeout-up'" @click="operationShow=false"
+            draggable="false"></div>
+    </header>
+    <main id="main" @click="operationShow">
+        <component v-if="loaded" :is="isMobile?'mobile-controls':'pc-controls'" :all-parts="allParts" :colors="colors"
+            :vertices-limit="verticesLimit"></component>
+        <canvas id="canvas"></canvas>
+    </main>
+
+    <section class="study_info" id="study_info">
+        <ul class="study_info-ul">
+            <li><span class="color9c">序号：</span>{{id}}</li>
+            <li><span class="color9c">患者姓名：</span>{{patientName}}</li>
+            <li><span class="color9c">病历号：</span>{{recordNumber}}</li>
+        </ul>
+    </section>
+    <script src="./static/model_lib/Detector.js"></script>
+    <script src="./static/model_lib/OrbitControls.js"></script>
+    <script src="./static/model_lib/OBJLoader.js"></script>
+    <script src="./static/model_lib/STLLoader.js"></script>
+    <script>
+        // 为了解决微信对js和css的缓存 
+        let version = 134
+        document.write('<script src="http://static.zc5l.com/lib/myLib.js?v=' + version + '"><\/script>');
+        document.write('<script src="/static/MedProViewCloud/js/controls.js?v=' + version + '"><\/script>');
+        // document.write('<script src="./static/model_lib/vendor.min.js?v=' + version + '"><\/script>');
+        document.write('<link rel="stylesheet" href="/static/MedProViewCloud/css/index.css?v=' + version +
+            '"><\/link>');
+        document.write('<link rel="stylesheet" href="/static/MedProViewCloud/css/index-response.css?v=' + version +
+            '"><\/link>');
+
+
+        document.addEventListener('DOMContentLoaded', function (event) {
+            // chrome 浏览器直接加上下面这个样式就行了，但是ff不识别
+            document.body.style.zoom = 'reset';
+            document.addEventListener('keydown', function (event) {
+                if ((event.ctrlKey === true || event.metaKey === true) &&
+                    (event.which === 61 || event.which === 107 ||
+                        event.which === 173 || event.which === 109 ||
+                        event.which === 187 || event.which === 189)) {
+                    event.preventDefault();
+                }
+            }, false);
+            document.addEventListener('mousewheel DOMMouseScroll', function (event) {
+                if (event.ctrlKey === true || event.metaKey) {
+                    event.preventDefault();
+                }
+            }, false);
+        }, false);
+    </script>
+    <script>
+        var cookie = myLib.getCookie();
+        var pathName = 'http://192.168.0.46:7777/model-new/';
+        var modelRoute = '';
+        // //测试
+        (function testMode() {
+            var id = 12;
+            var row = {
+                patientName: '李大傻',
+                recordNumber: '119119119',
+                dataPath: '2018/12/20/8/'
+            }
+            document.cookie = 'studyId=' + id + ';Max-Age=30';
+            document.cookie = `patientName=${encodeURIComponent(row.patientName)};Max-Age=30`;
+            document.cookie = `recordNumber=${row.recordNumber};Max-Age=30`;
+            document.cookie = `dataPath=${encodeURIComponent(row.dataPath)};Max-Age=30`;
+        })();
+        // // 正式代码，取cookie
+        var studyId;
+        // var url = 'http://model.zcxy.com/qrcode?id=470&titleId=1&radio=2&token=84269b23de3b2f5936965cdf5598f192&pershare=1&time=2020-01-27%2015:32:35';
+        // var url = 'http://modeltest.zc5l.com:9999/qrcode?id=152&titleId=1&radio=1&pershare=1&random=nN6ONibF_2Nq&dataPath=2019%2F04%2F03%2F152%2F';
+
+        (function () {
+            var cookie = myLib.getCookie();
+            var params = {};
+            if (cookie.studyId) {
+                studyId = cookie.studyId;
+                studyInfo.id = cookie.studyId;
+                studyInfo.patientName = decodeURIComponent(cookie.patientName);
+                studyInfo.recordNumber = cookie.recordNumber;
+                modelRoute = decodeURIComponent(cookie.dataPath) + 'MeshFiles/';
+            } else {
+                var url = location.href;
+                var urls = url.split("?");
+                var arr = urls[1].split("&");
+                for (var i = 0, l = arr.length; i < l; i++) {
+                    var a = arr[i].split("=");
+                    params[a[0]] = a[1];
+                }
+                //判断是否显示病例
+                if (params.radio == '2') {
+                    document.querySelector("#study_info").style.display = 'none'
+                }
+                if (params.random) {
+                    let json = {
+                        id: params.id,
+                        random: params.random,
+                        pershare: params.pershare
+                    }
+                    $.ajax({
+                        // url: 'http://localhost:8080/mcms/model/datashow',
+                        url: 'http://modeltest.zc5l.com:9999/mcms/model/datashow',
+                        type: 'POST',
+                        async: false,
+                        data: json,
+                        success(res) {
+                            let newres = JSON.parse(res);
+                            if (newres.isOk == false) {
+                                alert(newres.data);
+                            } else {
+                                //这下面的数据 是在页面初始化的时候必须就要有的，
+                                studyId = newres.data.id;
+                                studyInfo.id = newres.data.id;
+                                studyInfo.patientName = decodeURIComponent(newres.data.patientName);
+                                studyInfo.recordNumber = newres.data.recordNumber;
+                            }
+                        }
+
+                    })
+                } else {
+                    let json = {
+                        id: params.id,
+                        pershare: params.pershare,
+                        token: params.token,
+                        time: params.time
+                    }
+                    $.ajax({
+                        // url: 'http://localhost:8080/mcms/model/datashow',
+                        url: 'http://modeltest.zc5l.com:9999/mcms/model/newqrCode',
+                        type: 'POST',
+                        async: false,
+                        data: json,
+                        success(res) {
+                            let newres = (res);
+                            if (newres.isOk == false) {
+                                alert(newres.data);
+                            } else {
+                                //这下面的数据 是在页面初始化的时候必须就要有的，
+                                studyId = newres.data.id;
+                                studyInfo.id = newres.data.id;
+                                studyInfo.patientName = decodeURIComponent(newres.data.patientName);
+                                studyInfo.recordNumber = newres.data.recordNumber;
+                            }
+                        }
+
+                    })
+
+                }
+
+            }
+
+            var cookie = myLib.getCookie();
+            //查看模型的时候名字
+            //   //查看模型和分享的时候名字
+            if (params.titleId == '1' || cookie.titles == '1') {
+                document.title = "多模态三维医学影像手术计划系统-模型查看"
+                // window.location.href='/mcms/';
+                document.querySelector(".pcshowmore").style.display = "none"; //隐藏
+                document.querySelector(".phoneshowimg").style.display = "none"; //隐藏
+            } else {
+                document.title = "三维多模态影像服务平台--模型查看";
+                document.querySelector(".showmore").style.display = "none"; //隐藏
+                document.querySelector(".phoneshow").style.display = "none"; //隐藏
+            }
+
+        })();
+
+        if (!Detector.webgl) Detector.addGetWebGLMessage();
+        var colors = [
+            "#CECECE",
+            "#811B1B",
+            "#144E85",
+            "#650031",
+            "#F18500",
+            "#5A783A",
+            "#C8971E",
+            "#B08356",
+            "#6868B4",
+            "#00B4ED",
+            "#938C72",
+            "#E18A95",
+            "#A045A0",
+            "#209916",
+            "#883225",
+            "#7B4641",
+            "#7B654E",
+            "#916663"
+        ];
+        const loadingMax = 5;
+        var parts = [];
+        var camera, renderer, scene, orbitControls;
+        var group;
+        var envMap;
+        var threeConfig;
+        (function () {
+            if (window.innerWidth <= 900) {
+                threeConfig = {
+                    alpha: false,
+                    antialias: false,
+                    clearColor: ['#1a1d22', 1],
+                    exposure: 1.3,
+                    ibl: false,
+                }
+                init();
+            } else {
+                threeConfig = {
+                    alpha: true,
+                    antialias: true,
+                    clearColor: [0x000000, 0],
+                    exposure: 7.5,
+                    ibl: true,
+                }
+                var script = document.createElement('script');
+                script.src = 'http://static.zc5l.com/model_lib/IBL.min.js';
+                script.onload = function () {
+                    init();
+                };
+                document.body.appendChild(script);
+            }
+        })();
+
+        function init() {
+            var canvas = document.getElementById('canvas');
+            renderer = new THREE.WebGLRenderer({
+                alpha: threeConfig.alpha,
+                antialias: threeConfig.antialias, //执行反别名
+                canvas: canvas
+            });
+            renderer.setPixelRatio(window.devicePixelRatio); //设置设备像素比
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(threeConfig.clearColor[0], threeConfig.clearColor[1]); //设置渲染的环境的颜色 
+            // input有没有都行，但output必须不能为true
+            renderer.gammaInput = true;
+            renderer.toneMappingExposure = threeConfig.exposure;
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000); //遵循近大远小的空间规则
+            camera.position.z = 400; //控制相机在整个3D环境中的位置
+            camera.lookAt(0, 0, 0); //控制相机的焦点位置
+
+            orbitControls = new THREE.OrbitControls(camera, canvas);
+            orbitControls.screenSpacePanning = true; // 新版orbitControls默认上下平移是移Z轴
+         
+            scene = new THREE.Scene();
+            group = new THREE.Group();
+
+            //rotation改变的是子对象的坐标系
+            group.rotation.x = -Math.PI / 2;
+            if (threeConfig.ibl) {
+                //6张图片作为材质贴到立方体内部
+                var genCubeUrls = function (prefix, postfix) {
+                    return [
+                        prefix + 'px' + postfix, prefix + 'nx' + postfix,
+                        prefix + 'py' + postfix, prefix + 'ny' + postfix,
+                        prefix + 'pz' + postfix, prefix + 'nz' + postfix
+                    ];
+                };
+                var hdrUrls = genCubeUrls('/static/MedProViewCloud/tomoco_HDR/tomoco_', '.hdr');
+                new THREE.HDRCubeTextureLoader().load(THREE.UnsignedByteType, hdrUrls, function (hdrCubeMap) {
+                    var pmremGenerator = new THREE.PMREMGenerator(hdrCubeMap);
+                    pmremGenerator.update(renderer);
+                    var pmremCubeUVPacker = new THREE.PMREMCubeUVPacker(pmremGenerator.cubeLods);
+                    pmremCubeUVPacker.update(renderer);
+                    hdrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
+                    hdrCubeMap.dispose();
+                    pmremGenerator.dispose();
+                    pmremCubeUVPacker.dispose();
+                    envMap = hdrCubeRenderTarget.texture;
+
+                    // 解决模型先加载，但材质未加载的情况
+                    group.children.forEach(function (item) {
+                        var material = item.material;
+                        if (!material.envMap) {
+                            material.envMap = envMap;
+                            material.needsUpdate = true;
+                        }
+                    });
+                });
+            } else {
+                camera.add(new THREE.PointLight(0xffffff, 0.5));
+                scene.add(camera);
+
+                var hemLight = new THREE.HemisphereLight('white', 0x808080, 0.6);
+                scene.add(hemLight);
+            }
+
+            window.addEventListener('resize', windowResize);
+
+            modelLoad();
+
+        }
+
+        function render() {
+            orbitControls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(render);
+        }
+
+        function windowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function modelLoad() {
+
+            var stlLoader = new THREE.STLLoader();
+            var objLoader = new THREE.OBJLoader();
+            let json = {
+                id: studyId
+            }
+            myLib.ajax.post(pathName + 'mcms/model/view', {
+                content: json
+            }).then(text => {
+
+                // 解析返回的模型列表
+                if (text === '-10') {
+                    alert('模型不存在');
+                    return;
+                }
+                if (text === '-20') {
+                    alert('模型不存在 -20');
+                    return;
+                }
+                parts = JSON.parse(text);
+
+                // 为每条病例初始化参数
+                var allTotal = 0;
+                parts.forEach((item, index) => {
+                    item.id = index;
+                    item.loadState = -1;
+                    item.loaded = 0;
+                    item.transparent = true
+                    if (!item.color) {
+                        item.color = colors[index];
+                    } else {
+                        item.color = `rgb(${item.color.r},${item.color.g},${item.color.b})`
+                    }
+                    allTotal += item.size;
+                })
+                loading.allTotal = allTotal;
+
+                // 初始化APP
+                app.init();
+
+                // 加载模型
+                for (var i = 0; i < loadingMax; ++i) {
+                    if (i < parts.length) {
+                        LoadMesh(parts[i]);
+                    }
+                }
+
+            })
+
+            var centers = []; // 记录各个模型的中心点，在载完后一并居中。
+
+            // 加载模型
+            function LoadMesh(meshItem) {
+
+                // 根据文件类型使用不同加载器加载模型
+                if (meshItem.file_type == 80 || meshItem.file_type == 4) {
+                    stlLoader.load(meshItem.url, onLoad, onProgress, onError);
+                    meshItem.loadState = 0;
+                }
+                if (meshItem.file_type == 81) {
+                    objLoader.load(meshItem.url, onLoad, onProgress, onError);
+                    meshItem.loadState = 0;
+                }
+
+                // 加载完成
+                function onLoad(meshData) {
+                    // 处理加载状态
+                    meshItem.loadState = 1;
+                    var finishNum = 0;
+                    var loadingNum = 0;
+                    var nextLoadNum = 0;
+                    var nextLoadIdxs = new Array(loadingMax).fill(-1);
+                    for (var i = 0; i < parts.length; ++i) {
+                        if (parts[i].loadState == 0) {
+                            loadingNum++;
+                        } else if (parts[i].loadState == 1) {
+                            finishNum++;
+                        }
+
+                        if (nextLoadNum < loadingMax) {
+                            if (parts[i].loadState == -1) {
+                                nextLoadIdxs[nextLoadNum] = i;
+                                nextLoadNum++;
+                            }
+                        }
+                    }
+                    // 加载下一批模型
+                    if (loadingNum < loadingMax && finishNum < parts.length) {
+                        nextLoadNum = loadingMax - loadingNum;
+                        for (var n = 0; n < nextLoadNum; ++n) {
+                            var idx = nextLoadIdxs[n];
+                            if (idx != -1) {
+                                LoadMesh(parts[idx]);
+                            }
+                        }
+                    }
+
+                    var geometry;
+                    var material;
+                    // 根据模型类型获取几何数据
+                    if (meshItem.file_type == 80 || meshItem.file_type == 4) {
+                        geometry = meshData;
+                    }
+                    if (meshItem.file_type == 81) {
+                        geometry = meshData.children[0].geometry;
+                    }
+
+                    // 计算模型包围球
+                    geometry.computeBoundingSphere();
+                    centers.push(geometry.boundingSphere.center);
+
+                    // 创建模型材质
+                    if (threeConfig.ibl) {
+                        material = new THREE.MeshStandardMaterial({
+                            color: meshItem.color,
+                            transparent: meshItem.opacity <= 0.75,
+                            opacity: meshItem.opacity,
+                            metalness: 0,
+                            roughness: 0.45,
+                            envMap: envMap || null,
+                            // side: THREE.DoubleSide
+                        });
+                    } else {
+                        material = new THREE.MeshPhongMaterial({
+                            color: meshItem.color,
+                            // side: THREE.DoubleSide
+                        });
+                    }
+
+                    // 创建显示模型并设置辅助参数
+                    var mesh = new THREE.Mesh(geometry, material);
+                    mesh.name = meshItem.id;
+                    group.add(mesh);
+
+                    // 所有模型加载完成就显示模型
+                    if (finishNum == parts.length) {
+                        setTimeout(function () {
+                            loading.done = true;
+                            groupCenterAndRender();
+                        }, 100)
+                    }
+                }
+
+                // 加载进度
+                function onProgress(xhr) {
+                    if (xhr.lengthComputable) {
+                        parts.forEach(item => {
+                            if (item.id == meshItem.id) {
+                                item.loaded = xhr.loaded;
+                            }
+                        })
+
+                        loading.loadedPercent();
+                    }
+                }
+
+                // 加载出错
+                function onError(xhr) {
+                    console.error(xhr)
+                }
+            }
+
+            function groupCenterAndRender() {
+                var x = 0,
+                    y = 0,
+                    z = 0;
+                centers.forEach(function (item) {
+                    x += item.x;
+                    y += item.y;
+                    z += item.z;
+                });
+
+                group.translateX(-x / centers.length);
+                group.translateY(-y / centers.length);
+                group.translateZ(-z / centers.length);
+                // debugger
+                scene.add(group);
+                if (!threeConfig.ibl) {
+                    loadingComplete();
+                }
+                app.loadingComplete();
+                render();
+            }
+        }
+
+        //模型返回
+        function backTomodel() {
+            window.close()
+            window.history.back()
+        }
+        //手机透明度
+        function loadingComplete() {
+            group.children.forEach(function (mesh) {
+                var material = mesh.material;
+                var part = getPartByName(mesh.name);
+                material.transparent = part.opacity <= 0.75;
+                material.opacity = part.opacity;
+            });
+
+            function getPartByName(name) {
+                for (var i = 0; i < parts.length; i++) {
+                    if (name === parts[i].id) {
+                        return parts[i];
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

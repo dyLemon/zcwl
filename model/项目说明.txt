@@ -1,0 +1,8 @@
+启动：
+node server/model_view.index
+browser-sync start --server --files "**/**.*"
+
+打包：uitls文件夹下
+node trans_to_online
+
+注意uitls下的trans_to_online.js为自己手写的一个转换工具，主要作用是修改本地链接为网上链接，使用需要读源码

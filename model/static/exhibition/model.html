@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>三维医学影像手术计划平台</title>
+    <link rel="shortcut icon" href="http://static.zc5l.com/img/main_logo_3d_32.ico">
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <link rel="stylesheet" href="./static/MedProViewCloud/css/index.css">
+    <link rel="stylesheet" href="./static/MedProViewCloud/css/index-response.css">
+
+    <script>
+        document.addEventListener('touchmove',function(e){
+            e.preventDefault();
+        },{passive:false});
+    </script>
+    <script src="http://static.zc5l.com/lib/vue.min.js"></script>
+    <script src="http://static.zc5l.com/model_lib/three.min.js"></script>
+    
+
+    <script src="http://static.zc5l.com/model_lib/vendor.min.js"></script>
+
+    <!-- <script src="http://static.zc5l.com/model_lib/IBL.min.js"></script> -->
+    <script type="text/x-template" id="mobile-controls">
+        <div>
+            <div class="controls-footer2">
+                <div class="controls-footer-item2" @click="viewReset" title="视角重置">
+                    <img src="./static/MedProViewCloud/img/3d_back_btn_2.png">
+                </div>
+                <div class="controls-footer-center">器官列表</div>
+                <div class="controls-footer-item2" @click="controlsExpand">
+                    <div class="upbtn2" :class="{rotate180deg:controlsShow}"></div>
+                </div>
+            </div>
+            <section class="controls-container2" :class="{visible:modalShow}" @touchstart="modalClick" @mousedown="modalClick">
+                <div class="controls2" :class="{show:controlsShow}" @transitionend="controlsTransitionEnd">
+                    <div class="controls-item-upper2" v-if="colorPanShow">
+                        <div class="opacity-bar2" ref="bar" v-if="!verticesLimit">
+                            <img
+                                src="./static/MedProViewCloud/img/slider_mobile.png"
+                                class="my-slider2"
+                                :style="{left:88.06*selectedPart.opacity+'%'}"
+                                draggable="false"
+                                ref="slider"
+                                @touchstart="sliderMouseDown"
+                                @mousedown="sliderMouseDown"
+                            >
+                        </div>
+                        <div class="vertices-limit-tip" v-else>
+                            <p>模型太大，已默认关闭透明度选项。</p>
+                            <p>强制开启可能会造成设备卡顿。</p>
+                            <p class="vertices-limit-open"><span @click="verticesLimitOpen">点此可强制开启！</span></p>
+                        </div>
+                        <div class="color-pan2">
+                            <div
+                                class="color-picker-item2"
+                                :class="{selected:color===selectedPart.color}"
+                                v-for="(color,index) in colors"
+                                :style="{'background-color':color}"
+                                @click="colorSelecting(color)"
+                            ></div>
+                        </div>
+                    </div>
+                    <div class="controls-item-lower2" @touchmove.stop="">
+                        <div class="controls-item2" :class="{selected:part===selectedPart}" v-for="(part,index) in parts" :key="part.name">
+                            <div class="controls-displaybtn2" :class="{hide:!part.show}" @click="partShowChange(part)">
+                                <div class="eye-btn" :class="{hide:!part.show}"></div>
+                            </div>
+                            <div class="controls-name2">
+                                <span>{{part.name}}</span>
+                            </div>
+                            <div class="color-picker-container2">
+                                <div class="color-picker2" :style="{'background-color':part.color}" @click="colorPanbtnClick(part)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <script type="text/x-template" id="pc-controls">
+        <div class="controls-container">
+            <div class="updownbtn-container">
+                <div
+                    class="upbtn" 
+                    :class="{'visible':isUpbtnShow}"
+                    @click="upbtnClick(-1)"
+                ></div>
+            </div>
+            <div class="controls" ref="controls">
+                <div class="controls-item" v-for="part in parts" :key="part.name">
+                    <div class="controls-item-upper">
+                        <div class="controls-displaybtn" @click="partShowChange(part)">
+                            <img v-show="part.show" src="./static/MedProViewCloud/img/3d_eye_btn_n.png" class="absolute" draggable="false">
+                            <img v-show="!part.show" src="./static/MedProViewCloud/img/3d_eye_btn_p.png" class="absolute" draggable="false">
+                        </div>
+                        <div class="controls-name">
+                            <span>{{part.name}}</span>
+                            <div class="color-picker" :style="{'background-color':part.color}" @click="colorPanbtnClick(part)"></div>
+                        </div>
+                    </div>
+                    <div class="controls-item-lower">
+                        <div class="opacity-bar">
+                            <img
+                                src="./static/MedProViewCloud/img/3d_roll_icon.png"
+                                class="my-slider"
+                                :style="{left:228*part.opacity+'px'}"
+                                draggable="false"
+                                :ref="part.name+'slider'"
+                                @mousedown="sliderMouseDown(part.name+'slider',part)"
+                            >
+                        </div>
+                        <div class="color-pan" v-if="part.colorPanShow">
+                            <div
+                                v-for="(color,index) in colors"
+                                :class="[color===part.color?'color-picker-item-selected':'color-picker-item']"
+                                :style="{'background-color':color}"
+                                @click="colorSelecting(color,part)"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="updownbtn-container">
+                <div
+                    class="upbtn"
+                    :class="{'visible':isUpbtnShow}"
+                    style="transform:rotate(180deg)"
+                    @click="upbtnClick(1)"
+                ></div>
+            </div>
+            <div class="controls-footer">
+                <div class="controls-footer-item" @click="viewReset" title="视角重置">
+                    <img src="./static/MedProViewCloud/img/3d_back_btn_n.png" class="absolute">
+                    <img src="./static/MedProViewCloud/img/3d_back_btn_p.png" class="hover-show absolute">
+                </div>
+            </div>
+        </div>
+    </script>
+</head>
+<body>
+    <div class="board" id="loading" v-if="!done">
+        <div class="loading">
+            <p class="loading-text">{{('0'+loadedPercent).slice(-2)}} %</p>
+            <div class="loading-bar-bg"></div>
+            <div class="loading-bar" id="loading-bar" :style="{width:loadedPercent+'%'}"></div>
+        </div>
+    </div>
+    <header id="header">
+        <div class="title">3D查看</div>
+        <div class="header-menu" @click="operationbtnClick"></div>
+        <!-- <img role="preload" src="/static/MedProViewCloud/img/phone_guid_btn_p.png" style="display: none"> -->
+        <img role="preload" src="./static/MedProViewCloud/img/phone_guid_btn_p.svg" style="display: none">
+        <div
+            class="operation-img"
+            :class="operationShow?'fadein-down':'fadeout-up'"
+            @click="operationShow=false"
+            draggable="false"
+        ></div>
+    </header>
+
+    <main id="main">
+        <component
+            v-if="loaded"
+            :is="isMobile?'mobile-controls':'pc-controls'"
+            :all-parts="allParts"
+            :colors="colors"
+            :vertices-limit="verticesLimit"
+        ></component>
+        <canvas id="canvas"></canvas>
+    </main>
+
+    <!-- <section class="study_info" id="study_info">
+        <ul class="study_info-ul">
+            <li><span class="color9c">序号：</span>{{id}}</li>
+            <li><span class="color9c">患者姓名：</span>{{patientName}}</li>
+            <li><span class="color9c">病历号：</span>{{recordNumber}}</li>
+        </ul>
+    </section> -->
+
+    <script src="http://static.zc5l.com/lib/myLib.js"></script>
+    <script src="./static/MedProViewCloud/js/controls.js"></script>
+    <script>
+        
+        var pathName='http://106.15.188.10/exhibition/model/';
+
+        var studyId='骨盆肿瘤';
+        if (window.location.search.indexOf('name=')>-1){
+            studyId=window.location.search.slice(1).split('=')[1];
+            studyId=studyId.split('&')[0];
+            studyId=decodeURIComponent(studyId);
+        }
+
+        if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+        var colors=[
+            "#CECECE",
+            "#811B1B",
+            "#144E85",
+            "#650031",
+            "#F18500",
+            "#5A783A",
+            "#C8971E",
+            "#B08356",
+            "#6868B4",
+            "#00B4ED",
+            "#938C72",
+            "#E18A95",
+            "#A045A0",
+            "#209916",
+            "#883225",
+            "#7B4641",
+            "#7B654E",
+            "#916663"
+        ];
+        var parts=[];
+        var camera,renderer,scene,orbitControls;
+        var group;
+        var envMap;
+
+        var threeConfig;
+        (function(){
+            if (window.innerWidth<=900){
+                threeConfig={
+                    alpha:false,
+                    antialias:false,
+                    clearColor:['#1a1d22',1],
+                    exposure:1.3,
+                    ibl:false,
+                }
+                init();
+            } else {
+                threeConfig={
+                    alpha:true,
+                    antialias:true,
+                    clearColor:[0x000000,0],
+                    exposure:7.5,
+                    ibl:true,
+                }
+                var script=document.createElement('script');
+                script.src='http://static.zc5l.com/model_lib/IBL.min.js';
+                script.onload=function(){
+                    init();
+                };
+                document.body.appendChild(script);
+            }
+        })();
+
+        function init(){
+            var canvas=document.getElementById('canvas');
+            renderer=new THREE.WebGLRenderer({
+                alpha:threeConfig.alpha,
+                antialias:threeConfig.antialias,
+                canvas:canvas
+            });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth,window.innerHeight);
+            renderer.setClearColor(threeConfig.clearColor[0],threeConfig.clearColor[1]);
+            // input有没有都行，但output必须不能为true
+            renderer.gammaInput = true;
+            renderer.toneMappingExposure=threeConfig.exposure;
+
+            camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,1,2000);
+            camera.position.z=200;
+            camera.lookAt(0,0,0);
+            orbitControls=new THREE.OrbitControls(camera,canvas);
+            orbitControls.screenSpacePanning=true;// 新版orbitControls默认上下平移是移Z轴
+
+            scene=new THREE.Scene();
+
+            group=new THREE.Group();
+            group.rotation.x=-Math.PI/2;
+
+            if (threeConfig.ibl){
+                var genCubeUrls = function( prefix, postfix ) {
+                    return [
+                        prefix + 'px' + postfix, prefix + 'nx' + postfix,
+                        prefix + 'py' + postfix, prefix + 'ny' + postfix,
+                        prefix + 'pz' + postfix, prefix + 'nz' + postfix
+                    ];
+                };
+                var hdrUrls = genCubeUrls( './static/MedProViewCloud/tomoco_HDR/tomoco_', '.hdr' );
+                new THREE.HDRCubeTextureLoader().load( THREE.UnsignedByteType, hdrUrls, function ( hdrCubeMap ) {
+                    var pmremGenerator = new THREE.PMREMGenerator( hdrCubeMap );
+                    pmremGenerator.update( renderer );
+                    var pmremCubeUVPacker = new THREE.PMREMCubeUVPacker( pmremGenerator.cubeLods );
+                    pmremCubeUVPacker.update( renderer );
+                    hdrCubeRenderTarget = pmremCubeUVPacker.CubeUVRenderTarget;
+                    hdrCubeMap.dispose();
+                    pmremGenerator.dispose();
+                    pmremCubeUVPacker.dispose();
+                    envMap=hdrCubeRenderTarget.texture;
+
+                    // 解决模型先加载，但材质未加载的情况
+                    group.children.forEach(function(item){
+                        var material=item.material;
+                        if (!material.envMap){
+                            material.envMap=envMap;
+                            material.needsUpdate=true;
+                        }
+                    });
+                });
+            } else {
+                camera.add(new THREE.PointLight(0xffffff, 0.5));
+                scene.add(camera);
+
+                var hemLight=new THREE.HemisphereLight( 'white', 0x808080, 0.6);
+                scene.add(hemLight);
+            }
+
+            window.addEventListener('resize',windowResize);
+
+            modelLoad();
+
+        }
+
+        function render(){
+            
+            orbitControls.update();
+            renderer.render(scene,camera);
+            requestAnimationFrame(render);
+
+        }
+
+        function windowResize(){
+            camera.aspect=window.innerWidth/window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth,window.innerHeight);
+        }
+
+        function modelLoad(){
+            var loader = new THREE.STLLoader();
+            var configLength=0;
+            myLib.ajax.get(pathName+'config?study_id='+studyId).then(function(text){
+                if (text==='-10'){
+                    alert('模型不存在');
+                    return;
+                }
+                if (text==='-20'){
+                    alert('模型不存在 -20');
+                    return;
+                }
+                var data=JSON.parse(text);
+                configLength=data.sizes.length;
+                data.sizes.forEach(function(item){
+                    loading.total+=item.size;
+                });
+                // if (/\.gz$/.test(data.sizes[0].url)){
+                    loading.ratio=0.49;
+                // }
+
+                if (data.hasINI){
+                    myLib.ajax.get(pathName+studyId+'/'+'Model.ini').then(function(text){
+                        var json=iniParse(text);
+                        parts=json.config;
+                        // 先将fileParts顺序与ini的顺序换为一置
+                        var fileParts=[];
+                        parts.forEach(function(item,index){
+                            for (var i=0,l=data.sizes.length;i<l;i++){
+                                if (data.sizes[i].url===item.url||data.sizes[i].url===item.url+'.gz'){
+                                    fileParts.push(data.sizes[i]);
+                                    break;
+                                }
+                            }
+                        });
+                        // 文件与配置文件不符的话，重新计算总进度
+                        if (json.configLength!==configLength){
+                            console.warn('The config ini is not match the directory');
+                            configLength=json.configLength;
+                            loading.total=0;
+                            fileParts.forEach(function(item){
+                                loading.total+=item.size;
+                            });
+                        }
+                        app.init();
+                        parts.forEach(function(item,index){
+                            // url以服务端发送的为准，这样主要是可以兼容不同文件
+                            item.url=fileParts[index].url;
+                            load(item,index);
+                        });
+                    });
+                } else {
+                    parts=makeInitConfig(data.sizes);
+                    app.init();
+                    parts.forEach(function(item,index){
+                        load(item,index);
+                    });
+                }
+            });
+            var centers=[];// 记录各个模型的中点数据，再载完后一并居中。因此,和configLength一起用来判断模型是否加载完毕
+            function load(stl,stlIndex){
+                // 实在搞不懂express的encode机制，怎么试都不行，自己来，把'%'改为'%25'就好了
+                var path=(pathName+studyId+'/'+stl.url).replace(/%/g,'%25');
+                loader.load(path,function(geometry){
+                    geometry.computeBoundingSphere();
+                    centers.push(geometry.boundingSphere.center);
+                    var material;
+                    if (threeConfig.ibl){
+                        material=new THREE.MeshStandardMaterial({
+                            color:stl.color,
+                            transparent:stl.opacity<=0.75,
+                            opacity:stl.opacity,
+                            metalness: 0,
+                            roughness: 0.45,
+                            envMap:envMap||null,
+                            // depthWrite:stl.opacity>0.75,
+                            side:THREE.DoubleSide
+                        });
+                    } else {
+                        /*material=new THREE.MeshPhongMaterial({
+                            color:stl.color,
+                            transparent:stl.opacity<=0.75,
+                            opacity:stl.opacity,
+                            depthWrite:stl.opacity>0.75,
+                        });*/
+                        material=new THREE.MeshPhongMaterial({
+                            color:stl.color,
+                            side:THREE.DoubleSide
+                            // transparent:stl.opacity<=0.75,
+                            // opacity:stl.opacity,
+                            // depthWrite:stl.opacity>0.75,
+                        });
+                    }
+                    var mesh=new THREE.Mesh(geometry,material);
+                    mesh.name=stl.name;
+                    group.add(mesh);
+                    if (centers.length===configLength){
+                        loading.done=true;
+                        groupCenterAndRender();
+                    }
+                },onProgress,function(xhr){console.error(xhr)});
+                function onProgress(xhr) {
+                    loading.$set(loading.percents,stlIndex,xhr.loaded);
+                }
+            }
+            function groupCenterAndRender(){
+                var x=0,y=0,z=0;
+                centers.forEach(function(item){
+                    x+=item.x;
+                    y+=item.y;
+                    z+=item.z;
+                });
+                group.translateX(-x/centers.length);
+                group.translateY(-y/centers.length);
+                group.translateZ(-z/centers.length);
+                scene.add(group);
+                if (!threeConfig.ibl){
+                    loadingComplete();
+                }
+                app.loadingComplete();
+                render();
+            }
+        }
+        function iniParse(text){
+            var patt={
+                url:/\[Url\][\s\S]+?(?=\n\[)/,
+                name:/\[Name\][\s\S]+?(?=\n\[)/,
+                color:/\[Color\][\s\S]+?(?=\n\[)/,
+                opacity:/float=[\s\S]+?$/,
+            };
+            var urls=toArray(patt.url,5);
+            var names=toArray(patt.name,6);
+            var colorIndexs=toArray(patt.color,7);
+            var opacitis=toArray2(patt.opacity,6);
+            var config=names.map(function(item,index){
+                return {
+                    name:item,
+                    url:urls[index],
+                    color:colors[Number(colorIndexs[index])],
+                    transparent:true,
+                    opacity:Number(opacitis[index]),
+                }
+            });
+            return {
+                config:config,
+                configLength:names.length
+            };
+
+
+            function toArray(patt,n){
+                var arr=patt.exec(text)[0].slice(n).trim().split('\n');
+                arr=arr.map(function(item){
+                    // 要有trim，否则有可能会有空字符串的错误
+                    return item.split('=')[1].trim();
+                });
+                return arr;
+            }
+            function toArray2(patt,n){
+                return patt.exec(text)[0].slice(n).trim().split(',');
+            }
+        }
+        function makeInitConfig(data){
+            return data.map(function(item){
+                return {
+                    color:colors[myLib.random(1,13)],
+                    colorPanShow:false,
+                    name:item.url.split('.')[0],
+                    opacity:1,
+                    show:true,
+                    transparent:true,
+                    url:item.url
+                }
+            });
+        }
+    </script>
+    <script>
+        function loadingComplete(){
+            var total=0;
+            group.children.forEach(function(mesh){
+                var count=mesh.geometry.attributes.position.count;
+                total+=count;
+            });
+            if (total>1400000){
+                app.verticesLimit=true;
+                parts.forEach(function(item){
+                    item.opacity=1;
+                });
+            } else {
+                group.children.forEach(function(mesh){
+                    var material=mesh.material;
+                    var part=getPartByName(mesh.name);
+                    material.transparent=part.opacity<=0.75;
+                    material.opacity=part.opacity;
+                    material.depthWrite=part.opacity>0.75;
+                });
+            }
+            function getPartByName(name){
+                for (var i=0;i<parts.length;i++){
+                    if (name===parts[i].name){
+                        return parts[i];
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

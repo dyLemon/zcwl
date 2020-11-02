@@ -1,0 +1,719 @@
+/*****************样式初始化*************/
+body{
+    margin:0;
+    padding:0;
+    font-family:"微软雅黑",Verdana, Geneva, "sans-serif";
+    color:#30383c;
+}
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+ul {
+    list-style-type: none;
+}
+ul,li,p,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+input[type="checkbox"]{
+    cursor:pointer;
+}
+button,label,input[type="radio"]{
+    cursor:pointer;
+}
+/*********************************************/
+header{
+    height: 60px;
+    width:100%;
+    background-color: #2f4050;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+}
+/* */
+.header-menu{
+    width:30px;
+    height:30px;
+    position: relative;
+    cursor:pointer;
+    transition:0.3s;
+    top:15px;
+    left:20px;
+    /*background-image:url(/static/MedProViewCloud/img/phone_guid_btn_n.png);*/
+    background-image:url(/static/MedProViewCloud/img/phone_guid_btn_n.svg);
+}
+.header-menu:hover{
+    /*background-image:url(/static/MedProViewCloud/img/phone_guid_btn_p.png);*/
+    background-image:url(/static/MedProViewCloud/img/phone_guid_btn_p.svg);
+}
+.operation-img{
+    position: fixed;
+    top:50%;
+    left:50%;
+    background-image: url(/static/MedProViewCloud/img/web_guid_pic.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:862px;
+    height:558px;
+    transform:translate(-50%, -50%);
+    -webkit-user-select:none ;
+    -moz-user-select:none ;
+    -ms-user-select:none ;
+    -o-user-select:none ;
+    user-select:none ;
+}
+.title{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    color:#1ab394;
+    margin-left:20px;
+    height: 60px;
+
+}
+/* 横屏效果 */
+
+@media screen and  ( min-device-width: 414px ) 
+and ( max-device-width: 736px ) and (orientation : landscape) { 
+    #header{
+        height: 2rem;
+    }
+    .title{
+        height: 2rem!important;
+        line-height: 2rem!important;
+        font-size: 1rem!important;
+    }
+    .controls-footer2{
+        height: 2rem!important;
+    }
+    .controls-item-lower2{
+        max-height: 20vw!important;
+    }
+    .controls-footer-item2{
+        width: 1rem!important;
+        margin:0 3rem;
+    }
+    .controls-footer-center{
+        font-size: 1rem!important;
+    }
+    .controls2{
+        position: absolute;
+        bottom: 3.667vw!important;
+    }
+    .controls-item2{
+        height: 2rem!important;
+        line-height: 2rem!important;
+    }
+    .controls-name2{
+        font-size: 1rem;
+    }
+    .header-menu{
+        top:10vw!important;
+    }
+    .eye-btn{
+        background-size: 100%!important;
+        margin-top:-0.7rem!important;
+    }
+    .color-picker2{
+        width: 3vw!important;
+        height: 3vw!important;
+        margin-top:-1.5rem!important;
+    }
+    .study_info{
+        top:6vw!important;
+        font-size: 1rem!important;
+    }
+    .color-pan2{
+       height: 18vw!important;
+    }
+    .operation-img{
+        width: 60vw!important;
+        height: 40vw!important;
+        top:50%!important;
+        margin-left:10%;
+    }
+}
+
+@media screen and (max-width: 1366px){
+    .operation-img{
+        width:63.25vw;
+        height:40.944vw;
+    }
+}
+.fadein-down{
+    animation: fadeindown 0.4s;
+    animation-fill-mode: both;
+}
+.fadeout-up{
+    animation: fadeoutup 0.4s;
+    animation-fill-mode: both;
+}
+@keyframes fadeindown{
+    0%{
+        opacity: 0;
+        transform:translate(-50%, -60%);
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        transform:translate(-50%, -50%);
+    }
+}
+@keyframes fadeoutup{
+    0%{
+        opacity: 1;
+        transform:translate(-50%, -50%);
+    }
+    100%{
+        opacity: 0;
+        transform:translate(-50%, -60%);
+        visibility: hidden;
+    }
+}
+#canvas{
+    position: absolute;
+    top:0;
+    left:0;
+    background: -webkit-radial-gradient(circle,#3c4048,#1a1d21 90%);
+    background: radial-gradient(circle,#3c4048,#1a1d21 90%); 
+}
+.controls-container{
+    position: absolute;
+    right:11px;
+    width:250px;
+    top:60px;
+    height:calc(100% - 80px);
+    box-sizing: border-box;
+    z-index: 1;
+    /* overflow: hidden; */
+}
+.updownbtn-container{
+    height:40px;
+    margin:10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upbtn,.upbtn2{
+    width:50px;
+    height:30px;
+    border: 1px solid #486580;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:0.25s;
+    visibility: hidden;
+    user-select: none;
+}
+.upbtn:hover{
+    background-color: #181d22;
+}
+.upbtn:hover:before{
+    border-top: 3px solid #48c2a9;
+    border-right: 3px solid #48c2a9;
+}
+.upbtn:before,.upbtn2:before{
+    content: "";
+    display: block;
+    width:10px;
+    height:10px;
+    border-top:3px solid #486580;
+    border-right:3px solid #486580;
+    transform: rotate(-45deg) scale3d(1,1,1);
+    margin:12px auto;
+    transition:0.25s;
+}
+.controls{
+    margin:31px 0 -20px;
+    height:calc(100% - 170px);
+    padding:1px 0;
+}
+.controls-footer{
+    height:50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    user-select: none;
+}
+.controls-footer-item{
+    position: relative;
+    width:51px;
+    height: 31px;
+    cursor:pointer;
+}
+.absolute{
+    position: absolute;
+    top:0;
+    left:0;
+    transition: 0.2s;
+}
+.hover-show{
+    visibility: hidden;
+    opacity: 0;
+}
+.controls-footer-item:hover .hover-show{
+    visibility: visible;
+    opacity: 1;
+}
+.controls-item{
+    height:62px;
+    margin:21px 0;
+}
+.controls-item-upper{
+    border: 1px solid #727781;
+    border-radius: 5px;
+    height:40px;
+    background-color: rgba(137,174,192,0.2);
+}
+.controls-displaybtn{
+    width:38px;
+    height:40px;
+    position: relative;
+    float:left;
+    cursor:pointer;
+    user-select: none;
+}
+.controls-name{
+    box-sizing: border-box;
+    float: left;
+    width:210px;
+    padding:0 3px;
+    text-align: center;
+    line-height: 38px;
+    color:#dcdfe6;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.color-picker,.color-picker-item,.color-picker-item-selected{
+    width: 20px;
+    height: 20px;
+    background-color: #00b4ed;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.color-picker{
+    position: absolute;
+    right:10px;
+    top:10px;
+}
+.controls-item-lower{
+    height:22px;
+    margin-top:2px;
+    position: relative;
+    user-select: none;
+}
+.transparent-btn{
+    width: 40px;
+    height: 20px;
+    background-color: #dcdfe6;
+    border-radius: 5px;
+    cursor:pointer;
+    float: left;
+    user-select: none;
+}
+.transparent-slider{
+    display: inline-block;
+    width:29px;
+    background-color: #48c2a9;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #dcdfe6;
+    text-align: center;
+    position: relative;
+    top:-2px;
+    left:1px;
+    transition:0.25s;
+}
+.transparent-off{
+    background-color: #9c9c9c;
+    transform:translate(30%);
+}
+.opacity-bar{
+    float:left;
+    width: 248px;
+    height: 8px;
+    background: linear-gradient(to right, rgba(72,194,169,0.2),rgba(72,194,169,1));
+    border-radius: 4px;
+    position: relative;
+    left:2px;
+    top:6px;
+}
+.my-slider{
+    position: absolute;
+    top:-1px;
+    left: 0;
+    cursor:e-resize;
+}
+.color-pan{
+    width: 250px;
+    height: 78px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    border: solid 1px #9c9c9c;
+    position: absolute;
+    top:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    z-index: 1;
+}
+.color-picker-item,.color-picker-item-selected{
+    margin:0 3px;
+    position: relative;
+}
+.color-picker-item-selected:before{
+    content:"";
+    background-image: url(/static/MedProViewCloud/img/3d_colo_icon_p.png);
+    position: absolute;
+    top:-3px;
+    left:-3px;
+    width:26px;
+    height:26px;
+}
+.visible{
+    visibility: visible !important;
+}
+.board{
+    position: fixed;
+    z-index: 1000;
+    background-color:black;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading{
+    width:600px;
+    height:100px;
+    position: relative;
+}
+.loading-text{
+    /* color:gray; */
+    color:#48c2a9;
+    text-align:center;
+}
+
+.loading-bar{
+    position: absolute;
+    top:35px;
+    left:0;
+    /*margin-top:15px;*/
+    height:3px;
+    background-color:#48C2A9;
+    transition:0.8s linear;
+}
+.loading-bar-bg{
+    width:100%;
+    height:1px;
+    background-color: grey;
+    position: absolute;
+    top:36px;
+    z-index: -1;
+}
+.study_info{
+    position: fixed;
+    width:300px;
+    height:130px;
+    left:0;
+    bottom:0;
+    /*border: 1px solid #fff;*/
+    color:#f8f8f8;
+}
+.study_info-ul{
+    margin-left:40px;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-wrap: wrap;
+    height:100px;
+    
+    align-content: space-around;
+}
+.study_info-ul li{
+    width:100%;
+}
+.color9c{
+    color:#9c9c9c;
+}
+.stats-left{
+    left:200px !important;
+}
+.rotate180deg{
+    transform:rotate(180deg);
+}
+
+.img_icon {
+    display: none;
+}
+
+.phoneshowimg {
+    display: none;
+}
+
+/* 多模态三维手术计划系统 */
+.phoneshow {
+    display: none;
+}
+
+.showmore {
+    margin: auto;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    color: #1ab394;
+    margin-left: 20px;
+    /* height: 60px; */
+
+}
+
+.pcshowmore {
+    margin: auto;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.title img {
+    /* width: 40px;
+    height: 34px; */
+    margin-right: 10px;
+    /* margin: auto; */
+}
+
+.pcshowimg,
+.showimg {
+    width: 24px !important;
+    height: 18px !important;
+}
+
+@media screen and (max-width: 550px) {
+    .img_icon {
+        display: block;
+        width: 20px;
+        float: left;
+        top: 3vw;
+        position: absolute;
+        left: 24px;
+    }
+
+    .pcshowmore {
+        display: none;
+    }
+
+    .titleshow {
+        margin: auto;
+    }
+
+    .phoneshowimg {
+        display: block;
+        width: 30px !important;
+        height: 22px !important;
+
+    }
+
+    /* 多模态三维手术计划系统 */
+    .phoneshow {
+        display: block;
+        width: 30px !important;
+        height: 22px !important;
+
+    }
+
+    .showmore {
+        display: none;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #main {
+        width: 100%;
+        height: 100%;
+    }
+
+    #canvas {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background: radial-gradient(circle, #3c4048, #1a1d21 90%);
+    }
+}
+
+@media screen and (max-width: 1366px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    #main {
+        width: 100%;
+        height: 100%;
+    }
+
+    #canvas {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background: radial-gradient(circle, #3c4048, #1a1d21 90%);
+    }
+}
+
+/* 横屏效果 */
+
+@media screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : landscape) {
+    #header {
+        height: 2rem;
+    }
+
+    .title {
+        height: 2rem !important;
+        line-height: 2rem !important;
+        font-size: 1rem !important;
+    }
+
+    .controls-footer2 {
+        height: 2rem !important;
+    }
+
+    .controls-item-lower2 {
+        max-height: 20vw !important;
+    }
+
+    .controls-footer-item2 {
+        width: 1rem !important;
+        margin: 0 3rem;
+    }
+
+    .controls-footer-center {
+        font-size: 1rem !important;
+    }
+
+    .controls2 {
+        position: absolute;
+        bottom: 3.667vw !important;
+    }
+
+    .controls-item2 {
+        height: 2rem !important;
+        line-height: 2rem !important;
+    }
+
+    .controls-name2 {
+        font-size: 1rem;
+    }
+
+    .header-menu {
+        top: 10vw !important;
+    }
+
+    .eye-btn {
+        background-size: 100% !important;
+        margin-top: -0.7rem !important;
+    }
+
+    .color-picker2 {
+        width: 3vw !important;
+        height: 3vw !important;
+        margin-top: -1.5rem !important;
+    }
+
+    .study_info {
+        top: 6vw !important;
+        font-size: 1rem !important;
+    }
+
+    .color-pan2 {
+        height: 18vw !important;
+    }
+
+    .operation-img {
+        width: 60vw !important;
+        height: 40vw !important;
+        top: 50% !important;
+        margin-left: 10%;
+    }
+}
+
+#color {
+    border: 0;
+}
+
+::-webkit-color-swatch-wrapper {
+    background-color: #ffffff;
+}
+
+::-webkit-color-swatch {
+    position: relative;
+}
+
+#MyCanvas {
+    /* display: none; */
+    /* margin-left:-200px; */
+    /* position: absolute;
+    right: 258px;
+    top: -54px; */
+}
+
+.color-pan {
+    position: relative;
+}
+
+.colorCan {
+    width: 20px;
+    height: 20px;
+    background: #1ab394;
+
+}
+
+.colorBox {
+    width: 220px;
+    height: 248px;
+    background: #ffffff;
+    position: fixed;
+    right: 276px;
+    top: 178px;
+    display: none;
+}
+
+.colorTitle {
+    height: 28px;
+    background: #2f4050;
+    color: #1ab394;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.colorX {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.colorBox .colorShow {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background: red;
+    margin: 10px 0 0 10px;
+}
+
+#MyCanvas {
+    width: 220px;
+    height: 170px;
+}

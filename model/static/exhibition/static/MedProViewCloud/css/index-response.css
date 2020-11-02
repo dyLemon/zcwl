@@ -1,0 +1,250 @@
+@media screen and (max-width: 900px){
+    .controls-container{
+        display: none;
+    }
+    header{
+        height:11.733vw;
+        background-color: #dcdfe6;
+    }
+    .title{
+        height: 11.733vw;
+        line-height: 11.733vw;
+        text-align: center;
+        font-size:4vw;
+        color:#2f4050;
+    }
+    .stats-left{
+        left:0px !important;
+    }
+    .operation-img{
+        top:40%;
+        background-image: url(../img/phone_guid_pic.png);
+        width:86.933vw;
+        height:97.6vw;
+    }
+    .study_info{
+        width:53.333vw;
+        height:16vw;
+        left:auto;
+        bottom:auto;
+        left:5.333vw;
+        top:15.467vw;
+        text-align: left;
+        font-size:3.2vw;
+    }
+    .study_info-ul{
+        margin-left:0;
+        height:16vw;
+    }
+    .header-menu{
+        position: absolute;
+        top:16vw;
+        left:auto;
+        right:5.333vw;
+    }
+    .controls-footer2{
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        height:10.667vw;
+        background-color: #2f4050;
+        display: flex;
+        justify-content: space-between;
+        z-index: 200;
+    }
+    .controls-container2{
+        position: fixed;
+        z-index: 100;
+        /* width:100vw;
+        height:100vh; */
+        top:0;
+        left:0;
+        right:0;
+        bottom: 0;
+        visibility: hidden;
+        -webkit-tap-highlight-color:transparent;
+    }
+    .controls-footer-item2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*width:67.5px;*/
+        width:18vw;
+        cursor: pointer;
+    }
+    .controls-footer-center{
+        font-size: 4vw;
+        letter-spacing: 2px;
+        color: #9c9c9c;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+    .upbtn2{
+        cursor: default;
+        visibility: visible;
+        border: none;
+    }
+    .upbtn2:before{
+        width:2.133vw;
+        height:2.133vw;
+        border-top:2px solid #9c9c9c;
+        border-right:2px solid #9c9c9c;
+    }
+    .controls2{
+        box-sizing: border-box;
+        width:100vw;
+        position: absolute;
+        bottom: 10.667vw;
+        transform:translateY(100%);
+        transition:transform 0.3s;
+    }
+    .controls2.show{
+        transform:translateY(0);
+    }
+    .controls-item-upper2,.controls-item-lower2{
+        box-sizing: border-box;
+        padding:1.333vw 5.333vw;
+        width:100vw;
+    }
+    .controls-item-lower2{
+        max-height: 50.535vw;
+        overflow: auto;
+        background-color: rgba(47,64,80,0.8);
+    }
+
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    .controls-item-lower2::-webkit-scrollbar{
+        width: 1.6vw;
+        /*background-color: white;*/
+    }
+    /*定义滚动条的轨道，内阴影及圆角*/
+    .controls-item-lower2::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 1.6vw rgba(0,0,0,.3);
+        border-radius: 2.667vw;
+        background-color: #546271;
+    }
+    /*定义滑块，内阴影及圆角*/
+    .controls-item-lower2::-webkit-scrollbar-thumb{
+        height: 5.333vw;
+        border-radius: 2.667vw;
+        -webkit-box-shadow: inset 0 0 1.6vw rgba(0,0,0,.3);
+        background-color: #a0adbe;
+    }
+
+
+    .controls-item2{
+        height:8vw;
+        border: 1px solid #727781;
+        border-radius: 5px;
+        height:8vw;
+        font-size:4.27vw;
+        overflow: hidden;
+        display: flex;
+        margin-top:1.333vw;
+    }
+    .controls-item2.selected{
+        background-color: rgba(72,194,169,0.5);
+    }
+    .controls-item2:first-child{
+        margin-top: 0;
+    }
+    .controls-displaybtn2{
+        width:12.8vw;
+        height:8vw;
+        cursor:pointer;
+        user-select: none;
+        text-align: center;
+        background-color: white;
+    }
+    .controls-displaybtn2.hide{
+        background-color: #dcdfe6;
+    }
+    .eye-btn{
+        background-image:url(../img/3d_eye_btn_n.png);
+        background-repeat: no-repeat;
+        background-size: 135%;
+        width:8vw;
+        height:7.467vw;
+        background-position: center;
+        margin:1px auto;
+    }
+    .eye-btn.hide{
+        background-image:url(../img/3d_eye_btn_p.png);
+    }
+    .controls-name2{
+        width:64vw;
+        color:#dcdfe6;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .color-picker-container2{
+        width:12.8vw;
+        height:8vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .color-picker2{
+        width:5.333vw;
+        height:5.333vw;
+        background-color: blue;
+        margin-right:5px;
+    }
+    .color-pan2{
+        box-sizing: border-box;
+        padding:0 3px;
+        width: 89.333vw;
+        height: 21.6vw;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        border: solid 1px #9c9c9c;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+    }
+    .color-picker-item2{
+        width: 7.467vw;
+        height: 7.467vw;
+        background-color: #00b4ed;
+        border-radius: 3px;
+        cursor: pointer;
+        margin:0 0.8vw;
+        position: relative;
+    }
+    .color-picker-item2.selected{
+        background-image: url(../img/3d_colo_icon_p.png);
+        background-size: contain;
+        background-position: center;
+    }
+    .opacity-bar2{
+        width: 89.333vw;
+        height: 2.667vw;
+        margin-bottom: 2.933vw;
+        background: linear-gradient(to right, rgba(72,194,169,0.2),rgba(72,194,169,1));
+        border-radius: 1.067vw;
+        position: relative;
+    }
+    .my-slider2{
+        position: absolute;
+        width:10.667vw;
+        top: -1.167vw;
+        left: 88.06%;
+        cursor:e-resize;
+    }
+    .vertices-limit-tip{
+        background-color: rgba(255,255,255,1);
+        border-radius: 5px;
+        font-size:3.733vw;
+        padding:0.5em;
+        margin-bottom: 0.5em;
+    }
+    .vertices-limit-open{
+        color:red;
+    }
+}
